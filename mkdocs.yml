@@ -1,0 +1,231 @@
+
+# Project information
+site_name: CS Notes
+site_url: 
+site_author: Jawad Haider
+site_description: >-
+  All of my Computer Science & AI/ML/DL/ Book notes, BootCamp notes & Useful materials for anyone who 
+  wants to learn; Knowledge should be free for those who need it.
+
+#############################################################################
+
+# Repository
+repo_name:  qalmaqihir/qalmaqihir.github.io 
+repo_url: https://github.com/qalmaqihir/qalmaqihir.github.io
+
+# Copyright
+copyright: Created by Jawad Haider
+
+# Configuration
+theme:
+  name: readthedocs
+  custom_dir: !ENV [THEME_DIR, "material"]
+
+  # Static files
+  static_templates:
+    - 404.html
+
+  # Don't include MkDocs' JavaScript
+  include_search_page: false
+  search_index_only: true
+
+  # Default values, taken from mkdocs_theme.yml
+  language: en
+  features:
+    - search.share
+    - search.highlight
+    - search.sugguest
+    # - announce.dismiss
+    - content.code.annotate
+    # - content.tabs.link
+    - content.tooltips
+    # - header.autohide
+    # - navigation.expand
+    - navigation.indexes
+    # - navigation.instant
+    # - navigation.prune
+    - navigation.sections
+    - navigation.tabs
+   # - navigation.tabs.sticky
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
+   # - toc.integrate
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+  favicon: assets/favicon.png
+  icon:
+    logo: logo
+    
+#############################################################################
+
+# Plugins
+plugins:
+  - search:
+      lang:
+        - en
+        - ru
+      separator: '[\s\-\.]' 
+      
+# Install redirect and minify plugins !!
+
+#############################################################################
+
+# Customization
+extra:
+  analytics:
+    provider: google
+    property: !ENV GOOGLE_ANALYTICS_KEY
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/qalmaqihir
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/jawad-haider-uca/
+    - icon: fontawesome/brands/youtube
+      link: https://
+    - icon: fontawesome/brands/telegram
+      link: https://
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/qalmaqihir
+    - icon: fontawesome/brands/instagram
+      link: https://instagram.com/qalmaqihir
+
+#############################################################################
+
+# Extensions
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:materialx.emoji.twemoji
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+#############################################################################
+
+nav:
+  - Home: index.md
+  - Books Notes: 
+    - booksnotes/index.md
+    - Data Science Handbook:
+      - booksnotes/pythonDataScienceHandBook/index.md
+      - Chapter 1 - Ipython; Beyond Normal Python: booksnotes/pythonDataScienceHandBook/index.md
+      - Chapter 2 - Introduction to Numpy: 
+        - booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/00_Understanding_Data_Types_in_Python.md
+        - booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/01_basics_of_numpy_arrays.md
+        - booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/02_Computation_on_NumPy_Arrays.md
+        - booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/03_Aggregation_Min_Max.md
+        - booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/04_Computation_on_Arrays_Broadcasting.md
+        - booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/05_Comparisons_ Masks_and_Boolean_Logic.md
+        - booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/06_Fany_Indexing.md
+        - booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/07_Sorted_Arrays.md
+        - booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/08_ Structured_Data.md
+      - Chapter 3 - Data Manipulation with Pandas: 
+        - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/01_Introduction to Pandas Objects.md
+        - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/02_Data Indexing and Selection.md
+        - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/03_Operating on Data in Pandas.md
+        - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/04_Handling Missing Data.md
+        - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/05_Hierarchical Indexing.md
+        - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/06_Combine dataset Concat and Append.md
+        - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/07_Combining Dataset Merge and Join.md
+        - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/08_Aggregation and Grouping.md
+        - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/09_Pivot Tables.md
+        - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/10_Vectoried String Operations.md
+        - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/11_Working with Time Series.md
+        - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/12-Frequency Offset.md
+        - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/13_Resampling Shifting and Windowing.md
+        - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/Example Visualizing Seattle Bicycle Counts.md
+        - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/Example_ Birthrate Data.md
+        - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/Example_ US States Data (Merge and Join).md
+        - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/Example_Recipe Database.md
+      - Chapter 4 - Visualization with Matplotlib: booksnotes/pythonDataScienceHandBook/index.md
+      - Chapter 5 - Machine Learning: booksnotes/pythonDataScienceHandBook/index.md
+    - Machine Learning Handbook:
+      - booksnotes/pythonDataScienceHandBook/index.md
+      - chapt 1: booksnotes/pythonDataScienceHandBook/index.md
+  - Bootcamps Notes:
+    - bootcampsnotes/index.md
+    - Numpy Crash Course:
+      - bootcampsnotes/numpy/00-NumPy-Arrays.md
+      - bootcampsnotes/numpy/01-NumPy-Indexing-and-Selection.md
+      - bootcampsnotes/numpy/02-NumPy-Operations.md
+      - bootcampsnotes/numpy/03-NumPy-Exercises.md
+      - bootcampsnotes/numpy/04-NumPy-Exercises-Solutions.md
+    - Pandas Crash Course:
+       - bootcampsnotes/pandas/00-Intro-to-Pandas.md
+       - bootcampsnotes/pandas/01-Series.md
+       - bootcampsnotes/pandas/02-DataFrames.md
+       - bootcampsnotes/pandas/03-Missing-Data.md
+       - bootcampsnotes/pandas/04-Groupby.md
+       - bootcampsnotes/pandas/05-Operations.md
+       - bootcampsnotes/pandas/06-Data-Input-and-Output.md
+       - bootcampsnotes/pandas/07-Pandas-Exercises.md
+       - bootcampsnotes/pandas/08-Pandas-Exercises-Solutions.md 
+    - PyTorch Baics:
+      - bootcampsnotes/pytorch/00-Tensor-Basics.md
+      - bootcampsnotes/pytorch/01-Tensor-Operations.md
+      - bootcampsnotes/pytorch/02-PyTorch-Basics-Exercises.md
+      - bootcampsnotes/pytorch/03-PyTorch-Basics-Exercises-Solutions.md
+  - Competitive Programmig:
+    - competitiveprogramming/index.md
+  - Core Computer Science:
+    - corecs/index.md   
+  - My Research:
+    - myresearch/index.md
+  - About: 
+    - about.md 
+  - Blog: 
+    - blogs/first-blog.md
+    - blogs/second-blog.md
+  - Contact: contact.md
+
+    
+
