@@ -2,7 +2,6 @@
 This is under construction.
 _Navigate to the tabs and check out anything interesting.
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 
 ## Your Contributions are well Comed.
 
@@ -12,5 +11,10 @@ For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 * Merge your pull requests to make the **World a better Place :)**
 
 ## Project layout
-	This repo is the parent for the site
+	This repo is the Home page where you will find all the philosophy, mission and aims behind this project
+## Your suggestions are also highly needed and encouraged
+## Provide your feed back on the socials at the footer
+
+# Coming Soon
+
 	
