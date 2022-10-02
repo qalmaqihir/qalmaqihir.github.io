@@ -19,6 +19,7 @@ copyright: Created by Jawad Haider
 # Configuration
 theme:
   name: readthedocs
+  logo: assets/logo.png
   custom_dir: !ENV [THEME_DIR, "material"]
 
   # Static files
@@ -70,7 +71,7 @@ theme:
   font:
     text: Roboto
     code: Roboto Mono
-  favicon: assets/favicon.png
+  favicon: assets/logo.png
   icon:
     logo: logo
     
@@ -99,13 +100,14 @@ extra:
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/in/jawad-haider-uca/
     - icon: fontawesome/brands/youtube
-      link: https://
+      link: https://www.youtube.com/channel/UCB-D3NBU6UZ5N7IGKOJxtqQ
     - icon: fontawesome/brands/telegram
-      link: https://
+      link: https://t.me/Qalmaqihir
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/qalmaqihir
     - icon: fontawesome/brands/instagram
       link: https://instagram.com/qalmaqihir
+      
 
 #############################################################################
 
@@ -152,7 +154,16 @@ markdown_extensions:
 #############################################################################
 
 nav:
-  - Home: index.md
+  - Home: 
+    - index.md
+    - Books Notes: booksnotes/index.md
+    - Boocamps Notes: bootcampsnotes/index.md
+    - Competitive Programmig: competitiveprogramming/index.md
+    - Core Computer Science: corecs/index.md
+    - My Research: myresearch/index.md
+    - About: about.md 
+    - Blogs: blogs/index.md
+    - Contact: contact.md
   - Books Notes: 
     - booksnotes/index.md
     - Data Science Handbook:
@@ -223,9 +234,12 @@ nav:
   - About: 
     - about.md 
   - Blog: 
-    - blogs/first-blog.md
-    - blogs/second-blog.md
-  - Contact: contact.md
+    - blogs/index.md
+    - 2022:
+      - blogs/2022/first-blog.md
+      - blogs/2022/second-blog.md
+  - Contact: 
+    - contact.md
 
     
 
