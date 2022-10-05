@@ -236,8 +236,8 @@ nav:
   - Blog: 
     - blogs/index.md
     - 2022:
-      - blogs/2022/empty-blog.md
-      - blogs/2022/second-emptyblog.md
+      - blogs/2022/How-to-use-these-resources.md
+      - blogs/2022/How-to-contribute.md
   - Contact: 
     - contact.md
 

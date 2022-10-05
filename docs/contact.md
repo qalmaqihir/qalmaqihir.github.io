@@ -1,7 +1,11 @@
-# Contact us: :dodo:
+# Contact us: :telephone:
 ## Check the socials to reach out for more :eagle:
- `Your reach out is like a call from the outerworld`
+ `Your reach out is like a call from the outerworld`  
+ 
+ 
+For official queries [email](mailto:sudochmod777script.sh@gmail.com)  :email:
 
+<hr>  
 ## Your suggestions are also highly needed and encouraged :heart:
 Write on any of the following socials **Stay Connected :heart:**  
 [LinkedIn](https://www.linkedin.com/in/jawad-haider-uca/) :simple-linkedin:
