@@ -6,7 +6,7 @@
 2.  [Pandas](https://qalmaqihir.github.io/bootcampsnotes/pandas/00-Intro-to-Pandas/)  
 3.  [Pytorch Basics](https://qalmaqihir.github.io/bootcampsnotes/pytorch/00-Tensor-Basics/) 
 4. Pytorch for Deeplearning Bootcamp  
->a. [ANN](https://qalmaqihir.github.io/bootcampsnotes/pytorchDLbootcamp/anns/00-PyTorch-Gradients/)
+>[a. ANN](https://qalmaqihir.github.io/bootcampsnotes/pytorchDLbootcamp/anns/00-PyTorch-Gradients/)
 	 
 	>b. CNN 
 	 
