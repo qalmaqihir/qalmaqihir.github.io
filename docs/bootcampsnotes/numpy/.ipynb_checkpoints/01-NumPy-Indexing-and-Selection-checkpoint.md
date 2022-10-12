@@ -282,6 +282,3 @@ arr[arr>x]
 # Great Job! Thats the end of this part.
 
 `Don't forget to give a star on github and follow for more curated Computer Science, Machine Learning materials`
-
-
-<a href=''>Top</a>

@@ -4,11 +4,22 @@
 ## Here you will find notes related to: :luggage:
 1.  [Numpy](https://qalmaqihir.github.io/bootcampsnotes/numpy/00-NumPy-Arrays/)  
 2.  [Pandas](https://qalmaqihir.github.io/bootcampsnotes/pandas/00-Intro-to-Pandas/)  
-3.  [Pytorch Basics](https://qalmaqihir.github.io/bootcampsnotes/pytorch/00-Tensor-Basics/)  
+3.  [Pytorch Basics](https://qalmaqihir.github.io/bootcampsnotes/pytorch/00-Tensor-Basics/) 
+4. Pytorch for Deeplearning Bootcamp  
+>a. [ANN](https://qalmaqihir.github.io/bootcampsnotes/pytorchDLbootcamp/anns/00-PyTorch-Gradients.md)
+	 
+	>b. CNN 
+	 
+	>c. RNN  
+
+	>d. NLP 
+	
+<br>  
+
 ## soon to be added...  :socks:
-4. matplotlib  
-5. seaborn  
-6. Tensorflow  BootCamp:
+5. matplotlib  
+6. seaborn  	
+7. Tensorflow  BootCamp:
 	   
 	>a. Colab Basics  
 	  Installing Tensorflow   
@@ -58,15 +69,7 @@
 	Build your own Model  
 
 
-7. Pytorch  BootCamp
-
-	>a. ANN 
-	 
-	>b. CNN 
-	 
-	>c. RNN  
-
-	>d. NLP  
+ 
 
 8. Python for DataSceince and Machine Learning
 

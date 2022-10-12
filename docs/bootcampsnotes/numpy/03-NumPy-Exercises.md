@@ -263,6 +263,3 @@ Hint](https://www.google.com/search?q=numpy+random+seed&rlz=1C1CHBF_enUS747US747
 # Great Job! Thats the end of this part.
 
 `Don't forget to give a star on github and follow for more curated Computer Science, Machine Learning materials`
-
-
-<a href=''>Top</a>

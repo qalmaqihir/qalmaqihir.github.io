@@ -205,26 +205,42 @@ nav:
   - Bootcamps Notes:
     - bootcampsnotes/index.md
     - Numpy Crash Course:
-      - bootcampsnotes/numpy/00-NumPy-Arrays.md
-      - bootcampsnotes/numpy/01-NumPy-Indexing-and-Selection.md
-      - bootcampsnotes/numpy/02-NumPy-Operations.md
-      - bootcampsnotes/numpy/03-NumPy-Exercises.md
-      - bootcampsnotes/numpy/04-NumPy-Exercises-Solutions.md
+      - Numpy Topics:
+        - bootcampsnotes/numpy/00-NumPy-Arrays.md
+        - bootcampsnotes/numpy/01-NumPy-Indexing-and-Selection.md
+        - bootcampsnotes/numpy/02-NumPy-Operations.md
+        - bootcampsnotes/numpy/03-NumPy-Exercises.md
+        - bootcampsnotes/numpy/04-NumPy-Exercises-Solutions.md
     - Pandas Crash Course:
-       - bootcampsnotes/pandas/00-Intro-to-Pandas.md
-       - bootcampsnotes/pandas/01-Series.md
-       - bootcampsnotes/pandas/02-DataFrames.md
-       - bootcampsnotes/pandas/03-Missing-Data.md
-       - bootcampsnotes/pandas/04-Groupby.md
-       - bootcampsnotes/pandas/05-Operations.md
-       - bootcampsnotes/pandas/06-Data-Input-and-Output.md
-       - bootcampsnotes/pandas/07-Pandas-Exercises.md
-       - bootcampsnotes/pandas/08-Pandas-Exercises-Solutions.md 
+      - Pandas Topics:
+         - bootcampsnotes/pandas/00-Intro-to-Pandas.md
+         - bootcampsnotes/pandas/01-Series.md
+         - bootcampsnotes/pandas/02-DataFrames.md
+         - bootcampsnotes/pandas/03-Missing-Data.md
+         - bootcampsnotes/pandas/04-Groupby.md
+         - bootcampsnotes/pandas/05-Operations.md
+         - bootcampsnotes/pandas/06-Data-Input-and-Output.md
+         - bootcampsnotes/pandas/07-Pandas-Exercises.md
+         - bootcampsnotes/pandas/08-Pandas-Exercises-Solutions.md 
     - PyTorch Baics:
-      - bootcampsnotes/pytorch/00-Tensor-Basics.md
-      - bootcampsnotes/pytorch/01-Tensor-Operations.md
-      - bootcampsnotes/pytorch/02-PyTorch-Basics-Exercises.md
-      - bootcampsnotes/pytorch/03-PyTorch-Basics-Exercises-Solutions.md
+      - PyTorch Topics:
+        - bootcampsnotes/pytorch/00-Tensor-Basics.md
+        - bootcampsnotes/pytorch/01-Tensor-Operations.md
+        - bootcampsnotes/pytorch/02-PyTorch-Basics-Exercises.md
+        - bootcampsnotes/pytorch/03-PyTorch-Basics-Exercises-Solutions.md
+    - Pytorch for Deeplearning Bootcamp:
+      - ANN - Artificial Neural Networks:
+        - bootcampsnotes/pytorchDLbootcamp/anns/00-PyTorch-Gradients.md
+        - bootcampsnotes/pytorchDLbootcamp/anns/01-Linear-Regression-with-PyTorch.md
+        - bootcampsnotes/pytorchDLbootcamp/anns/02-DataSets-with-Pytorch.md
+        - bootcampsnotes/pytorchDLbootcamp/anns/03-Basic-PyTorch-NN.md
+        - bootcampsnotes/pytorchDLbootcamp/anns/04a-Full-ANN-Code-Along-Regression.md
+        - bootcampsnotes/pytorchDLbootcamp/anns/04b-Full-ANN-Code-Along-Classification.md
+        - bootcampsnotes/pytorchDLbootcamp/anns/05-Neural-Network-Exercises.md
+        - bootcampsnotes/pytorchDLbootcamp/anns/06-Neural-Network-Exercises-Solutions.md
+        - bootcampsnotes/pytorchDLbootcamp/anns/07-Recap-Saving-and-Loading-Trained-Models.md
+    #  - CNN - Convolutional Neural Networks: 
+    #  - RNN - Recurrent Neural Networks: 
   - Competitive Programmig:
     - competitiveprogramming/index.md
   - Core Computer Science:
