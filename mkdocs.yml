@@ -157,7 +157,7 @@ nav:
   - Home: 
     - index.md
     - Books Notes: booksnotes/index.md
-    - Boocamps Notes: bootcampsnotes/index.md
+    - Bootcamps Notes: bootcampsnotes/index.md
     - Competitive Programmig: competitiveprogramming/index.md
     - Core Computer Science: corecs/index.md
     - My Research: myresearch/index.md
@@ -197,7 +197,27 @@ nav:
         - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/Example_ Birthrate Data.md
         - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/Example_ US States Data (Merge and Join).md
         - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/Example_Recipe Database.md
-      - Chapter 4 - Visualization with Matplotlib: booksnotes/pythonDataScienceHandBook/index.md
+      - Chapter 4 - Visualization with Matplotlib: 
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/01general Matplotlib tips.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/02simple_lineplots.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/03simple scatter plots.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/04visualizing errors.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/05density and contour plots.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/06Histograms Binnings and Density.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/07customized plot legends.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/08customizing colorbar.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/09multiple subplots.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/10text and annotation Example.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/11customizing ticks.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/12customizing matplotlib configuration and stylesheets.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/13threedimensional plotting.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/14_geographic data with basemap.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/15visualiztion with seaborn.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/example California cities.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/Example Exploring Marathon Finishing times.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/Example Handwritten Digits.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/example surface temperature data.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/Example Visualizing a Mobius Strip.md        
       - Chapter 5 - Machine Learning: booksnotes/pythonDataScienceHandBook/index.md
     - Machine Learning Handbook:
       - booksnotes/pythonDataScienceHandBook/index.md
