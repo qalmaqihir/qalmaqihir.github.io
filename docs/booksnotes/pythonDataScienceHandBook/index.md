@@ -3,7 +3,6 @@
 
 This is a great book to refer when using any of the Data Science python libraries and Traditional ML algorithm implementation.
 
-
 > The book's [website](https://jakevdp.github.io/PythonDataScienceHandbook/) **a great source** and the [github repo](https://github.com/jakevdp/PythonDataScienceHandbook) for **the great notebooks...** go there for more fruits ! :backpack:
 
 
