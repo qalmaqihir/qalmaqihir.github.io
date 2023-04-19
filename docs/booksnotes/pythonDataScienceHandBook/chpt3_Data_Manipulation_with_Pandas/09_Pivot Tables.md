@@ -5,17 +5,6 @@ by Jawad Haider
 
 # 08 - Pivot Table
 ------------------------------------------------------------------------
-<center>
-<a href=''>![Image](../../../assets/img/logo1.png)</a>
-</center>
-<center>
-<em>Copyright Qalmaqihir</em>
-</center>
-<center>
-<em>For more information, visit us at
-<a href='http://www.github.com/qalmaqihir/'>www.github.com/qalmaqihir/</a></em>
-</center>
-------------------------------------------------------------------------
 
 - <a href="#pivot-tables" id="toc-pivot-tables">Pivot Tables</a>
   - <a href="#motivating-pivot-tables"

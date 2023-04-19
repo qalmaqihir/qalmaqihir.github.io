@@ -6,18 +6,6 @@ by Jawad Haider
 # 03 - Aggregations: Min, Max, and Everything in Between
 
 ------------------------------------------------------------------------
-<center>
-<a href=''>![Image](../../../assets/img/logo1.png)</a>
-</center>
-<center>
-<em>Copyright Qalmaqihir</em>
-</center>
-<center>
-<em>For more information, visit us at
-<a href='http://www.github.com/qalmaqihir/'>www.github.com/qalmaqihir/</a></em>
-</center>
-----------------------------------------------------------------------------
-
 
 - <a href="#aggregations-min-max-and-everything-in-between"
   id="toc-aggregations-min-max-and-everything-in-between">Aggregations:

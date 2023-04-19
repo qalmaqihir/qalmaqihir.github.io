@@ -5,17 +5,6 @@ by Jawad Haider
 
 # 03 -Operations on Data in Pandas
 ------------------------------------------------------------------------
-<center>
-<a href=''>![Image](../../../assets/img/logo1.png)</a>
-</center>
-<center>
-<em>Copyright Qalmaqihir</em>
-</center>
-<center>
-<em>For more information, visit us at
-<a href='http://www.github.com/qalmaqihir/'>www.github.com/qalmaqihir/</a></em>
-</center>
-------------------------------------------------------------------------
 
 ``` python
 import numpy as np

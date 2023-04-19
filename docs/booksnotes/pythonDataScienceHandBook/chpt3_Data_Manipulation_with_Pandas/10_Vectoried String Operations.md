@@ -5,17 +5,7 @@ by Jawad Haider
 
 # 10 - Vectorized String Operations
 ------------------------------------------------------------------------
-<center>
-<a href=''>![Image](../../../assets/img/logo1.png)</a>
-</center>
-<center>
-<em>Copyright Qalmaqihir</em>
-</center>
-<center>
-<em>For more information, visit us at
-<a href='http://www.github.com/qalmaqihir/'>www.github.com/qalmaqihir/</a></em>
-</center>
-------------------------------------------------------------------------
+
 - <a href="#vectorized-string-operations"
   id="toc-vectorized-string-operations">Vectorized String Operations</a>
   - <a href="#tables-of-pandas-string-methods"

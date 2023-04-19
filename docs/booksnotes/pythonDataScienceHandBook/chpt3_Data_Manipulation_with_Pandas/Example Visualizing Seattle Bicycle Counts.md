@@ -5,17 +5,6 @@ by Jawad Haider
 
 # Example: Visualzing Seattle Bucycle Counts
 ------------------------------------------------------------------------
-<center>
-<a href=''>![Image](../../../assets/img/logo1.png)</a>
-</center>
-<center>
-<em>Copyright Qalmaqihir</em>
-</center>
-<center>
-<em>For more information, visit us at
-<a href='http://www.github.com/qalmaqihir/'>www.github.com/qalmaqihir/</a></em>
-</center>
-------------------------------------------------------------------------
 
 - <a href="#example-visualizing-seattle-bicycle-counts"
   id="toc-example-visualizing-seattle-bicycle-counts">Example: Visualizing

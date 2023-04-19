@@ -5,18 +5,6 @@ by Jawad Haider
 
 # Example: US States Data
 ------------------------------------------------------------------------
-<center>
-<a href=''>![Image](../../../assets/img/logo1.png)</a>
-</center>
-<center>
-<em>Copyright Qalmaqihir</em>
-</center>
-<center>
-<em>For more information, visit us at
-<a href='http://www.github.com/qalmaqihir/'>www.github.com/qalmaqihir/</a></em>
-</center>
-------------------------------------------------------------------------
-
 
 - <a href="#example-us-states-data"
   id="toc-example-us-states-data">Example: US States Data</a>

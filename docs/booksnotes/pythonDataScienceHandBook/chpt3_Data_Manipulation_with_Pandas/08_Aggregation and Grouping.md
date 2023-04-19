@@ -5,17 +5,6 @@ by Jawad Haider
 
 # 07 - Aggregation and Grouping
 ------------------------------------------------------------------------
-<center>
-<a href=''>![Image](../../../assets/img/logo1.png)</a>
-</center>
-<center>
-<em>Copyright Qalmaqihir</em>
-</center>
-<center>
-<em>For more information, visit us at
-<a href='http://www.github.com/qalmaqihir/'>www.github.com/qalmaqihir/</a></em>
-</center>
-------------------------------------------------------------------------
 
 - <a href="#aggregation-and-grouping"
   id="toc-aggregation-and-grouping">Aggregation and Grouping</a>

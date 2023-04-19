@@ -5,17 +5,6 @@ by Jawad Haider
 
 # 11 - Working with Time Series
 ------------------------------------------------------------------------
-<center>
-<a href=''>![Image](../../../assets/img/logo1.png)</a>
-</center>
-<center>
-<em>Copyright Qalmaqihir</em>
-</center>
-<center>
-<em>For more information, visit us at
-<a href='http://www.github.com/qalmaqihir/'>www.github.com/qalmaqihir/</a></em>
-</center>
-------------------------------------------------------------------------
 
 - <a href="#working-with-time-series"
   id="toc-working-with-time-series">Working with Time Series</a>

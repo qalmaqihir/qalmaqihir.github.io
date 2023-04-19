@@ -6,17 +6,6 @@ by Jawad Haider
 # 07 -  Sorting Arrays
 
 ------------------------------------------------------------------------
-<center>
-<a href=''>![Image](../../../assets/img/logo1.png)</a>
-</center>
-<center>
-<em>Copyright Qalmaqihir</em>
-</center>
-<center>
-<em>For more information, visit us at
-<a href='http://www.github.com/qalmaqihir/'>www.github.com/qalmaqihir/</a></em>
-</center>
----------------------------------------------------------------------
 
 - <a href="#sorting-arrays" id="toc-sorting-arrays">Sorting Arrays</a>
   - <a href="#fast-sorting-in-numpy-np.sort-and-np.argsort"

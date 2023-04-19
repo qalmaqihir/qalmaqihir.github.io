@@ -5,19 +5,6 @@ by Jawad Haider
 
 # 04 - Handling Missing Data
 ------------------------------------------------------------------------
-<center>
-<a href=''>![Image](../../../assets/img/logo1.png)</a>
-</center>
-<center>
-<em>Copyright Qalmaqihir</em>
-</center>
-<center>
-<em>For more information, visit us at
-<a href='http://www.github.com/qalmaqihir/'>www.github.com/qalmaqihir/</a></em>
-</center>
-------------------------------------------------------------------------
-
-
 
 - <a href="#none-pythonic-missing-data"
   id="toc-none-pythonic-missing-data">None: Pythonic missing data</a>

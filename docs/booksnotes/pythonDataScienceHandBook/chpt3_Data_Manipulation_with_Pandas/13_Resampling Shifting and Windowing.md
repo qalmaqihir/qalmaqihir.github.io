@@ -5,18 +5,6 @@ by Jawad Haider
 
 # 13 - Resampling, Shifting and Windowing
 ------------------------------------------------------------------------
-<center>
-<a href=''>![Image](../../../assets/img/logo1.png)</a>
-</center>
-<center>
-<em>Copyright Qalmaqihir</em>
-</center>
-<center>
-<em>For more information, visit us at
-<a href='http://www.github.com/qalmaqihir/'>www.github.com/qalmaqihir/</a></em>
-</center>
-------------------------------------------------------------------------
-
 
 - <a href="#resampling-shifting-and-windowing"
   id="toc-resampling-shifting-and-windowing">Resampling, Shifting, and

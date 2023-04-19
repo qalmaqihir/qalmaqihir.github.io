@@ -5,17 +5,6 @@ by Jawad Haider
 
 # 02 - Data Indexing and Selection
 ------------------------------------------------------------------------
-<center>
-<a href=''>![Image](../../../assets/img/logo1.png)</a>
-</center>
-<center>
-<em>Copyright Qalmaqihir</em>
-</center>
-<center>
-<em>For more information, visit us at
-<a href='http://www.github.com/qalmaqihir/'>www.github.com/qalmaqihir/</a></em>
-</center>
-------------------------------------------------------------------------
 
 - <a href="#data-indexing-and-selection"
   id="toc-data-indexing-and-selection">Data Indexing and Selection</a>

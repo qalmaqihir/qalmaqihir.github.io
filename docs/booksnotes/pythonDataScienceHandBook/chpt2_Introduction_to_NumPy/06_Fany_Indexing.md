@@ -5,19 +5,7 @@ by Jawad Haider
 
 # 06 - Comparisons, Masks, and Boolean Logic
 
-------------------------------------------------------------------------
-<center>
-<a href=''>![Image](../../../assets/img/logo1.png)</a>
-</center>
-<center>
-<em>Copyright Qalmaqihir</em>
-</center>
-<center>
-<em>For more information, visit us at
-<a href='http://www.github.com/qalmaqihir/'>www.github.com/qalmaqihir/</a></em>
-</center>
 ----------------------------------------------------------------------------
-
 
 - <a href="#fancy-indexing" id="toc-fancy-indexing">Fancy Indexing</a>
   - <a href="#exploring-fancy-indexing"

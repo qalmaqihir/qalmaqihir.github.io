@@ -6,17 +6,7 @@ by Jawad Haider
 # 05 - Comparisons, Masks, and Boolean Logic
 
 ------------------------------------------------------------------------
-<center>
-<a href=''>![Image](../../../assets/img/logo1.png)</a>
-</center>
-<center>
-<em>Copyright Qalmaqihir</em>
-</center>
-<center>
-<em>For more information, visit us at
-<a href='http://www.github.com/qalmaqihir/'>www.github.com/qalmaqihir/</a></em>
-</center>
---
+
 - <a href="#comparisons-masks-and-boolean-logic"
   id="toc-comparisons-masks-and-boolean-logic">Comparisons, Masks, and
   Boolean Logic</a>

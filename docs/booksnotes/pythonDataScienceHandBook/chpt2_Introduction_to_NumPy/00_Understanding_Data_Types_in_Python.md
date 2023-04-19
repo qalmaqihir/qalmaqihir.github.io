@@ -5,18 +5,6 @@ by Jawad Haider
 
 # 00 - Understanding Data Types in Python
 ------------------------------------------------------------------------
-<center>
-<a href=''>![Image](../../../assets/img/logo1.png)</a>
-</center>
-<center>
-<em>Copyright Qalmaqihir</em>
-</center>
-<center>
-<em>For more information, visit us at
-<a href='http://www.github.com/qalmaqihir/'>www.github.com/qalmaqihir/</a></em>
-</center>
-------------------------------------------------------------------------
-
 
 - <a href="#understanding-data-types-in-python"
   id="toc-understanding-data-types-in-python">Understanding Data Types in

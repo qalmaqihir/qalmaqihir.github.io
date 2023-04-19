@@ -5,17 +5,6 @@ by Jawad Haider
 
 # 07 - Combining Datasets: Merge and Join
 ------------------------------------------------------------------------
-<center>
-<a href=''>![Image](../../../assets/img/logo1.png)</a>
-</center>
-<center>
-<em>Copyright Qalmaqihir</em>
-</center>
-<center>
-<em>For more information, visit us at
-<a href='http://www.github.com/qalmaqihir/'>www.github.com/qalmaqihir/</a></em>
-</center>
-------------------------------------------------------------------------
 
 - <a href="#combining-datasets-merge-and-join"
   id="toc-combining-datasets-merge-and-join">Combining Datasets: Merge and
