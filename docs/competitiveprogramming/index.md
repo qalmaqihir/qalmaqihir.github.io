@@ -9,7 +9,21 @@ For now I am just mentioning my repos for the solutions and problems
 <hr>  
 ## Solutions in Python :snake:
 
+[50 Leetcode Problems Challenge](https://github.com/qalmaqihir/50_leetcode_problems_challenge)
+
+[Data Structure Algorithms](https://github.com/qalmaqihir/DataStructureAlgorithms)
+
 ## Solutions in Java :coffee:
+
+[Algorithmic Problems In Java](https://github.com/qalmaqihir/AlgorithmicProblemsInJava)
+
+[Most Common Competitive Problems](https://github.com/qalmaqihir/MostCommonCompetitiveProblems)
+
+[Competitive Programming Java](https://github.com/qalmaqihir/CompetitiveProgrammingJava)
+
+[Java Practices](https://github.com/qalmaqihir/JavaPractices)
+
+[How To Program Practice](https://github.com/qalmaqihir/HowToProgramPractice)
 
 <hr>  
 ## Your contribution is wellcome :bucket: :newspaper:
