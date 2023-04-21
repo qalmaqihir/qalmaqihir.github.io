@@ -1,8 +1,13 @@
 	
 # Welcome to cs-notes :notebook:
+
 <center>
-	<a href='https://qalmaqihir.github.io/'> [Image](https://github.com/qalmaqihir/qalmaqihir.github.io/blob/main/docs/assets/baner.png)</a>
+
+<a href='https://qalmaqihir.github.io/'> ![Image](https://github.com/qalmaqihir/qalmaqihir.github.io/blob/main/docs/assets/baner.png)</a>
+	
 </center>
+
+
 This site holds my notes for different computer science courses. In the start I wanted to dedicate this to only Machine Learning part, but then I extended it to all Computer Science.
 <hr>
 
