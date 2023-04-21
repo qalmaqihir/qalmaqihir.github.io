@@ -1,0 +1,3488 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="All of my Computer Science & AI/ML/DL/ Book notes, BootCamp notes & Useful materials for anyone who  wants to learn; Knowledge should be free for those who need it.">
+      
+      
+        <meta name="author" content="Jawad Haider">
+      
+      
+        <link rel="canonical" href="https://qalmaqihir.github.io/booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/10text%20and%20annotation%20Example/">
+      
+      <link rel="icon" href="../../../../assets/logo.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.3">
+    
+    
+      
+        <title>10text and annotation Example - CS Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.80dcb947.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#notes-book-data-science-handbook" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+Follow us on
+<a href="https://twitter.com/qalmaqihir" target="_blank" rel="noopener">
+    <span class="twemoji twitter" style="color: #1DA1F2">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path
+                d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z">
+            </path>
+        </svg>
+    </span>
+    <strong>Twitter</strong>
+</a> and
+
+<a href="https://www.youtube.com/channel/UCB-D3NBU6UZ5N7IGKOJxtqQ?sub_confirmation=1" target="_blank" rel="noopener">
+    <span class="twemoji youtube" style="color: #FF0000;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+            <path
+                d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z">
+            </path>
+        </svg>
+    </span>
+    <strong>YouTube</strong>
+</a>  and stay <strong>Updated !</strong> for New Content
+
+<!-- We use the twemoji project for the pancake emoji symbol
+and for other emoji and icon purposes.
+Check them out here: https://github.com/twitter/twemoji
+-->
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="CS Notes" class="md-header__button md-logo" aria-label="CS Notes" data-md-component="logo">
+      
+  <img src="../../../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CS Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              10text and annotation Example
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/qalmaqihir/qalmaqihir.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    qalmaqihir/qalmaqihir.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../" class="md-tabs__link md-tabs__link--active">
+        Books Notes
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../bootcampsnotes/" class="md-tabs__link">
+        Bootcamps Notes
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../competitiveprogramming/" class="md-tabs__link">
+        Competitive Programming
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../corecs/" class="md-tabs__link">
+        Core Computer Science
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../myresearch/" class="md-tabs__link">
+        My Research
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../about/" class="md-tabs__link">
+        About
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../blogs/" class="md-tabs__link">
+        Blog
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../contact/" class="md-tabs__link">
+        Contact
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="CS Notes" class="md-nav__button md-logo" aria-label="CS Notes" data-md-component="logo">
+      
+  <img src="../../../../assets/logo.png" alt="logo">
+
+    </a>
+    CS Notes
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/qalmaqihir/qalmaqihir.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    qalmaqihir/qalmaqihir.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../..">Home</a>
+          
+            <label for="__nav_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../" class="md-nav__link">
+        Books Notes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/" class="md-nav__link">
+        Bootcamps Notes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../competitiveprogramming/" class="md-nav__link">
+        Competitive Programmig
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../corecs/" class="md-nav__link">
+        Core Computer Science
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../myresearch/" class="md-nav__link">
+        My Research
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../about/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blogs/" class="md-nav__link">
+        Blogs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../contact/" class="md-nav__link">
+        Contact
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../">Books Notes</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Books Notes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Books Notes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../">Data Science Handbook</a>
+          
+            <label for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Data Science Handbook" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Data Science Handbook
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        Chapter 1 - Ipython; Beyond Normal Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_3" type="checkbox" id="__nav_2_2_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_2_3">
+          Chapter 2 - Introduction to Numpy
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Chapter 2 - Introduction to Numpy" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 2 - Introduction to Numpy
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt2_Introduction_to_NumPy/00_Understanding_Data_Types_in_Python/" class="md-nav__link">
+        00 Understanding Data Types in Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt2_Introduction_to_NumPy/01_basics_of_numpy_arrays/" class="md-nav__link">
+        01 basics of numpy arrays
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt2_Introduction_to_NumPy/02_Computation_on_NumPy_Arrays/" class="md-nav__link">
+        02 Computation on NumPy Arrays
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt2_Introduction_to_NumPy/03_Aggregation_Min_Max/" class="md-nav__link">
+        03 Aggregation Min Max
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt2_Introduction_to_NumPy/04_Computation_on_Arrays_Broadcasting/" class="md-nav__link">
+        04 Computation on Arrays Broadcasting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt2_Introduction_to_NumPy/05_Comparisons_%20Masks_and_Boolean_Logic/" class="md-nav__link">
+        05 Comparisons  Masks and Boolean Logic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt2_Introduction_to_NumPy/06_Fany_Indexing/" class="md-nav__link">
+        06 Fany Indexing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt2_Introduction_to_NumPy/07_Sorted_Arrays/" class="md-nav__link">
+        07 Sorted Arrays
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt2_Introduction_to_NumPy/08_%20Structured_Data/" class="md-nav__link">
+        08  Structured Data
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_4" type="checkbox" id="__nav_2_2_4" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_2_4">
+          Chapter 3 - Data Manipulation with Pandas
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Chapter 3 - Data Manipulation with Pandas" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 3 - Data Manipulation with Pandas
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt3_Data_Manipulation_with_Pandas/01_Introduction%20to%20Pandas%20Objects/" class="md-nav__link">
+        01 Introduction to Pandas Objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt3_Data_Manipulation_with_Pandas/02_Data%20Indexing%20and%20Selection/" class="md-nav__link">
+        02 Data Indexing and Selection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt3_Data_Manipulation_with_Pandas/03_Operating%20on%20Data%20in%20Pandas/" class="md-nav__link">
+        03 Operating on Data in Pandas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt3_Data_Manipulation_with_Pandas/04_Handling%20Missing%20Data/" class="md-nav__link">
+        04 Handling Missing Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt3_Data_Manipulation_with_Pandas/05_Hierarchical%20Indexing/" class="md-nav__link">
+        05 Hierarchical Indexing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt3_Data_Manipulation_with_Pandas/06_Combine%20dataset%20Concat%20and%20Append/" class="md-nav__link">
+        06 Combine dataset Concat and Append
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt3_Data_Manipulation_with_Pandas/07_Combining%20Dataset%20Merge%20and%20Join/" class="md-nav__link">
+        07 Combining Dataset Merge and Join
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt3_Data_Manipulation_with_Pandas/08_Aggregation%20and%20Grouping/" class="md-nav__link">
+        08 Aggregation and Grouping
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt3_Data_Manipulation_with_Pandas/09_Pivot%20Tables/" class="md-nav__link">
+        09 Pivot Tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt3_Data_Manipulation_with_Pandas/10_Vectoried%20String%20Operations/" class="md-nav__link">
+        10 Vectoried String Operations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt3_Data_Manipulation_with_Pandas/11_Working%20with%20Time%20Series/" class="md-nav__link">
+        11 Working with Time Series
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt3_Data_Manipulation_with_Pandas/12-Frequency%20Offset/" class="md-nav__link">
+        12 Frequency Offset
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt3_Data_Manipulation_with_Pandas/13_Resampling%20Shifting%20and%20Windowing/" class="md-nav__link">
+        13 Resampling Shifting and Windowing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt3_Data_Manipulation_with_Pandas/Example%20Visualizing%20Seattle%20Bicycle%20Counts/" class="md-nav__link">
+        Example Visualizing Seattle Bicycle Counts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt3_Data_Manipulation_with_Pandas/Example_%20Birthrate%20Data/" class="md-nav__link">
+        Example  Birthrate Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt3_Data_Manipulation_with_Pandas/Example_%20US%20States%20Data%20%28Merge%20and%20Join%29/" class="md-nav__link">
+        Example  US States Data (Merge and Join)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt3_Data_Manipulation_with_Pandas/Example_Recipe%20Database/" class="md-nav__link">
+        Example Recipe Database
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_5" type="checkbox" id="__nav_2_2_5" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_2_5">
+          Chapter 4 - Visualization with Matplotlib
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Chapter 4 - Visualization with Matplotlib" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 4 - Visualization with Matplotlib
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01general%20Matplotlib%20tips/" class="md-nav__link">
+        01general Matplotlib tips
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02simple_lineplots/" class="md-nav__link">
+        02simple lineplots
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03simple%20scatter%20plots/" class="md-nav__link">
+        03simple scatter plots
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04visualizing%20errors/" class="md-nav__link">
+        04visualizing errors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05density%20and%20contour%20plots/" class="md-nav__link">
+        05density and contour plots
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06Histograms%20Binnings%20and%20Density/" class="md-nav__link">
+        06Histograms Binnings and Density
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07customized%20plot%20legends/" class="md-nav__link">
+        07customized plot legends
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08customizing%20colorbar/" class="md-nav__link">
+        08customizing colorbar
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09multiple%20subplots/" class="md-nav__link">
+        09multiple subplots
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        10text and annotation Example
+      </a>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11customizing%20ticks/" class="md-nav__link">
+        11customizing ticks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12customizing%20matplotlib%20configuration%20and%20stylesheets/" class="md-nav__link">
+        12customizing matplotlib configuration and stylesheets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13threedimensional%20plotting/" class="md-nav__link">
+        13threedimensional plotting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14_geographic%20data%20with%20basemap/" class="md-nav__link">
+        14 geographic data with basemap
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15visualiztion%20with%20seaborn/" class="md-nav__link">
+        15visualiztion with seaborn
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../example%20California%20cities/" class="md-nav__link">
+        example California cities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Example%20Exploring%20Marathon%20Finishing%20times/" class="md-nav__link">
+        Example Exploring Marathon Finishing times
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Example%20Handwritten%20Digits/" class="md-nav__link">
+        Example Handwritten Digits
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../example%20surface%20temperature%20data/" class="md-nav__link">
+        Example surface temperature data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Example%20Visualizing%20a%20Mobius%20Strip/" class="md-nav__link">
+        Example Visualizing a Mobius Strip
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        Chapter 5 - Machine Learning
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../">Machine Learning Handbook</a>
+          
+            <label for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Machine Learning Handbook" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Machine Learning Handbook
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        chapt 1
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../bootcampsnotes/">Bootcamps Notes</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Bootcamps Notes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Bootcamps Notes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Numpy Crash Course
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Numpy Crash Course" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Numpy Crash Course
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2_1" type="checkbox" id="__nav_3_2_1" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2_1">
+          Numpy Topics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Numpy Topics" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Numpy Topics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/numpy/00-NumPy-Arrays/" class="md-nav__link">
+        00 NumPy Arrays
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/numpy/01-NumPy-Indexing-and-Selection/" class="md-nav__link">
+        01 NumPy Indexing and Selection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/numpy/02-NumPy-Operations/" class="md-nav__link">
+        02 NumPy Operations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/numpy/03-NumPy-Exercises/" class="md-nav__link">
+        03 NumPy Exercises
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/numpy/04-NumPy-Exercises-Solutions/" class="md-nav__link">
+        04 NumPy Exercises Solutions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_3">
+          Pandas Crash Course
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Pandas Crash Course" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Pandas Crash Course
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3_1" type="checkbox" id="__nav_3_3_1" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_1">
+          Pandas Topics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Pandas Topics" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Pandas Topics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pandas/00-Intro-to-Pandas/" class="md-nav__link">
+        00 Intro to Pandas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pandas/01-Series/" class="md-nav__link">
+        01 Series
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pandas/02-DataFrames/" class="md-nav__link">
+        02 DataFrames
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pandas/03-Missing-Data/" class="md-nav__link">
+        03 Missing Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pandas/04-Groupby/" class="md-nav__link">
+        04 Groupby
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pandas/05-Operations/" class="md-nav__link">
+        05 Operations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pandas/06-Data-Input-and-Output/" class="md-nav__link">
+        06 Data Input and Output
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pandas/07-Pandas-Exercises/" class="md-nav__link">
+        07 Pandas Exercises
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pandas/08-Pandas-Exercises-Solutions/" class="md-nav__link">
+        08 Pandas Exercises Solutions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_4">
+          PyTorch Baics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="PyTorch Baics" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          PyTorch Baics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_1" type="checkbox" id="__nav_3_4_1" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_4_1">
+          PyTorch Topics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="PyTorch Topics" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          PyTorch Topics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pytorch/00-Tensor-Basics/" class="md-nav__link">
+        00 Tensor Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pytorch/01-Tensor-Operations/" class="md-nav__link">
+        01 Tensor Operations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pytorch/02-PyTorch-Basics-Exercises/" class="md-nav__link">
+        02 PyTorch Basics Exercises
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pytorch/03-PyTorch-Basics-Exercises-Solutions/" class="md-nav__link">
+        03 PyTorch Basics Exercises Solutions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_5">
+          Pytorch for Deeplearning Bootcamp
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Pytorch for Deeplearning Bootcamp" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          Pytorch for Deeplearning Bootcamp
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5_1" type="checkbox" id="__nav_3_5_1" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_5_1">
+          ANN - Artificial Neural Networks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ANN - Artificial Neural Networks" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          ANN - Artificial Neural Networks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pytorchDLbootcamp/anns/00-PyTorch-Gradients/" class="md-nav__link">
+        00 PyTorch Gradients
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pytorchDLbootcamp/anns/01-Linear-Regression-with-PyTorch/" class="md-nav__link">
+        01 Linear Regression with PyTorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pytorchDLbootcamp/anns/02-DataSets-with-Pytorch/" class="md-nav__link">
+        02 DataSets with Pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pytorchDLbootcamp/anns/03-Basic-PyTorch-NN/" class="md-nav__link">
+        03 Basic PyTorch NN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pytorchDLbootcamp/anns/04a-Full-ANN-Code-Along-Regression/" class="md-nav__link">
+        04a Full ANN Code Along Regression
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pytorchDLbootcamp/anns/04b-Full-ANN-Code-Along-Classification/" class="md-nav__link">
+        04b Full ANN Code Along Classification
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pytorchDLbootcamp/anns/05-Neural-Network-Exercises/" class="md-nav__link">
+        05 Neural Network Exercises
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pytorchDLbootcamp/anns/06-Neural-Network-Exercises-Solutions/" class="md-nav__link">
+        06 Neural Network Exercises Solutions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pytorchDLbootcamp/anns/07-Recap-Saving-and-Loading-Trained-Models/" class="md-nav__link">
+        07 Recap Saving and Loading Trained Models
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6">
+          Pytorch for Deeplearning Bootcamp
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Pytorch for Deeplearning Bootcamp" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          Pytorch for Deeplearning Bootcamp
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_1" type="checkbox" id="__nav_3_6_1" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_1">
+          Colab Basics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Colab Basics" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_6_1">
+          <span class="md-nav__icon md-icon"></span>
+          Colab Basics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/TensorFlowDLBootCamp/ColabBasics/TF2_0_Demo/" class="md-nav__link">
+        TF2 0 Demo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/TensorFlowDLBootCamp/ColabBasics/TF2_0_Installing_Tensorflow/" class="md-nav__link">
+        TF2 0 Installing Tensorflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/TensorFlowDLBootCamp/ColabBasics/TF2_0_Loading_Data/" class="md-nav__link">
+        TF2 0 Loading Data
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_2" type="checkbox" id="__nav_3_6_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_2">
+          ANN - Artificial Neural Networks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ANN - Artificial Neural Networks" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          ANN - Artificial Neural Networks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/TensorFlowDLBootCamp/ANN/TF2_0_ANN_MNIST/" class="md-nav__link">
+        TF2 0 ANN MNIST
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/TensorFlowDLBootCamp/ANN/TF2_0_ANN_Regression/" class="md-nav__link">
+        TF2 0 ANN Regression
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_3" type="checkbox" id="__nav_3_6_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_3">
+          CNN - Convolutional Neural Networks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="CNN - Convolutional Neural Networks" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_6_3">
+          <span class="md-nav__icon md-icon"></span>
+          CNN - Convolutional Neural Networks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/TensorFlowDLBootCamp/CNN/TF2_0_Fashion_MNIST/" class="md-nav__link">
+        TF2 0 Fashion MNIST
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/TensorFlowDLBootCamp/CNN/TF2_0_CIFAR/" class="md-nav__link">
+        TF2 0 CIFAR
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/TensorFlowDLBootCamp/CNN/TF2_0_CIFAR_Improved/" class="md-nav__link">
+        TF2 0 CIFAR Improved
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../competitiveprogramming/">Competitive Programming</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Competitive Programming" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Competitive Programming
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../corecs/">Core Computer Science</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Core Computer Science" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Core Computer Science
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../myresearch/">My Research</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="My Research" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          My Research
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          About
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="About" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          About
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../about/" class="md-nav__link">
+        About me: :bear:
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../blogs/">Blog</a>
+          
+            <label for="__nav_8">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Blog" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Blog
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_2" type="checkbox" id="__nav_8_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_8_2">
+          2022
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="2022" data-md-level="2">
+        <label class="md-nav__title" for="__nav_8_2">
+          <span class="md-nav__icon md-icon"></span>
+          2022
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blogs/2022/How-to-use-these-resources/" class="md-nav__link">
+        How-to-use-these-resources
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blogs/2022/How-to-contribute/" class="md-nav__link">
+        How to contribute
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          Contact
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Contact" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Contact
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../contact/" class="md-nav__link">
+        Contact us: :telephone:
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <a href="https://github.com/qalmaqihir/qalmaqihir.github.io/edit/master/docs/booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/10text and annotation Example.md" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+<h1 id="notes-book-data-science-handbook">Notes [Book] Data Science Handbook<a class="headerlink" href="#notes-book-data-science-handbook" title="Permanent link">&para;</a></h1>
+<p>by Jawad Haider</p>
+<h1 id="chpt-4-visualization-with-matplotlib"><strong>Chpt 4 - Visualization with Matplotlib</strong><a class="headerlink" href="#chpt-4-visualization-with-matplotlib" title="Permanent link">&para;</a></h1>
+<h1 id="10-text-and-annotation">10 -  Text and Annotation<a class="headerlink" href="#10-text-and-annotation" title="Permanent link">&para;</a></h1>
+<hr />
+<ul>
+<li><a href="#text-and-annotation" id="toc-text-and-annotation">Text and
+  Annotation</a></li>
+<li><a href="#transforms-and-text-position"
+  id="toc-transforms-and-text-position">Transforms and Text Position</a></li>
+<li><a href="#arrows-and-annotation" id="toc-arrows-and-annotation">Arrows
+  and Annotation</a></li>
+</ul>
+<hr />
+<h1 id="text-and-annotation">Text and Annotation<a class="headerlink" href="#text-and-annotation" title="Permanent link">&para;</a></h1>
+<p>Creating a good visualization involves guiding the reader so that the
+figure tells a story. In some cases, this story can be told in an
+entirely visual manner, without the need for added text, but in others,
+small textual cues and labels are necessary. Perhaps the most basic
+types of annotations you will use are axes labels and titles, but the
+options go beyond this. Let’s take a look at some data and how we might
+visualize and annotate it to help convey interesting information.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-whitegrid&#39;</span><span class="p">)</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">births</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/births.csv&#39;</span><span class="p">)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">quartiles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">births</span><span class="p">[</span><span class="s1">&#39;births&#39;</span><span class="p">],[</span><span class="mi">25</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">75</span><span class="p">])</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">mu</span><span class="p">,</span> <span class="n">sig</span><span class="o">=</span> <span class="n">quartiles</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mf">0.74</span><span class="o">*</span><span class="p">(</span><span class="n">quartiles</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="n">quartiles</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">births</span><span class="o">=</span><span class="n">births</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;(births &gt; @mu - 5*@sig)&amp; (births&lt;@mu + 5* @sig)&#39;</span><span class="p">)</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="n">births</span><span class="p">[</span><span class="s1">&#39;day&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">births</span><span class="p">[</span><span class="s1">&#39;day&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">births</span><span class="o">.</span><span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="mi">10000</span><span class="o">*</span><span class="n">births</span><span class="o">.</span><span class="n">year</span> <span class="o">+</span> 
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>                           <span class="mi">100</span><span class="o">*</span><span class="n">births</span><span class="o">.</span><span class="n">month</span><span class="o">+</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>                           <span class="n">births</span><span class="o">.</span><span class="n">day</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%Y%m</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="n">births_by_date</span><span class="o">=</span><span class="n">births</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="s1">&#39;births&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>                                 <span class="p">[</span><span class="n">births</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">births</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">day</span><span class="p">])</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="n">births_by_date</span><span class="o">.</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">)</span> <span class="ow">in</span> <span class="n">births_by_date</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>/tmp/ipykernel_132909/914953373.py:15: FutureWarning: The pandas.datetime class is deprecated and will be removed from pandas in a future version. Import from datetime module instead.
+  births_by_date.index=[pd.datetime(2012, month, day) for (month, day) in births_by_date.index]
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">births_by_date</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>&lt;AxesSubplot:&gt;
+</code></pre></div>
+<p><img alt="" src="../10text%20and%20annotation%20Example_files/figure-gfm/cell-4-output-2.png" /></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">births_by_date</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># Add labels to the plot</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">style</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s1">&#39;2012-1-1&#39;</span><span class="p">,</span> <span class="mi">3950</span><span class="p">,</span> <span class="s2">&quot;New Year&#39;s Day&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">style</span><span class="p">)</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s1">&#39;2012-7-4&#39;</span><span class="p">,</span> <span class="mi">4250</span><span class="p">,</span> <span class="s2">&quot;Independence Day&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">style</span><span class="p">)</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s1">&#39;2012-9-4&#39;</span><span class="p">,</span> <span class="mi">4850</span><span class="p">,</span> <span class="s2">&quot;Labor Day&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">style</span><span class="p">)</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s1">&#39;2012-10-31&#39;</span><span class="p">,</span> <span class="mi">4600</span><span class="p">,</span> <span class="s2">&quot;Halloween&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">style</span><span class="p">)</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s1">&#39;2012-11-25&#39;</span><span class="p">,</span> <span class="mi">4450</span><span class="p">,</span> <span class="s2">&quot;Thanksgiving&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">style</span><span class="p">)</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s1">&#39;2012-12-25&#39;</span><span class="p">,</span> <span class="mi">3850</span><span class="p">,</span> <span class="s2">&quot;Christmas &quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">style</span><span class="p">)</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="c1"># Label the axes</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;USA births by day of year (1969-1988)&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;average daily births&#39;</span><span class="p">)</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="c1"># Format the x axis with centered month labels</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">dates</span><span class="o">.</span><span class="n">MonthLocator</span><span class="p">())</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">dates</span><span class="o">.</span><span class="n">MonthLocator</span><span class="p">(</span><span class="n">bymonthday</span><span class="o">=</span><span class="mi">15</span><span class="p">))</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">NullFormatter</span><span class="p">())</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_formatter</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">dates</span><span class="o">.</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s1">&#39;%h&#39;</span><span class="p">));</span>
+</code></pre></div>
+<p><img alt="" src="../10text%20and%20annotation%20Example_files/figure-gfm/cell-5-output-1.png" /></p>
+<h1 id="transforms-and-text-position">Transforms and Text Position<a class="headerlink" href="#transforms-and-text-position" title="Permanent link">&para;</a></h1>
+<p>In the previous example, we anchored our text annotations to data
+locations. Some‐ times it’s preferable to anchor the text to a position
+on the axes or figure, independent of the data. In Matplotlib, we do
+this by modifying the transform.</p>
+<p>Any graphics display framework needs some scheme for translating between
+coordinate systems. For example, a data point at x, y = 1, 1 needs to
+somehow be represented at a certain location on the figure, which in
+turn needs to be represented in pixels on the screen.</p>
+<p>Mathematically, such coordinate transformations are relatively
+straightforward, and Matplotlib has a well-developed set of tools that
+it uses internally to perform them (the tools can be explored in the
+Matplotlib.transforms submodule).</p>
+<p>The average user rarely needs to worry about the details of these
+transforms, but it is helpful knowledge to have when considering the
+placement of text on a figure. There are three predefined transforms
+that can be useful in this situation:</p>
+<p><em>ax.transData</em><br />
+Transform associated with data coordinates<br />
+<em>ax.transAxes</em><br />
+Transform associated with the axes (in units of axes dimensions)<br />
+<em>fig.transFigure</em><br />
+Transform associated with the figure (in units of figure dimensions)</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># # %matplotlib inline</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="o">%</span><span class="n">matplotlib</span> <span class="n">notebook</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1"># import matplotlib.pyplot as plt</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># import matplotlib as mpl</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># plt.style.use(&#39;seaborn-whitegrid&#39;)</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1"># import numpy as np</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># import pandas as pd</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">)</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># transform=ax.transData is the default,</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="s2">&quot;. Data: (1,5)&quot;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transData</span><span class="p">)</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="s2">&quot;. Data: (2,1.5)&quot;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transData</span><span class="p">)</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="s2">&quot;. Data: (0.2,0.2)&quot;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transData</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>&lt;IPython.core.display.Javascript object&gt;
+</code></pre></div>
+<p><img src="data:image/png;base64,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ymuvvSYnn3wyAlYgewZdO7iwtGOJgNmyRMDsebay+MQTT0i7du3k2GOPLXs3KjDbQDDo2vGEpR1LBMyWJQJmz7OVxXvuuUe6dOkiixcvlq+++kpOP/106dWrFxVYgewZdO3gwtKOJQJmyxIBM+Y5d+5c0X8tjxUrVsiee+4pZ599trz33nvywAMPyM0339xKwIxdwRwEIACBbwSBhoYGF8/pchPHjBkzZOutt5Yf/ehHAfLAgQODiHFAAAIQgMA3h4BLAXv//ffl2WeflSFDhsjHH38st99+u9x6663fnKjxpBCAAAQgIC4FTOP26KOPyjvvvCOrV68Oa2A77bQT4YQABCAAgW8QAbcCplOGWonpbsQzzjij5PfA3nrrLfnlL38p7du3l7322ktOOOGEENJK1xQR80r3W7BggUyfPj34qNOhgwcPln/84x9y4403ylZbbRXc2W677eSss84qwrUSm5X8HD58uHTt2rW5/dChQ+Vb3/pW1VlWit+yZctkwoQJzT4uWbJETj31VOnZs+cG4am/5qFx/OlPfypHHXVUCetayU11qpKftZSflfyspfws52et5efUqVNFNxKtXbtW+vXrJ/vvv39zjtZSfsYMfC4FTCsv/UXm0aNHy8KFC2Xy5MlhwGg6dJAdM2aMbLHFFnLFFVcEcfj8888rXhMDK6VNlo/nn3++jB07NoiBTn/27ds37Kx89dVXgyBX68jyUweI9adns64pwvfYe2qnvPLKK0PcP/zww6rzXLVqlVx//fXhJWT77bdvJWC1kJsanyw/ayU/s/yslfzM8rOpT2zo/NQXEx07tX988cUXovx0V3ctjZ0p44dLAXvkkUekR48ecuihh4ZnveCCC8IuRK0UdGv9pEmT5LrrrgvnHn/88fBz3blY7poUYLFtK/moNhobG5srm3vvvVe+973vySabbCJvv/12VQUsy08dyPQFoeWRdU0so5R2sffUHav6qxVHH320vP7661XnqQPUmjVr5Mknn5Ru3bqVCFit5KZyr+RnLeVnlp+1kp9Zfjblei3kpy676MvyunXrwga4KVOmhC8a1VJ+xo4NLgXsrrvukt69e8u+++4bnlPfJs4777wwZaTb6vUNY8SIEeGcJoxOKWkFVu6aWFgp7Sr52NLOZ599FvzXClLL96efflo23XTT8IZ80kknyQ9+8IOU2ya3zfLzF7/4RZiGXbp0qey6665yyimnyN13311VlvpQWX42PfjIkSNDBaYvLfPnz686zyY/dI12fQGrldxsmSRt+VlL+VmJp56rlfzM8rPW8lP9mTNnTphK1FkBPWoxP7MGtLoQsMsvv1z0TSxFwFpekwUpz/n1B9y27qdVoVaKP//5z2WPPfYIOyo/+eQT2WeffWTRokVyzTXXhE9mderUKY8LUddk+Tl79mw56KCDpHPnzkFkf/zjH8ubb75ZImBFs2xLwNq651//+tfQKXV3qh4bgqeFgFWDZ8yAWwv5meVnreRnlp96vpbyUz+/N2vWrLDUsvHGGycJWDXzM2sQcylg+ta4+eaby+GHHx6eT9e4xo0bJxtttFGoFMaPHx++k6jHzJkzw9SczveWuyYLUp7zlXxUezqFeNVVV4WKRiuctg6tIocNGyZbbrllHheirsnys6URHSyWL18eNs5Uk6X6EOOnborZZptt5OCDD95gPCsNZLWSmy3hlKvAaiU/Y4Shqc2GzM8YP2slP9944w3R36XVmR+dJWg6ajE/swYxlwKmpa52PBUAXai///77m9e89IG1JNa3BN0gMWrUKLnooovCFGKla7JApZ7P8lErn1122aVksP3d734Xpg5/8pOfiE4t6nRY0RVYJT+V2cSJE4MfHTt2lNtuu00OOOCAsDmmmiyVfRZPbaObYgYMGBA2T+ixIXhmDWS1kJsxAlYr+VmJZy3lZ1bcayU/V65cGYTr6quvlu7du7ca1motP7PGXZcCpg/18MMPh/lbrQb0k1IqZFoK77fffuH3w6ZNmxaeXbeIHnPMMeG/179m/e8nZsFKPV/OR50u1Ln7lr+79sMf/lD69OkTfilbRUw3Auj2f123K/qoxFI3I7z00ktBwHbYYQc588wzw9b/arPMirmev/jii8NLzWabbRaQffnll1Xn+fe//10eeuihMBOgC+P6ErX33nuHKrqWcrOSn7WUn1k8ayU/s/yslfzUKXadldLllqZD17b1pa+W8jN2zHMrYLEPSDsIQAACEKhPAghYfcaVp4IABCBQ9wQQsLoPMQ8IAQhAoD4JIGD1GVeeCgIQgEDdE0DA6j7EPCAEIACB+iSAgNVnXHkqCEAAAnVPAAGr+xDzgBCAAATqkwACVp9x5akgAAEI1D0BBKzuQ8wDQgACEKhPAghYfcaVp4IABCBQ9wQQsLoPMQ8IAQhAoD4JIGD1GVeeCgIQgEDdE0DA6j7EPCAEIACB+iSAgNVnXHkqCEAAAnVPAAGr+xDzgBCAAATqkwACVp9x5akgAAEI1D0BBKzuQ8wDQgACEKhPAghYfcaVp4IABCBQ9wQQsLoPMQ8IAQhAoD4JIGD1GVeeCgIQgEDdE0DA6j7EPCAEIACB+iSAgNVnXHkqCEAAAnVPAAGr+xDzgBCAAATqkwACVp9x5akgAAEI1D2B/wPZGPVMR2w8nwAAAABJRU5ErkJggg==" width="432"></p>
+<div class="highlight"><pre><span></span><code>Text(0.2, 0.2, &#39;. Data: (0.2,0.2)&#39;)
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">fig</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>&lt;IPython.core.display.Javascript object&gt;
+</code></pre></div>
+<p><img src="data:image/png;base64,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ymuvvSYnn3wyAlYgewZdO7iwtGOJgNmyRMDsebay+MQTT0i7du3k2GOPLXs3KjDbQDDo2vGEpR1LBMyWJQJmz7OVxXvuuUe6dOkiixcvlq+++kpOP/106dWrFxVYgewZdO3gwtKOJQJmyxIBM+Y5d+5c0X8tjxUrVsiee+4pZ599trz33nvywAMPyM0339xKwIxdwRwEIACBbwSBhoYGF8/pchPHjBkzZOutt5Yf/ehHAfLAgQODiHFAAAIQgMA3h4BLAXv//ffl2WeflSFDhsjHH38st99+u9x6663fnKjxpBCAAAQgIC4FTOP26KOPyjvvvCOrV68Oa2A77bQT4YQABCAAgW8QAbcCplOGWonpbsQzzjij5PfA3nrrLfnlL38p7du3l7322ktOOOGEENJK1xQR80r3W7BggUyfPj34qNOhgwcPln/84x9y4403ylZbbRXc2W677eSss84qwrUSm5X8HD58uHTt2rW5/dChQ+Vb3/pW1VlWit+yZctkwoQJzT4uWbJETj31VOnZs+cG4am/5qFx/OlPfypHHXVUCetayU11qpKftZSflfyspfws52et5efUqVNFNxKtXbtW+vXrJ/vvv39zjtZSfsYMfC4FTCsv/UXm0aNHy8KFC2Xy5MlhwGg6dJAdM2aMbLHFFnLFFVcEcfj8888rXhMDK6VNlo/nn3++jB07NoiBTn/27ds37Kx89dVXgyBX68jyUweI9adns64pwvfYe2qnvPLKK0PcP/zww6rzXLVqlVx//fXhJWT77bdvJWC1kJsanyw/ayU/s/yslfzM8rOpT2zo/NQXEx07tX988cUXovx0V3ctjZ0p44dLAXvkkUekR48ecuihh4ZnveCCC8IuRK0UdGv9pEmT5LrrrgvnHn/88fBz3blY7poUYLFtK/moNhobG5srm3vvvVe+973vySabbCJvv/12VQUsy08dyPQFoeWRdU0so5R2sffUHav6qxVHH320vP7661XnqQPUmjVr5Mknn5Ru3bqVCFit5KZyr+RnLeVnlp+1kp9Zfjblei3kpy676MvyunXrwga4KVOmhC8a1VJ+xo4NLgXsrrvukt69e8u+++4bnlPfJs4777wwZaTb6vUNY8SIEeGcJoxOKWkFVu6aWFgp7Sr52NLOZ599FvzXClLL96efflo23XTT8IZ80kknyQ9+8IOU2ya3zfLzF7/4RZiGXbp0qey6665yyimnyN13311VlvpQWX42PfjIkSNDBaYvLfPnz686zyY/dI12fQGrldxsmSRt+VlL+VmJp56rlfzM8rPW8lP9mTNnTphK1FkBPWoxP7MGtLoQsMsvv1z0TSxFwFpekwUpz/n1B9y27qdVoVaKP//5z2WPPfYIOyo/+eQT2WeffWTRokVyzTXXhE9mderUKY8LUddk+Tl79mw56KCDpHPnzkFkf/zjH8ubb75ZImBFs2xLwNq651//+tfQKXV3qh4bgqeFgFWDZ8yAWwv5meVnreRnlp96vpbyUz+/N2vWrLDUsvHGGycJWDXzM2sQcylg+ta4+eaby+GHHx6eT9e4xo0bJxtttFGoFMaPHx++k6jHzJkzw9SczveWuyYLUp7zlXxUezqFeNVVV4WKRiuctg6tIocNGyZbbrllHheirsnys6URHSyWL18eNs5Uk6X6EOOnborZZptt5OCDD95gPCsNZLWSmy3hlKvAaiU/Y4Shqc2GzM8YP2slP9944w3R36XVmR+dJWg6ajE/swYxlwKmpa52PBUAXai///77m9e89IG1JNa3BN0gMWrUKLnooovCFGKla7JApZ7P8lErn1122aVksP3d734Xpg5/8pOfiE4t6nRY0RVYJT+V2cSJE4MfHTt2lNtuu00OOOCAsDmmmiyVfRZPbaObYgYMGBA2T+ixIXhmDWS1kJsxAlYr+VmJZy3lZ1bcayU/V65cGYTr6quvlu7du7ca1motP7PGXZcCpg/18MMPh/lbrQb0k1IqZFoK77fffuH3w6ZNmxaeXbeIHnPMMeG/179m/e8nZsFKPV/OR50u1Ln7lr+79sMf/lD69OkTfilbRUw3Auj2f123K/qoxFI3I7z00ktBwHbYYQc588wzw9b/arPMirmev/jii8NLzWabbRaQffnll1Xn+fe//10eeuihMBOgC+P6ErX33nuHKrqWcrOSn7WUn1k8ayU/s/yslfzUKXadldLllqZD17b1pa+W8jN2zHMrYLEPSDsIQAACEKhPAghYfcaVp4IABCBQ9wQQsLoPMQ8IAQhAoD4JIGD1GVeeCgIQgEDdE0DA6j7EPCAEIACB+iSAgNVnXHkqCEAAAnVPAAGr+xDzgBCAAATqkwACVp9x5akgAAEI1D0BBKzuQ8wDQgACEKhPAghYfcaVp4IABCBQ9wQQsLoPMQ8IAQhAoD4JIGD1GVeeCgIQgEDdE0DA6j7EPCAEIACB+iSAgNVnXHkqCEAAAnVPAAGr+xDzgBCAAATqkwACVp9x5akgAAEI1D0BBKzuQ8wDQgACEKhPAghYfcaVp4IABCBQ9wQQsLoPMQ8IAQhAoD4JIGD1GVeeCgIQgEDdE0DA6j7EPCAEIACB+iSAgNVnXHkqCEAAAnVPAAGr+xDzgBCAAATqkwACVp9x5akgAAEI1D2B/wPZGPVMR2w8nwAAAABJRU5ErkJggg==" width="432"></p>
+<h1 id="arrows-and-annotation">Arrows and Annotation<a class="headerlink" href="#arrows-and-annotation" title="Permanent link">&para;</a></h1>
+<p>Along with tick marks and text, another useful annotation mark is the
+simple arrow. Drawing arrows in Matplotlib is often much harder than you
+might hope. While there is a plt.arrow() function available, I wouldn’t
+suggest using it; the arrows it creates are SVG objects that will be
+subject to the varying aspect ratio of your plots, and the result is
+rarely what the user intended. Instead, I’d suggest using the plt.anno
+tate() function. This function creates some text and an arrow, and the
+arrows can be very flexibly specified.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;local maximum&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">6.28</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.05</span><span class="p">))</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;local minimum&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">),</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="n">connectionstyle</span><span class="o">=</span><span class="s2">&quot;angle3,angleA=0,angleB=-90&quot;</span><span class="p">));</span>
+</code></pre></div>
+<p><img alt="" src="../10text%20and%20annotation%20Example_files/figure-gfm/cell-9-output-1.png" /></p>
+<p>The arrow style is controlled through the arrowprops dictionary, which
+has numer‐ ous options available. These options are fairly well
+documented in Matplotlib’s online documentation,</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">births_by_date</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="c1"># Add labels to the plot</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;New Year&#39;s Day&quot;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;2012-1-1&#39;</span><span class="p">,</span> <span class="mi">4100</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">,</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">),</span> <span class="n">textcoords</span><span class="o">=</span><span class="s1">&#39;offset points&#39;</span><span class="p">,</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="n">connectionstyle</span><span class="o">=</span><span class="s2">&quot;arc3,rad=-0.2&quot;</span><span class="p">))</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;Independence Day&quot;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;2012-7-4&#39;</span><span class="p">,</span> <span class="mi">4250</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">,</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">boxstyle</span><span class="o">=</span><span class="s2">&quot;round&quot;</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">),</span><span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">),</span> <span class="n">textcoords</span><span class="o">=</span><span class="s1">&#39;offset points&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;-&gt;&quot;</span><span class="p">))</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Labor Day&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;2012-9-4&#39;</span><span class="p">,</span> <span class="mi">4850</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">),</span> <span class="n">textcoords</span><span class="o">=</span><span class="s1">&#39;offset points&#39;</span><span class="p">)</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;2012-9-1&#39;</span><span class="p">,</span> <span class="mi">4850</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;2012-9-7&#39;</span><span class="p">,</span> <span class="mi">4850</span><span class="p">),</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="n">textcoords</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">,</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="n">arrowprops</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;arrowstyle&#39;</span><span class="p">:</span> <span class="s1">&#39;|-|,widthA=0.2,widthB=0.2&#39;</span><span class="p">,</span> <span class="p">})</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Halloween&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;2012-10-31&#39;</span><span class="p">,</span> <span class="mi">4600</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">,</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">80</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">),</span> <span class="n">textcoords</span><span class="o">=</span><span class="s1">&#39;offset points&#39;</span><span class="p">,</span>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;fancy&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="n">fc</span><span class="o">=</span><span class="s2">&quot;0.6&quot;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a><span class="n">connectionstyle</span><span class="o">=</span><span class="s2">&quot;angle3,angleA=0,angleB=-90&quot;</span><span class="p">))</span>
+<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a><span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Thanksgiving&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;2012-11-25&#39;</span><span class="p">,</span> <span class="mi">4500</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">,</span>
+<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a><span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">120</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">),</span> <span class="n">textcoords</span><span class="o">=</span><span class="s1">&#39;offset points&#39;</span><span class="p">,</span>
+<a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a><span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">boxstyle</span><span class="o">=</span><span class="s2">&quot;round4,pad=.5&quot;</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s2">&quot;0.9&quot;</span><span class="p">),</span>
+<a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a><span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a><span class="n">connectionstyle</span><span class="o">=</span><span class="s2">&quot;angle,angleA=0,angleB=80,rad=20&quot;</span><span class="p">))</span>
+<a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a><span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Christmas&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;2012-12-25&#39;</span><span class="p">,</span> <span class="mi">3850</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">,</span>
+<a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a><span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">textcoords</span><span class="o">=</span><span class="s1">&#39;offset points&#39;</span><span class="p">,</span>
+<a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a><span class="n">size</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a><span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">boxstyle</span><span class="o">=</span><span class="s2">&quot;round&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">),</span>
+<a id="__codelineno-8-30" name="__codelineno-8-30" href="#__codelineno-8-30"></a><span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;wedge,tail_width=0.5&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">));</span>
+<a id="__codelineno-8-31" name="__codelineno-8-31" href="#__codelineno-8-31"></a><span class="c1"># Label the axes</span>
+<a id="__codelineno-8-32" name="__codelineno-8-32" href="#__codelineno-8-32"></a><span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;USA births by day of year (1969-1988)&#39;</span><span class="p">,</span>
+<a id="__codelineno-8-33" name="__codelineno-8-33" href="#__codelineno-8-33"></a><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;average daily births&#39;</span><span class="p">)</span>
+<a id="__codelineno-8-34" name="__codelineno-8-34" href="#__codelineno-8-34"></a><span class="c1"># Format the x axis with centered month labels</span>
+<a id="__codelineno-8-35" name="__codelineno-8-35" href="#__codelineno-8-35"></a><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">dates</span><span class="o">.</span><span class="n">MonthLocator</span><span class="p">())</span>
+<a id="__codelineno-8-36" name="__codelineno-8-36" href="#__codelineno-8-36"></a><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">dates</span><span class="o">.</span><span class="n">MonthLocator</span><span class="p">(</span><span class="n">bymonthday</span><span class="o">=</span><span class="mi">15</span><span class="p">))</span>
+<a id="__codelineno-8-37" name="__codelineno-8-37" href="#__codelineno-8-37"></a><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">NullFormatter</span><span class="p">())</span>
+<a id="__codelineno-8-38" name="__codelineno-8-38" href="#__codelineno-8-38"></a><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_formatter</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">dates</span><span class="o">.</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s1">&#39;%h&#39;</span><span class="p">));</span>
+<a id="__codelineno-8-39" name="__codelineno-8-39" href="#__codelineno-8-39"></a><span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">3600</span><span class="p">,</span> <span class="mi">5400</span><span class="p">);</span>
+</code></pre></div>
+<p><img alt="" src="../10text%20and%20annotation%20Example_files/figure-gfm/cell-10-output-1.png" /></p>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../09multiple%20subplots/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 09multiple subplots" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              09multiple subplots
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../11customizing%20ticks/" class="md-footer__link md-footer__link--next" aria-label="Next: 11customizing ticks" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              11customizing ticks
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Created by Jawad Haider
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/qalmaqihir" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/jawad-haider-uca/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/channel/UCB-D3NBU6UZ5N7IGKOJxtqQ" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://t.me/Qalmaqihir" target="_blank" rel="noopener" title="t.me" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M248 8C111.033 8 0 119.033 0 256s111.033 248 248 248 248-111.033 248-248S384.967 8 248 8Zm114.952 168.66c-3.732 39.215-19.881 134.378-28.1 178.3-3.476 18.584-10.322 24.816-16.948 25.425-14.4 1.326-25.338-9.517-39.287-18.661-21.827-14.308-34.158-23.215-55.346-37.177-24.485-16.135-8.612-25 5.342-39.5 3.652-3.793 67.107-61.51 68.335-66.746.153-.655.3-3.1-1.154-4.384s-3.59-.849-5.135-.5q-3.283.746-104.608 69.142-14.845 10.194-26.894 9.934c-8.855-.191-25.888-5.006-38.551-9.123-15.531-5.048-27.875-7.717-26.8-16.291q.84-6.7 18.45-13.7 108.446-47.248 144.628-62.3c68.872-28.647 83.183-33.623 92.511-33.789 2.052-.034 6.639.474 9.61 2.885a10.452 10.452 0 0 1 3.53 6.716 43.765 43.765 0 0 1 .417 9.769Z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/qalmaqihir" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://instagram.com/qalmaqihir" target="_blank" rel="noopener" title="instagram.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["search.share", "search.highlight", "search.sugguest", "content.code.annotate", "content.tooltips", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.e21f8df8.min.js"></script>
+      
+    
+  </body>
+</html>

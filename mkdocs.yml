@@ -158,7 +158,7 @@ nav:
     - index.md
     - Books Notes: booksnotes/index.md
     - Bootcamps Notes: bootcampsnotes/index.md
-    - Competitive Programmig: competitiveprogramming/index.md
+    - Competitive Programming: competitiveprogramming/index.md
     - Core Computer Science: corecs/index.md
     - My Research: myresearch/index.md
     - About: about.md 
@@ -225,43 +225,102 @@ nav:
   - Bootcamps Notes:
     - bootcampsnotes/index.md
     - Numpy Crash Course:
-      - Numpy Topics:
-        - bootcampsnotes/numpy/00-NumPy-Arrays.md
-        - bootcampsnotes/numpy/01-NumPy-Indexing-and-Selection.md
-        - bootcampsnotes/numpy/02-NumPy-Operations.md
-        - bootcampsnotes/numpy/03-NumPy-Exercises.md
-        - bootcampsnotes/numpy/04-NumPy-Exercises-Solutions.md
+       - Numpy Topics:
+         - bootcampsnotes/numpy/00-NumPy-Arrays.md
+         - bootcampsnotes/numpy/01-NumPy-Indexing-and-Selection.md
+         - bootcampsnotes/numpy/02-NumPy-Operations.md
+         - bootcampsnotes/numpy/03-NumPy-Exercises.md
+         - bootcampsnotes/numpy/04-NumPy-Exercises-Solutions.md
     - Pandas Crash Course:
-      - Pandas Topics:
-         - bootcampsnotes/pandas/00-Intro-to-Pandas.md
-         - bootcampsnotes/pandas/01-Series.md
-         - bootcampsnotes/pandas/02-DataFrames.md
-         - bootcampsnotes/pandas/03-Missing-Data.md
-         - bootcampsnotes/pandas/04-Groupby.md
-         - bootcampsnotes/pandas/05-Operations.md
-         - bootcampsnotes/pandas/06-Data-Input-and-Output.md
-         - bootcampsnotes/pandas/07-Pandas-Exercises.md
-         - bootcampsnotes/pandas/08-Pandas-Exercises-Solutions.md 
+       - Pandas Topics:
+          - bootcampsnotes/pandas/00-Intro-to-Pandas.md
+          - bootcampsnotes/pandas/01-Series.md
+          - bootcampsnotes/pandas/02-DataFrames.md
+          - bootcampsnotes/pandas/03-Missing-Data.md
+          - bootcampsnotes/pandas/04-Groupby.md
+          - bootcampsnotes/pandas/05-Operations.md
+          - bootcampsnotes/pandas/06-Data-Input-and-Output.md
+          - bootcampsnotes/pandas/07-Pandas-Exercises.md
+          - bootcampsnotes/pandas/08-Pandas-Exercises-Solutions.md 
     - PyTorch Baics:
-      - PyTorch Topics:
-        - bootcampsnotes/pytorch/00-Tensor-Basics.md
-        - bootcampsnotes/pytorch/01-Tensor-Operations.md
-        - bootcampsnotes/pytorch/02-PyTorch-Basics-Exercises.md
-        - bootcampsnotes/pytorch/03-PyTorch-Basics-Exercises-Solutions.md
-    - Pytorch for Deeplearning Bootcamp:
+       - PyTorch Topics:
+         - bootcampsnotes/pytorch/00-Tensor-Basics.md
+         - bootcampsnotes/pytorch/01-Tensor-Operations.md
+         - bootcampsnotes/pytorch/02-PyTorch-Basics-Exercises.md
+         - bootcampsnotes/pytorch/03-PyTorch-Basics-Exercises-Solutions.md
+    - PyTorch for Deeplearning Bootcamp:    
       - ANN - Artificial Neural Networks:
-        - bootcampsnotes/pytorchDLbootcamp/anns/00-PyTorch-Gradients.md
-        - bootcampsnotes/pytorchDLbootcamp/anns/01-Linear-Regression-with-PyTorch.md
-        - bootcampsnotes/pytorchDLbootcamp/anns/02-DataSets-with-Pytorch.md
-        - bootcampsnotes/pytorchDLbootcamp/anns/03-Basic-PyTorch-NN.md
-        - bootcampsnotes/pytorchDLbootcamp/anns/04a-Full-ANN-Code-Along-Regression.md
-        - bootcampsnotes/pytorchDLbootcamp/anns/04b-Full-ANN-Code-Along-Classification.md
-        - bootcampsnotes/pytorchDLbootcamp/anns/05-Neural-Network-Exercises.md
-        - bootcampsnotes/pytorchDLbootcamp/anns/06-Neural-Network-Exercises-Solutions.md
-        - bootcampsnotes/pytorchDLbootcamp/anns/07-Recap-Saving-and-Loading-Trained-Models.md
-    #  - CNN - Convolutional Neural Networks: 
-    #  - RNN - Recurrent Neural Networks: 
-  - Competitive Programmig:
+        - bootcampsnotes/pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/00-PyTorch-Gradients.md
+        - bootcampsnotes/pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/01-Linear-Regression-with-PyTorch.md
+        - bootcampsnotes/pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/02-DataSets-with-Pytorch.md
+        - bootcampsnotes/pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/03-Basic-PyTorch-NN.md
+        - bootcampsnotes/pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/04a-Full-ANN-Code-Along-Regression.md
+        - bootcampsnotes/pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/04b-Full-ANN-Code-Along-Classification.md
+        - bootcampsnotes/pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/05-Neural-Network-Exercises.md
+        - bootcampsnotes/pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/06-Neural-Network-Exercises-Solutions.md
+        - bootcampsnotes/pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/07-Recap-Saving-and-Loading-Trained-Models.md
+      - CNN - Convolutional Neural Networks: 
+        - bootcampsnotes/pytorchDLbootcamp/03-CNN-Convolutional-Neural-Networks/00-MNIST-ANN-Code-Along.md
+        - bootcampsnotes/pytorchDLbootcamp/03-CNN-Convolutional-Neural-Networks/01-MNIST-with-CNN.md
+        - bootcampsnotes/pytorchDLbootcamp/03-CNN-Convolutional-Neural-Networks/02-CIFAR-CNN-Code-Along.md
+        - bootcampsnotes/pytorchDLbootcamp/03-CNN-Convolutional-Neural-Networks/03-Loading-Real-Image-Data.md
+        - bootcampsnotes/pytorchDLbootcamp/03-CNN-Convolutional-Neural-Networks/04-CNN-on-Custom-Images.md
+        - bootcampsnotes/pytorchDLbootcamp/03-CNN-Convolutional-Neural-Networks/05-CNN-Exercises.md
+        - bootcampsnotes/pytorchDLbootcamp/03-CNN-Convolutional-Neural-Networks/06-CNN-Exercises-Solutions.md
+      - RNN - Recurrent Neural Networks: 
+        - bootcampsnotes/pytorchDLbootcamp/04-RNN-Recurrent-Neural-Networks/00-Basic-RNN.md
+        - bootcampsnotes/pytorchDLbootcamp/04-RNN-Recurrent-Neural-Networks/01-RNN-on-a-Time-Series.md
+        - bootcampsnotes/pytorchDLbootcamp/04-RNN-Recurrent-Neural-Networks/02-RNN-Exercises.md
+        - bootcampsnotes/pytorchDLbootcamp/04-RNN-Recurrent-Neural-Networks/03-RNN-Exercises-Solutions.md
+      - Using GPU:
+        - bootcampsnotes/pytorchDLbootcamp/05-Using-GPU/00-Using-GPU-and-CUDA.md
+      - NLP with PyTorch:
+        - bootcampsnotes/pytorchDLbootcamp/06-NLP-with-PyTorch/00-RNN-for-Text-Generation .md
+    - Tensorflow for Deeplearning Bootcamp:
+      - Colab Basics:
+        - bootcampsnotes/TensorFlowDLBootCamp/ColabBasics/TF2_0_Demo.md
+        - bootcampsnotes/TensorFlowDLBootCamp/ColabBasics/TF2_0_Installing_Tensorflow.md
+        - bootcampsnotes/TensorFlowDLBootCamp/ColabBasics/TF2_0_Loading_Data.md
+      - Machine Learning Basics:
+        - bootcampsnotes/TensorFlowDLBootCamp/MachineLearningBasics/TF2_0_Linear_Classification.md
+        - bootcampsnotes/TensorFlowDLBootCamp/MachineLearningBasics/TF2_0_Linear_Regression.md
+      - ANN - Artificial Neural Networks:
+        - bootcampsnotes/TensorFlowDLBootCamp/ANN/TF2_0_ANN_MNIST.md
+        - bootcampsnotes/TensorFlowDLBootCamp/ANN/TF2_0_ANN_Regression.md
+      - CNN - Convolutional Neural Networks:
+        - bootcampsnotes/TensorFlowDLBootCamp/CNN/TF2_0_Fashion_MNIST.md
+        - bootcampsnotes/TensorFlowDLBootCamp/CNN/TF2_0_CIFAR.md
+        - bootcampsnotes/TensorFlowDLBootCamp/CNN/TF2_0_CIFAR_Improved.md
+      - RNN - Recurrent Neural Network:
+        - bootcampsnotes/TensorFlowDLBootCamp/RNN/TF2_0_Autoregressive_Model.md
+        - bootcampsnotes/TensorFlowDLBootCamp/RNN/TF2_0_SimpleRNN_Sine.md
+        - bootcampsnotes/TensorFlowDLBootCamp/RNN/TF2_0_RNN_Shapes.md
+        - bootcampsnotes/TensorFlowDLBootCamp/RNN/TF2_0_LSTM_Nonlinear.md
+        - bootcampsnotes/TensorFlowDLBootCamp/RNN/TF2_0_Long_Distance.md         
+        - bootcampsnotes/TensorFlowDLBootCamp/RNN/TF2_0_RNN_MNIST.md                  
+        - bootcampsnotes/TensorFlowDLBootCamp/RNN/TF2_0_Stock_Returns.md
+      - NLP - Natural Language Processing:
+        - bootcampsnotes/TensorFlowDLBootCamp/NaturalLanguageProcessing/TF2_0_Text_Preprocessing.md
+        - bootcampsnotes/TensorFlowDLBootCamp/NaturalLanguageProcessing/TF2_0_Spam_Detection_CNN.md
+        - bootcampsnotes/TensorFlowDLBootCamp/NaturalLanguageProcessing/TF2_0_Spam_Detection_RNN.md
+      - Recommendar Systems:
+        - bootcampsnotes/TensorFlowDLBootCamp/RecommenderSystem/TF2_0_Recommender_System.md
+      - Transfer Learning:
+        - bootcampsnotes/TensorFlowDLBootCamp/TransferLearning/TF2_0_Transfer_Learning.md
+        - bootcampsnotes/TensorFlowDLBootCamp/TransferLearning/TF2_0_Transfer_Learning_with_Data_Augmentation.md
+      - GANs - Generative Adversarial Networks:
+        - bootcampsnotes/TensorFlowDLBootCamp/GANs/TF2_0_GAN.md
+      - Advance Tensorflow:
+        - bootcampsnotes/TensorFlowDLBootCamp/AdvanceTensorflowUage/TF2_0_Serving.md
+        - bootcampsnotes/TensorFlowDLBootCamp/AdvanceTensorflowUage/TF2_0_Mirrored_Strategy.md
+        - bootcampsnotes/TensorFlowDLBootCamp/AdvanceTensorflowUage/TF2_0_TFLite.md
+        - bootcampsnotes/TensorFlowDLBootCamp/AdvanceTensorflowUage/TPU.md
+      - Low-level Transorflow:
+        - bootcampsnotes/TensorFlowDLBootCamp/LowLevelTensorflow/TF2_0_Basic_Computation.md
+        - bootcampsnotes/TensorFlowDLBootCamp/LowLevelTensorflow/TF2_0_Variables_and_Gradient_Tape.md
+        - bootcampsnotes/TensorFlowDLBootCamp/LowLevelTensorflow/TF2_0_Build_Your_Own_Model.md
+      
+  - Competitive Programming:
     - competitiveprogramming/index.md
   - Core Computer Science:
     - corecs/index.md   

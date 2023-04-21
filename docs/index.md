@@ -22,7 +22,7 @@ This site holds my notes for different computer science courses. In the start I 
 ###  [Bootcamps Notes](https://qalmaqihir.github.io/bootcampsnotes/) :trophy: 
 > _contains notes for some of the most popular bootcamps for machine learning, data structures and algorithms and many other topics in computer science_
 
-###  [Competitive Programming](https://qalmaqihir.github.io/competitiveprogramming/) :pager:
+###  [Competitive Programming Adventures](https://qalmaqihir.github.io/competitiveprogramming/) :pager:
 > _Here you will see problem solving and solutions with explaination to coding challenges from Leetcode, code forces, exercism and many other_
 
 ###  [Core Computer Science](https://qalmaqihir.github.io/corecs/) :desktop:

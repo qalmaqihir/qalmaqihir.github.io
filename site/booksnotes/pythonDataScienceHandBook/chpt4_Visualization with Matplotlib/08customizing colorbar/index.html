@@ -1,0 +1,4455 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="All of my Computer Science & AI/ML/DL/ Book notes, BootCamp notes & Useful materials for anyone who  wants to learn; Knowledge should be free for those who need it.">
+      
+      
+        <meta name="author" content="Jawad Haider">
+      
+      
+        <link rel="canonical" href="https://qalmaqihir.github.io/booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/08customizing%20colorbar/">
+      
+      <link rel="icon" href="../../../../assets/logo.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.3">
+    
+    
+      
+        <title>08customizing colorbar - CS Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.80dcb947.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#notes-book-data-science-handbook" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+Follow us on
+<a href="https://twitter.com/qalmaqihir" target="_blank" rel="noopener">
+    <span class="twemoji twitter" style="color: #1DA1F2">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path
+                d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z">
+            </path>
+        </svg>
+    </span>
+    <strong>Twitter</strong>
+</a> and
+
+<a href="https://www.youtube.com/channel/UCB-D3NBU6UZ5N7IGKOJxtqQ?sub_confirmation=1" target="_blank" rel="noopener">
+    <span class="twemoji youtube" style="color: #FF0000;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+            <path
+                d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z">
+            </path>
+        </svg>
+    </span>
+    <strong>YouTube</strong>
+</a>  and stay <strong>Updated !</strong> for New Content
+
+<!-- We use the twemoji project for the pancake emoji symbol
+and for other emoji and icon purposes.
+Check them out here: https://github.com/twitter/twemoji
+-->
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="CS Notes" class="md-header__button md-logo" aria-label="CS Notes" data-md-component="logo">
+      
+  <img src="../../../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CS Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              08customizing colorbar
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/qalmaqihir/qalmaqihir.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    qalmaqihir/qalmaqihir.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../" class="md-tabs__link md-tabs__link--active">
+        Books Notes
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../bootcampsnotes/" class="md-tabs__link">
+        Bootcamps Notes
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../competitiveprogramming/" class="md-tabs__link">
+        Competitive Programming
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../corecs/" class="md-tabs__link">
+        Core Computer Science
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../myresearch/" class="md-tabs__link">
+        My Research
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../about/" class="md-tabs__link">
+        About
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../blogs/" class="md-tabs__link">
+        Blog
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../contact/" class="md-tabs__link">
+        Contact
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="CS Notes" class="md-nav__button md-logo" aria-label="CS Notes" data-md-component="logo">
+      
+  <img src="../../../../assets/logo.png" alt="logo">
+
+    </a>
+    CS Notes
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/qalmaqihir/qalmaqihir.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    qalmaqihir/qalmaqihir.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../..">Home</a>
+          
+            <label for="__nav_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../" class="md-nav__link">
+        Books Notes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/" class="md-nav__link">
+        Bootcamps Notes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../competitiveprogramming/" class="md-nav__link">
+        Competitive Programmig
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../corecs/" class="md-nav__link">
+        Core Computer Science
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../myresearch/" class="md-nav__link">
+        My Research
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../about/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blogs/" class="md-nav__link">
+        Blogs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../contact/" class="md-nav__link">
+        Contact
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../">Books Notes</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Books Notes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Books Notes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../">Data Science Handbook</a>
+          
+            <label for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Data Science Handbook" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Data Science Handbook
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        Chapter 1 - Ipython; Beyond Normal Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_3" type="checkbox" id="__nav_2_2_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_2_3">
+          Chapter 2 - Introduction to Numpy
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Chapter 2 - Introduction to Numpy" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 2 - Introduction to Numpy
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt2_Introduction_to_NumPy/00_Understanding_Data_Types_in_Python/" class="md-nav__link">
+        00 Understanding Data Types in Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt2_Introduction_to_NumPy/01_basics_of_numpy_arrays/" class="md-nav__link">
+        01 basics of numpy arrays
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt2_Introduction_to_NumPy/02_Computation_on_NumPy_Arrays/" class="md-nav__link">
+        02 Computation on NumPy Arrays
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt2_Introduction_to_NumPy/03_Aggregation_Min_Max/" class="md-nav__link">
+        03 Aggregation Min Max
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt2_Introduction_to_NumPy/04_Computation_on_Arrays_Broadcasting/" class="md-nav__link">
+        04 Computation on Arrays Broadcasting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt2_Introduction_to_NumPy/05_Comparisons_%20Masks_and_Boolean_Logic/" class="md-nav__link">
+        05 Comparisons  Masks and Boolean Logic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt2_Introduction_to_NumPy/06_Fany_Indexing/" class="md-nav__link">
+        06 Fany Indexing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt2_Introduction_to_NumPy/07_Sorted_Arrays/" class="md-nav__link">
+        07 Sorted Arrays
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt2_Introduction_to_NumPy/08_%20Structured_Data/" class="md-nav__link">
+        08  Structured Data
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_4" type="checkbox" id="__nav_2_2_4" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_2_4">
+          Chapter 3 - Data Manipulation with Pandas
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Chapter 3 - Data Manipulation with Pandas" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 3 - Data Manipulation with Pandas
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt3_Data_Manipulation_with_Pandas/01_Introduction%20to%20Pandas%20Objects/" class="md-nav__link">
+        01 Introduction to Pandas Objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt3_Data_Manipulation_with_Pandas/02_Data%20Indexing%20and%20Selection/" class="md-nav__link">
+        02 Data Indexing and Selection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt3_Data_Manipulation_with_Pandas/03_Operating%20on%20Data%20in%20Pandas/" class="md-nav__link">
+        03 Operating on Data in Pandas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt3_Data_Manipulation_with_Pandas/04_Handling%20Missing%20Data/" class="md-nav__link">
+        04 Handling Missing Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt3_Data_Manipulation_with_Pandas/05_Hierarchical%20Indexing/" class="md-nav__link">
+        05 Hierarchical Indexing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt3_Data_Manipulation_with_Pandas/06_Combine%20dataset%20Concat%20and%20Append/" class="md-nav__link">
+        06 Combine dataset Concat and Append
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt3_Data_Manipulation_with_Pandas/07_Combining%20Dataset%20Merge%20and%20Join/" class="md-nav__link">
+        07 Combining Dataset Merge and Join
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt3_Data_Manipulation_with_Pandas/08_Aggregation%20and%20Grouping/" class="md-nav__link">
+        08 Aggregation and Grouping
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt3_Data_Manipulation_with_Pandas/09_Pivot%20Tables/" class="md-nav__link">
+        09 Pivot Tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt3_Data_Manipulation_with_Pandas/10_Vectoried%20String%20Operations/" class="md-nav__link">
+        10 Vectoried String Operations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt3_Data_Manipulation_with_Pandas/11_Working%20with%20Time%20Series/" class="md-nav__link">
+        11 Working with Time Series
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt3_Data_Manipulation_with_Pandas/12-Frequency%20Offset/" class="md-nav__link">
+        12 Frequency Offset
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt3_Data_Manipulation_with_Pandas/13_Resampling%20Shifting%20and%20Windowing/" class="md-nav__link">
+        13 Resampling Shifting and Windowing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt3_Data_Manipulation_with_Pandas/Example%20Visualizing%20Seattle%20Bicycle%20Counts/" class="md-nav__link">
+        Example Visualizing Seattle Bicycle Counts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt3_Data_Manipulation_with_Pandas/Example_%20Birthrate%20Data/" class="md-nav__link">
+        Example  Birthrate Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt3_Data_Manipulation_with_Pandas/Example_%20US%20States%20Data%20%28Merge%20and%20Join%29/" class="md-nav__link">
+        Example  US States Data (Merge and Join)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chpt3_Data_Manipulation_with_Pandas/Example_Recipe%20Database/" class="md-nav__link">
+        Example Recipe Database
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_5" type="checkbox" id="__nav_2_2_5" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_2_5">
+          Chapter 4 - Visualization with Matplotlib
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Chapter 4 - Visualization with Matplotlib" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 4 - Visualization with Matplotlib
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01general%20Matplotlib%20tips/" class="md-nav__link">
+        01general Matplotlib tips
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02simple_lineplots/" class="md-nav__link">
+        02simple lineplots
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03simple%20scatter%20plots/" class="md-nav__link">
+        03simple scatter plots
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04visualizing%20errors/" class="md-nav__link">
+        04visualizing errors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05density%20and%20contour%20plots/" class="md-nav__link">
+        05density and contour plots
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06Histograms%20Binnings%20and%20Density/" class="md-nav__link">
+        06Histograms Binnings and Density
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07customized%20plot%20legends/" class="md-nav__link">
+        07customized plot legends
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        08customizing colorbar
+      </a>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09multiple%20subplots/" class="md-nav__link">
+        09multiple subplots
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10text%20and%20annotation%20Example/" class="md-nav__link">
+        10text and annotation Example
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11customizing%20ticks/" class="md-nav__link">
+        11customizing ticks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12customizing%20matplotlib%20configuration%20and%20stylesheets/" class="md-nav__link">
+        12customizing matplotlib configuration and stylesheets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13threedimensional%20plotting/" class="md-nav__link">
+        13threedimensional plotting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14_geographic%20data%20with%20basemap/" class="md-nav__link">
+        14 geographic data with basemap
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15visualiztion%20with%20seaborn/" class="md-nav__link">
+        15visualiztion with seaborn
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../example%20California%20cities/" class="md-nav__link">
+        example California cities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Example%20Exploring%20Marathon%20Finishing%20times/" class="md-nav__link">
+        Example Exploring Marathon Finishing times
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Example%20Handwritten%20Digits/" class="md-nav__link">
+        Example Handwritten Digits
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../example%20surface%20temperature%20data/" class="md-nav__link">
+        Example surface temperature data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Example%20Visualizing%20a%20Mobius%20Strip/" class="md-nav__link">
+        Example Visualizing a Mobius Strip
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        Chapter 5 - Machine Learning
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../">Machine Learning Handbook</a>
+          
+            <label for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Machine Learning Handbook" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Machine Learning Handbook
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        chapt 1
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../bootcampsnotes/">Bootcamps Notes</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Bootcamps Notes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Bootcamps Notes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Numpy Crash Course
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Numpy Crash Course" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Numpy Crash Course
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2_1" type="checkbox" id="__nav_3_2_1" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2_1">
+          Numpy Topics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Numpy Topics" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Numpy Topics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/numpy/00-NumPy-Arrays/" class="md-nav__link">
+        00 NumPy Arrays
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/numpy/01-NumPy-Indexing-and-Selection/" class="md-nav__link">
+        01 NumPy Indexing and Selection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/numpy/02-NumPy-Operations/" class="md-nav__link">
+        02 NumPy Operations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/numpy/03-NumPy-Exercises/" class="md-nav__link">
+        03 NumPy Exercises
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/numpy/04-NumPy-Exercises-Solutions/" class="md-nav__link">
+        04 NumPy Exercises Solutions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_3">
+          Pandas Crash Course
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Pandas Crash Course" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Pandas Crash Course
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3_1" type="checkbox" id="__nav_3_3_1" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_1">
+          Pandas Topics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Pandas Topics" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Pandas Topics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pandas/00-Intro-to-Pandas/" class="md-nav__link">
+        00 Intro to Pandas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pandas/01-Series/" class="md-nav__link">
+        01 Series
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pandas/02-DataFrames/" class="md-nav__link">
+        02 DataFrames
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pandas/03-Missing-Data/" class="md-nav__link">
+        03 Missing Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pandas/04-Groupby/" class="md-nav__link">
+        04 Groupby
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pandas/05-Operations/" class="md-nav__link">
+        05 Operations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pandas/06-Data-Input-and-Output/" class="md-nav__link">
+        06 Data Input and Output
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pandas/07-Pandas-Exercises/" class="md-nav__link">
+        07 Pandas Exercises
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pandas/08-Pandas-Exercises-Solutions/" class="md-nav__link">
+        08 Pandas Exercises Solutions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_4">
+          PyTorch Baics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="PyTorch Baics" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          PyTorch Baics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_1" type="checkbox" id="__nav_3_4_1" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_4_1">
+          PyTorch Topics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="PyTorch Topics" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          PyTorch Topics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pytorch/00-Tensor-Basics/" class="md-nav__link">
+        00 Tensor Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pytorch/01-Tensor-Operations/" class="md-nav__link">
+        01 Tensor Operations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pytorch/02-PyTorch-Basics-Exercises/" class="md-nav__link">
+        02 PyTorch Basics Exercises
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pytorch/03-PyTorch-Basics-Exercises-Solutions/" class="md-nav__link">
+        03 PyTorch Basics Exercises Solutions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_5">
+          Pytorch for Deeplearning Bootcamp
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Pytorch for Deeplearning Bootcamp" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          Pytorch for Deeplearning Bootcamp
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5_1" type="checkbox" id="__nav_3_5_1" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_5_1">
+          ANN - Artificial Neural Networks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ANN - Artificial Neural Networks" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          ANN - Artificial Neural Networks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pytorchDLbootcamp/anns/00-PyTorch-Gradients/" class="md-nav__link">
+        00 PyTorch Gradients
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pytorchDLbootcamp/anns/01-Linear-Regression-with-PyTorch/" class="md-nav__link">
+        01 Linear Regression with PyTorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pytorchDLbootcamp/anns/02-DataSets-with-Pytorch/" class="md-nav__link">
+        02 DataSets with Pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pytorchDLbootcamp/anns/03-Basic-PyTorch-NN/" class="md-nav__link">
+        03 Basic PyTorch NN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pytorchDLbootcamp/anns/04a-Full-ANN-Code-Along-Regression/" class="md-nav__link">
+        04a Full ANN Code Along Regression
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pytorchDLbootcamp/anns/04b-Full-ANN-Code-Along-Classification/" class="md-nav__link">
+        04b Full ANN Code Along Classification
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pytorchDLbootcamp/anns/05-Neural-Network-Exercises/" class="md-nav__link">
+        05 Neural Network Exercises
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pytorchDLbootcamp/anns/06-Neural-Network-Exercises-Solutions/" class="md-nav__link">
+        06 Neural Network Exercises Solutions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/pytorchDLbootcamp/anns/07-Recap-Saving-and-Loading-Trained-Models/" class="md-nav__link">
+        07 Recap Saving and Loading Trained Models
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6">
+          Pytorch for Deeplearning Bootcamp
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Pytorch for Deeplearning Bootcamp" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          Pytorch for Deeplearning Bootcamp
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_1" type="checkbox" id="__nav_3_6_1" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_1">
+          Colab Basics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Colab Basics" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_6_1">
+          <span class="md-nav__icon md-icon"></span>
+          Colab Basics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/TensorFlowDLBootCamp/ColabBasics/TF2_0_Demo/" class="md-nav__link">
+        TF2 0 Demo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/TensorFlowDLBootCamp/ColabBasics/TF2_0_Installing_Tensorflow/" class="md-nav__link">
+        TF2 0 Installing Tensorflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/TensorFlowDLBootCamp/ColabBasics/TF2_0_Loading_Data/" class="md-nav__link">
+        TF2 0 Loading Data
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_2" type="checkbox" id="__nav_3_6_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_2">
+          ANN - Artificial Neural Networks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ANN - Artificial Neural Networks" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          ANN - Artificial Neural Networks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/TensorFlowDLBootCamp/ANN/TF2_0_ANN_MNIST/" class="md-nav__link">
+        TF2 0 ANN MNIST
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/TensorFlowDLBootCamp/ANN/TF2_0_ANN_Regression/" class="md-nav__link">
+        TF2 0 ANN Regression
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_3" type="checkbox" id="__nav_3_6_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_3">
+          CNN - Convolutional Neural Networks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="CNN - Convolutional Neural Networks" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_6_3">
+          <span class="md-nav__icon md-icon"></span>
+          CNN - Convolutional Neural Networks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/TensorFlowDLBootCamp/CNN/TF2_0_Fashion_MNIST/" class="md-nav__link">
+        TF2 0 Fashion MNIST
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/TensorFlowDLBootCamp/CNN/TF2_0_CIFAR/" class="md-nav__link">
+        TF2 0 CIFAR
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../bootcampsnotes/TensorFlowDLBootCamp/CNN/TF2_0_CIFAR_Improved/" class="md-nav__link">
+        TF2 0 CIFAR Improved
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../competitiveprogramming/">Competitive Programming</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Competitive Programming" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Competitive Programming
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../corecs/">Core Computer Science</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Core Computer Science" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Core Computer Science
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../myresearch/">My Research</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="My Research" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          My Research
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          About
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="About" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          About
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../about/" class="md-nav__link">
+        About me: :bear:
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../blogs/">Blog</a>
+          
+            <label for="__nav_8">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Blog" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Blog
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_2" type="checkbox" id="__nav_8_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_8_2">
+          2022
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="2022" data-md-level="2">
+        <label class="md-nav__title" for="__nav_8_2">
+          <span class="md-nav__icon md-icon"></span>
+          2022
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blogs/2022/How-to-use-these-resources/" class="md-nav__link">
+        How-to-use-these-resources
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blogs/2022/How-to-contribute/" class="md-nav__link">
+        How to contribute
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          Contact
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Contact" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Contact
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../contact/" class="md-nav__link">
+        Contact us: :telephone:
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <a href="https://github.com/qalmaqihir/qalmaqihir.github.io/edit/master/docs/booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/08customizing colorbar.md" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+<h1 id="notes-book-data-science-handbook">Notes [Book] Data Science Handbook<a class="headerlink" href="#notes-book-data-science-handbook" title="Permanent link">&para;</a></h1>
+<p>by Jawad Haider</p>
+<h1 id="chpt-4-visualization-with-matplotlib"><strong>Chpt 4 - Visualization with Matplotlib</strong><a class="headerlink" href="#chpt-4-visualization-with-matplotlib" title="Permanent link">&para;</a></h1>
+<h1 id="08-customizing-colorbars">08 -  Customizing Colorbars<a class="headerlink" href="#08-customizing-colorbars" title="Permanent link">&para;</a></h1>
+<hr />
+<ul>
+<li><a href="#customizing-colorbars"
+  id="toc-customizing-colorbars">Customizing Colorbars</a></li>
+<li><a href="#customizing-colorbars-1"
+    id="toc-customizing-colorbars-1">Customizing Colorbars</a></li>
+<li><a href="#choosing-the-colormap" id="toc-choosing-the-colormap">Choosing
+    the colormap</a><ul>
+<li><a href="#color-limits-and-extensions"
+  id="toc-color-limits-and-extensions">Color limits and extensions</a></li>
+</ul>
+</li>
+<li><a href="#discrete-colorbars" id="toc-discrete-colorbars">Discrete
+    colorbars</a></li>
+</ul>
+<hr />
+<h1 id="customizing-colorbars">Customizing Colorbars<a class="headerlink" href="#customizing-colorbars" title="Permanent link">&para;</a></h1>
+<p>Plot legends identify discrete labels of discrete points. For continuous
+labels based on the color of points, lines, or regions, a labeled
+colorbar can be a great tool. In Mat‐ plotlib, a colorbar is a separate
+axes that can provide a key for the meaning of colors in a plot.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;classic&#39;</span><span class="p">)</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>array([[ 1.00000000e+00],
+       [ 9.99949900e-01],
+       [ 9.99799606e-01],
+       [ 9.99549133e-01],
+       [ 9.99198505e-01],
+       [ 9.98747758e-01],
+       [ 9.98196937e-01],
+       [ 9.97546097e-01],
+       [ 9.96795304e-01],
+       [ 9.95944632e-01],
+       [ 9.94994167e-01],
+       [ 9.93944004e-01],
+       [ 9.92794249e-01],
+       [ 9.91545016e-01],
+       [ 9.90196431e-01],
+       [ 9.88748629e-01],
+       [ 9.87201754e-01],
+       [ 9.85555963e-01],
+       [ 9.83811419e-01],
+       [ 9.81968298e-01],
+       [ 9.80026785e-01],
+       [ 9.77987073e-01],
+       [ 9.75849367e-01],
+       [ 9.73613882e-01],
+       [ 9.71280841e-01],
+       [ 9.68850478e-01],
+       [ 9.66323038e-01],
+       [ 9.63698772e-01],
+       [ 9.60977944e-01],
+       [ 9.58160826e-01],
+       [ 9.55247701e-01],
+       [ 9.52238861e-01],
+       [ 9.49134607e-01],
+       [ 9.45935251e-01],
+       [ 9.42641112e-01],
+       [ 9.39252521e-01],
+       [ 9.35769817e-01],
+       [ 9.32193350e-01],
+       [ 9.28523478e-01],
+       [ 9.24760567e-01],
+       [ 9.20904997e-01],
+       [ 9.16957152e-01],
+       [ 9.12917429e-01],
+       [ 9.08786232e-01],
+       [ 9.04563975e-01],
+       [ 9.00251081e-01],
+       [ 8.95847982e-01],
+       [ 8.91355120e-01],
+       [ 8.86772945e-01],
+       [ 8.82101915e-01],
+       [ 8.77342499e-01],
+       [ 8.72495174e-01],
+       [ 8.67560426e-01],
+       [ 8.62538748e-01],
+       [ 8.57430645e-01],
+       [ 8.52236627e-01],
+       [ 8.46957216e-01],
+       [ 8.41592940e-01],
+       [ 8.36144337e-01],
+       [ 8.30611953e-01],
+       [ 8.24996341e-01],
+       [ 8.19298066e-01],
+       [ 8.13517698e-01],
+       [ 8.07655815e-01],
+       [ 8.01713006e-01],
+       [ 7.95689865e-01],
+       [ 7.89586997e-01],
+       [ 7.83405013e-01],
+       [ 7.77144531e-01],
+       [ 7.70806181e-01],
+       [ 7.64390596e-01],
+       [ 7.57898419e-01],
+       [ 7.51330302e-01],
+       [ 7.44686901e-01],
+       [ 7.37968884e-01],
+       [ 7.31176922e-01],
+       [ 7.24311697e-01],
+       [ 7.17373896e-01],
+       [ 7.10364214e-01],
+       [ 7.03283355e-01],
+       [ 6.96132027e-01],
+       [ 6.88910947e-01],
+       [ 6.81620838e-01],
+       [ 6.74262431e-01],
+       [ 6.66836464e-01],
+       [ 6.59343679e-01],
+       [ 6.51784829e-01],
+       [ 6.44160671e-01],
+       [ 6.36471968e-01],
+       [ 6.28719491e-01],
+       [ 6.20904016e-01],
+       [ 6.13026327e-01],
+       [ 6.05087214e-01],
+       [ 5.97087471e-01],
+       [ 5.89027900e-01],
+       [ 5.80909308e-01],
+       [ 5.72732510e-01],
+       [ 5.64498325e-01],
+       [ 5.56207577e-01],
+       [ 5.47861097e-01],
+       [ 5.39459722e-01],
+       [ 5.31004293e-01],
+       [ 5.22495658e-01],
+       [ 5.13934670e-01],
+       [ 5.05322185e-01],
+       [ 4.96659067e-01],
+       [ 4.87946184e-01],
+       [ 4.79184410e-01],
+       [ 4.70374621e-01],
+       [ 4.61517701e-01],
+       [ 4.52614537e-01],
+       [ 4.43666022e-01],
+       [ 4.34673051e-01],
+       [ 4.25636526e-01],
+       [ 4.16557353e-01],
+       [ 4.07436441e-01],
+       [ 3.98274704e-01],
+       [ 3.89073060e-01],
+       [ 3.79832432e-01],
+       [ 3.70553744e-01],
+       [ 3.61237927e-01],
+       [ 3.51885914e-01],
+       [ 3.42498642e-01],
+       [ 3.33077052e-01],
+       [ 3.23622088e-01],
+       [ 3.14134698e-01],
+       [ 3.04615831e-01],
+       [ 2.95066442e-01],
+       [ 2.85487487e-01],
+       [ 2.75879926e-01],
+       [ 2.66244723e-01],
+       [ 2.56582842e-01],
+       [ 2.46895251e-01],
+       [ 2.37182922e-01],
+       [ 2.27446827e-01],
+       [ 2.17687942e-01],
+       [ 2.07907245e-01],
+       [ 1.98105716e-01],
+       [ 1.88284337e-01],
+       [ 1.78444091e-01],
+       [ 1.68585966e-01],
+       [ 1.58710948e-01],
+       [ 1.48820028e-01],
+       [ 1.38914196e-01],
+       [ 1.28994445e-01],
+       [ 1.19061768e-01],
+       [ 1.09117162e-01],
+       [ 9.91616222e-02],
+       [ 8.91961465e-02],
+       [ 7.92217334e-02],
+       [ 6.92393823e-02],
+       [ 5.92500934e-02],
+       [ 4.92548678e-02],
+       [ 3.92547068e-02],
+       [ 2.92506125e-02],
+       [ 1.92435873e-02],
+       [ 9.23463398e-03],
+       [-7.75244699e-04],
+       [-1.07850457e-02],
+       [-2.07937660e-02],
+       [-3.08004029e-02],
+       [-4.08039535e-02],
+       [-5.08034156e-02],
+       [-6.07977872e-02],
+       [-7.07860669e-02],
+       [-8.07672539e-02],
+       [-9.07403481e-02],
+       [-1.00704350e-01],
+       [-1.10658262e-01],
+       [-1.20601085e-01],
+       [-1.30531825e-01],
+       [-1.40449485e-01],
+       [-1.50353072e-01],
+       [-1.60241594e-01],
+       [-1.70114060e-01],
+       [-1.79969480e-01],
+       [-1.89806868e-01],
+       [-1.99625237e-01],
+       [-2.09423604e-01],
+       [-2.19200987e-01],
+       [-2.28956405e-01],
+       [-2.38688883e-01],
+       [-2.48397444e-01],
+       [-2.58081116e-01],
+       [-2.67738928e-01],
+       [-2.77369913e-01],
+       [-2.86973105e-01],
+       [-2.96547543e-01],
+       [-3.06092267e-01],
+       [-3.15606321e-01],
+       [-3.25088751e-01],
+       [-3.34538607e-01],
+       [-3.43954943e-01],
+       [-3.53336815e-01],
+       [-3.62683283e-01],
+       [-3.71993410e-01],
+       [-3.81266263e-01],
+       [-3.90500914e-01],
+       [-3.99696437e-01],
+       [-4.08851910e-01],
+       [-4.17966417e-01],
+       [-4.27039043e-01],
+       [-4.36068881e-01],
+       [-4.45055025e-01],
+       [-4.53996574e-01],
+       [-4.62892633e-01],
+       [-4.71742311e-01],
+       [-4.80544720e-01],
+       [-4.89298979e-01],
+       [-4.98004210e-01],
+       [-5.06659542e-01],
+       [-5.15264107e-01],
+       [-5.23817042e-01],
+       [-5.32317492e-01],
+       [-5.40764603e-01],
+       [-5.49157530e-01],
+       [-5.57495432e-01],
+       [-5.65777473e-01],
+       [-5.74002823e-01],
+       [-5.82170659e-01],
+       [-5.90280161e-01],
+       [-5.98330518e-01],
+       [-6.06320922e-01],
+       [-6.14250574e-01],
+       [-6.22118677e-01],
+       [-6.29924445e-01],
+       [-6.37667095e-01],
+       [-6.45345851e-01],
+       [-6.52959943e-01],
+       [-6.60508609e-01],
+       [-6.67991093e-01],
+       [-6.75406644e-01],
+       [-6.82754520e-01],
+       [-6.90033984e-01],
+       [-6.97244307e-01],
+       [-7.04384767e-01],
+       [-7.11454648e-01],
+       [-7.18453241e-01],
+       [-7.25379846e-01],
+       [-7.32233768e-01],
+       [-7.39014320e-01],
+       [-7.45720824e-01],
+       [-7.52352607e-01],
+       [-7.58909005e-01],
+       [-7.65389360e-01],
+       [-7.71793024e-01],
+       [-7.78119354e-01],
+       [-7.84367718e-01],
+       [-7.90537488e-01],
+       [-7.96628046e-01],
+       [-8.02638783e-01],
+       [-8.08569096e-01],
+       [-8.14418391e-01],
+       [-8.20186082e-01],
+       [-8.25871590e-01],
+       [-8.31474347e-01],
+       [-8.36993790e-01],
+       [-8.42429367e-01],
+       [-8.47780532e-01],
+       [-8.53046751e-01],
+       [-8.58227495e-01],
+       [-8.63322245e-01],
+       [-8.68330490e-01],
+       [-8.73251730e-01],
+       [-8.78085470e-01],
+       [-8.82831226e-01],
+       [-8.87488523e-01],
+       [-8.92056894e-01],
+       [-8.96535881e-01],
+       [-9.00925037e-01],
+       [-9.05223919e-01],
+       [-9.09432099e-01],
+       [-9.13549155e-01],
+       [-9.17574673e-01],
+       [-9.21508251e-01],
+       [-9.25349494e-01],
+       [-9.29098017e-01],
+       [-9.32753446e-01],
+       [-9.36315413e-01],
+       [-9.39783561e-01],
+       [-9.43157544e-01],
+       [-9.46437023e-01],
+       [-9.49621670e-01],
+       [-9.52711165e-01],
+       [-9.55705199e-01],
+       [-9.58603471e-01],
+       [-9.61405692e-01],
+       [-9.64111581e-01],
+       [-9.66720867e-01],
+       [-9.69233287e-01],
+       [-9.71648591e-01],
+       [-9.73966536e-01],
+       [-9.76186890e-01],
+       [-9.78309431e-01],
+       [-9.80333945e-01],
+       [-9.82260231e-01],
+       [-9.84088095e-01],
+       [-9.85817354e-01],
+       [-9.87447834e-01],
+       [-9.88979373e-01],
+       [-9.90411816e-01],
+       [-9.91745021e-01],
+       [-9.92978853e-01],
+       [-9.94113189e-01],
+       [-9.95147916e-01],
+       [-9.96082929e-01],
+       [-9.96918136e-01],
+       [-9.97653452e-01],
+       [-9.98288803e-01],
+       [-9.98824127e-01],
+       [-9.99259369e-01],
+       [-9.99594485e-01],
+       [-9.99829443e-01],
+       [-9.99964218e-01],
+       [-9.99998798e-01],
+       [-9.99933178e-01],
+       [-9.99767366e-01],
+       [-9.99501377e-01],
+       [-9.99135239e-01],
+       [-9.98668988e-01],
+       [-9.98102670e-01],
+       [-9.97436344e-01],
+       [-9.96670075e-01],
+       [-9.95803940e-01],
+       [-9.94838026e-01],
+       [-9.93772430e-01],
+       [-9.92607258e-01],
+       [-9.91342628e-01],
+       [-9.89978665e-01],
+       [-9.88515508e-01],
+       [-9.86953301e-01],
+       [-9.85292203e-01],
+       [-9.83532378e-01],
+       [-9.81674005e-01],
+       [-9.79717268e-01],
+       [-9.77662364e-01],
+       [-9.75509498e-01],
+       [-9.73258887e-01],
+       [-9.70910757e-01],
+       [-9.68465341e-01],
+       [-9.65922886e-01],
+       [-9.63283645e-01],
+       [-9.60547884e-01],
+       [-9.57715877e-01],
+       [-9.54787907e-01],
+       [-9.51764268e-01],
+       [-9.48645263e-01],
+       [-9.45431204e-01],
+       [-9.42122413e-01],
+       [-9.38719222e-01],
+       [-9.35221972e-01],
+       [-9.31631013e-01],
+       [-9.27946706e-01],
+       [-9.24169418e-01],
+       [-9.20299529e-01],
+       [-9.16337427e-01],
+       [-9.12283508e-01],
+       [-9.08138179e-01],
+       [-9.03901855e-01],
+       [-8.99574960e-01],
+       [-8.95157929e-01],
+       [-8.90651203e-01],
+       [-8.86055234e-01],
+       [-8.81370484e-01],
+       [-8.76597420e-01],
+       [-8.71736521e-01],
+       [-8.66788276e-01],
+       [-8.61753178e-01],
+       [-8.56631733e-01],
+       [-8.51424454e-01],
+       [-8.46131863e-01],
+       [-8.40754490e-01],
+       [-8.35292874e-01],
+       [-8.29747562e-01],
+       [-8.24119109e-01],
+       [-8.18408081e-01],
+       [-8.12615048e-01],
+       [-8.06740592e-01],
+       [-8.00785301e-01],
+       [-7.94749771e-01],
+       [-7.88634608e-01],
+       [-7.82440424e-01],
+       [-7.76167840e-01],
+       [-7.69817485e-01],
+       [-7.63389994e-01],
+       [-7.56886012e-01],
+       [-7.50306190e-01],
+       [-7.43651188e-01],
+       [-7.36921673e-01],
+       [-7.30118318e-01],
+       [-7.23241806e-01],
+       [-7.16292826e-01],
+       [-7.09272073e-01],
+       [-7.02180252e-01],
+       [-6.95018073e-01],
+       [-6.87786253e-01],
+       [-6.80485517e-01],
+       [-6.73116597e-01],
+       [-6.65680231e-01],
+       [-6.58177165e-01],
+       [-6.50608149e-01],
+       [-6.42973943e-01],
+       [-6.35275311e-01],
+       [-6.27513025e-01],
+       [-6.19687862e-01],
+       [-6.11800607e-01],
+       [-6.03852050e-01],
+       [-5.95842988e-01],
+       [-5.87774222e-01],
+       [-5.79646561e-01],
+       [-5.71460820e-01],
+       [-5.63217820e-01],
+       [-5.54918385e-01],
+       [-5.46563347e-01],
+       [-5.38153544e-01],
+       [-5.29689819e-01],
+       [-5.21173018e-01],
+       [-5.12603997e-01],
+       [-5.03983613e-01],
+       [-4.95312730e-01],
+       [-4.86592217e-01],
+       [-4.77822948e-01],
+       [-4.69005801e-01],
+       [-4.60141660e-01],
+       [-4.51231412e-01],
+       [-4.42275952e-01],
+       [-4.33276176e-01],
+       [-4.24232986e-01],
+       [-4.15147288e-01],
+       [-4.06019993e-01],
+       [-3.96852014e-01],
+       [-3.87644272e-01],
+       [-3.78397687e-01],
+       [-3.69113187e-01],
+       [-3.59791703e-01],
+       [-3.50434167e-01],
+       [-3.41041518e-01],
+       [-3.31614697e-01],
+       [-3.22154648e-01],
+       [-3.12662319e-01],
+       [-3.03138662e-01],
+       [-2.93584631e-01],
+       [-2.84001182e-01],
+       [-2.74389277e-01],
+       [-2.64749878e-01],
+       [-2.55083951e-01],
+       [-2.45392466e-01],
+       [-2.35676391e-01],
+       [-2.25936703e-01],
+       [-2.16174375e-01],
+       [-2.06390387e-01],
+       [-1.96585719e-01],
+       [-1.86761353e-01],
+       [-1.76918273e-01],
+       [-1.67057466e-01],
+       [-1.57179921e-01],
+       [-1.47286626e-01],
+       [-1.37378573e-01],
+       [-1.27456754e-01],
+       [-1.17522165e-01],
+       [-1.07575800e-01],
+       [-9.76186559e-02],
+       [-8.76517305e-02],
+       [-7.76760224e-02],
+       [-6.76925312e-02],
+       [-5.77022572e-02],
+       [-4.77062016e-02],
+       [-3.77053657e-02],
+       [-2.77007519e-02],
+       [-1.76933624e-02],
+       [-7.68420006e-03],
+       [ 2.32573223e-03],
+       [ 1.23354315e-02],
+       [ 2.23438947e-02],
+       [ 3.23501191e-02],
+       [ 4.23531021e-02],
+       [ 5.23518413e-02],
+       [ 6.23453348e-02],
+       [ 7.23325814e-02],
+       [ 8.23125803e-02],
+       [ 9.22843315e-02],
+       [ 1.02246836e-01],
+       [ 1.12199095e-01],
+       [ 1.22140112e-01],
+       [ 1.32068891e-01],
+       [ 1.41984436e-01],
+       [ 1.51885755e-01],
+       [ 1.61771855e-01],
+       [ 1.71641745e-01],
+       [ 1.81494437e-01],
+       [ 1.91328943e-01],
+       [ 2.01144278e-01],
+       [ 2.10939459e-01],
+       [ 2.20713504e-01],
+       [ 2.30465433e-01],
+       [ 2.40194270e-01],
+       [ 2.49899039e-01],
+       [ 2.59578769e-01],
+       [ 2.69232489e-01],
+       [ 2.78859232e-01],
+       [ 2.88458033e-01],
+       [ 2.98027932e-01],
+       [ 3.07567967e-01],
+       [ 3.17077185e-01],
+       [ 3.26554632e-01],
+       [ 3.35999358e-01],
+       [ 3.45410418e-01],
+       [ 3.54786867e-01],
+       [ 3.64127767e-01],
+       [ 3.73432181e-01],
+       [ 3.82699178e-01],
+       [ 3.91927829e-01],
+       [ 4.01117208e-01],
+       [ 4.10266396e-01],
+       [ 4.19374475e-01],
+       [ 4.28440534e-01],
+       [ 4.37463662e-01],
+       [ 4.46442957e-01],
+       [ 4.55377519e-01],
+       [ 4.64266452e-01],
+       [ 4.73108866e-01],
+       [ 4.81903875e-01],
+       [ 4.90650597e-01],
+       [ 4.99348156e-01],
+       [ 5.07995681e-01],
+       [ 5.16592305e-01],
+       [ 5.25137167e-01],
+       [ 5.33629410e-01],
+       [ 5.42068184e-01],
+       [ 5.50452643e-01],
+       [ 5.58781947e-01],
+       [ 5.67055261e-01],
+       [ 5.75271756e-01],
+       [ 5.83430610e-01],
+       [ 5.91531004e-01],
+       [ 5.99572127e-01],
+       [ 6.07553173e-01],
+       [ 6.15473343e-01],
+       [ 6.23331843e-01],
+       [ 6.31127885e-01],
+       [ 6.38860689e-01],
+       [ 6.46529479e-01],
+       [ 6.54133487e-01],
+       [ 6.61671951e-01],
+       [ 6.69144116e-01],
+       [ 6.76549233e-01],
+       [ 6.83886561e-01],
+       [ 6.91155363e-01],
+       [ 6.98354912e-01],
+       [ 7.05484486e-01],
+       [ 7.12543371e-01],
+       [ 7.19530859e-01],
+       [ 7.26446251e-01],
+       [ 7.33288853e-01],
+       [ 7.40057981e-01],
+       [ 7.46752954e-01],
+       [ 7.53373104e-01],
+       [ 7.59917766e-01],
+       [ 7.66386284e-01],
+       [ 7.72778011e-01],
+       [ 7.79092307e-01],
+       [ 7.85328537e-01],
+       [ 7.91486078e-01],
+       [ 7.97564313e-01],
+       [ 8.03562632e-01],
+       [ 8.09480434e-01],
+       [ 8.15317127e-01],
+       [ 8.21072126e-01],
+       [ 8.26744853e-01],
+       [ 8.32334742e-01],
+       [ 8.37841230e-01],
+       [ 8.43263768e-01],
+       [ 8.48601811e-01],
+       [ 8.53854824e-01],
+       [ 8.59022282e-01],
+       [ 8.64103666e-01],
+       [ 8.69098468e-01],
+       [ 8.74006186e-01],
+       [ 8.78826329e-01],
+       [ 8.83558414e-01],
+       [ 8.88201968e-01],
+       [ 8.92756523e-01],
+       [ 8.97221626e-01],
+       [ 9.01596827e-01],
+       [ 9.05881688e-01],
+       [ 9.10075781e-01],
+       [ 9.14178684e-01],
+       [ 9.18189988e-01],
+       [ 9.22109289e-01],
+       [ 9.25936195e-01],
+       [ 9.29670323e-01],
+       [ 9.33311299e-01],
+       [ 9.36858757e-01],
+       [ 9.40312343e-01],
+       [ 9.43671709e-01],
+       [ 9.46936521e-01],
+       [ 9.50106449e-01],
+       [ 9.53181178e-01],
+       [ 9.56160398e-01],
+       [ 9.59043812e-01],
+       [ 9.61831130e-01],
+       [ 9.64522073e-01],
+       [ 9.67116371e-01],
+       [ 9.69613765e-01],
+       [ 9.72014004e-01],
+       [ 9.74316848e-01],
+       [ 9.76522066e-01],
+       [ 9.78629437e-01],
+       [ 9.80638749e-01],
+       [ 9.82549803e-01],
+       [ 9.84362405e-01],
+       [ 9.86076374e-01],
+       [ 9.87691540e-01],
+       [ 9.89207739e-01],
+       [ 9.90624820e-01],
+       [ 9.91942641e-01],
+       [ 9.93161070e-01],
+       [ 9.94279984e-01],
+       [ 9.95299273e-01],
+       [ 9.96218833e-01],
+       [ 9.97038572e-01],
+       [ 9.97758408e-01],
+       [ 9.98378270e-01],
+       [ 9.98898095e-01],
+       [ 9.99317830e-01],
+       [ 9.99637435e-01],
+       [ 9.99856876e-01],
+       [ 9.99976133e-01],
+       [ 9.99995192e-01],
+       [ 9.99914052e-01],
+       [ 9.99732722e-01],
+       [ 9.99451218e-01],
+       [ 9.99069571e-01],
+       [ 9.98587817e-01],
+       [ 9.98006005e-01],
+       [ 9.97324193e-01],
+       [ 9.96542450e-01],
+       [ 9.95660854e-01],
+       [ 9.94679493e-01],
+       [ 9.93598466e-01],
+       [ 9.92417881e-01],
+       [ 9.91137856e-01],
+       [ 9.89758520e-01],
+       [ 9.88280011e-01],
+       [ 9.86702476e-01],
+       [ 9.85026074e-01],
+       [ 9.83250973e-01],
+       [ 9.81377351e-01],
+       [ 9.79405396e-01],
+       [ 9.77335304e-01],
+       [ 9.75167284e-01],
+       [ 9.72901553e-01],
+       [ 9.70538338e-01],
+       [ 9.68077875e-01],
+       [ 9.65520411e-01],
+       [ 9.62866203e-01],
+       [ 9.60115516e-01],
+       [ 9.57268626e-01],
+       [ 9.54325818e-01],
+       [ 9.51287388e-01],
+       [ 9.48153638e-01],
+       [ 9.44924885e-01],
+       [ 9.41601450e-01],
+       [ 9.38183667e-01],
+       [ 9.34671879e-01],
+       [ 9.31066437e-01],
+       [ 9.27367703e-01],
+       [ 9.23576047e-01],
+       [ 9.19691849e-01],
+       [ 9.15715499e-01],
+       [ 9.11647395e-01],
+       [ 9.07487943e-01],
+       [ 9.03237562e-01],
+       [ 8.98896678e-01],
+       [ 8.94465724e-01],
+       [ 8.89945145e-01],
+       [ 8.85335394e-01],
+       [ 8.80636933e-01],
+       [ 8.75850233e-01],
+       [ 8.70975773e-01],
+       [ 8.66014042e-01],
+       [ 8.60965536e-01],
+       [ 8.55830762e-01],
+       [ 8.50610235e-01],
+       [ 8.45304477e-01],
+       [ 8.39914019e-01],
+       [ 8.34439403e-01],
+       [ 8.28881176e-01],
+       [ 8.23239896e-01],
+       [ 8.17516128e-01],
+       [ 8.11710445e-01],
+       [ 8.05823429e-01],
+       [ 7.99855670e-01],
+       [ 7.93807766e-01],
+       [ 7.87680323e-01],
+       [ 7.81473955e-01],
+       [ 7.75189283e-01],
+       [ 7.68826938e-01],
+       [ 7.62387557e-01],
+       [ 7.55871785e-01],
+       [ 7.49280275e-01],
+       [ 7.42613687e-01],
+       [ 7.35872690e-01],
+       [ 7.29057959e-01],
+       [ 7.22170177e-01],
+       [ 7.15210034e-01],
+       [ 7.08178227e-01],
+       [ 7.01075461e-01],
+       [ 6.93902448e-01],
+       [ 6.86659906e-01],
+       [ 6.79348561e-01],
+       [ 6.71969145e-01],
+       [ 6.64522399e-01],
+       [ 6.57009068e-01],
+       [ 6.49429905e-01],
+       [ 6.41785669e-01],
+       [ 6.34077127e-01],
+       [ 6.26305051e-01],
+       [ 6.18470219e-01],
+       [ 6.10573417e-01],
+       [ 6.02615435e-01],
+       [ 5.94597072e-01],
+       [ 5.86519131e-01],
+       [ 5.78382421e-01],
+       [ 5.70187757e-01],
+       [ 5.61935960e-01],
+       [ 5.53627858e-01],
+       [ 5.45264283e-01],
+       [ 5.36846073e-01],
+       [ 5.28374071e-01],
+       [ 5.19849126e-01],
+       [ 5.11272092e-01],
+       [ 5.02643829e-01],
+       [ 4.93965202e-01],
+       [ 4.85237080e-01],
+       [ 4.76460337e-01],
+       [ 4.67635853e-01],
+       [ 4.58764512e-01],
+       [ 4.49847203e-01],
+       [ 4.40884820e-01],
+       [ 4.31878260e-01],
+       [ 4.22828426e-01],
+       [ 4.13736226e-01],
+       [ 4.04602569e-01],
+       [ 3.95428371e-01],
+       [ 3.86214551e-01],
+       [ 3.76962033e-01],
+       [ 3.67671743e-01],
+       [ 3.58344613e-01],
+       [ 3.48981577e-01],
+       [ 3.39583574e-01],
+       [ 3.30151544e-01],
+       [ 3.20686433e-01],
+       [ 3.11189189e-01],
+       [ 3.01660765e-01],
+       [ 2.92102114e-01],
+       [ 2.82514195e-01],
+       [ 2.72897968e-01],
+       [ 2.63254397e-01],
+       [ 2.53584448e-01],
+       [ 2.43889090e-01],
+       [ 2.34169294e-01],
+       [ 2.24426035e-01],
+       [ 2.14660288e-01],
+       [ 2.04873032e-01],
+       [ 1.95065249e-01],
+       [ 1.85237919e-01],
+       [ 1.75392030e-01],
+       [ 1.65528565e-01],
+       [ 1.55648516e-01],
+       [ 1.45752870e-01],
+       [ 1.35842619e-01],
+       [ 1.25918758e-01],
+       [ 1.15982279e-01],
+       [ 1.06034179e-01],
+       [ 9.60754549e-02],
+       [ 8.61071037e-02],
+       [ 7.61301246e-02],
+       [ 6.61455173e-02],
+       [ 5.61542823e-02],
+       [ 4.61574206e-02],
+       [ 3.61559340e-02],
+       [ 2.61508246e-02],
+       [ 1.61430949e-02],
+       [ 6.13374766e-03],
+       [-3.87621418e-03],
+       [-1.38857876e-02],
+       [-2.38939697e-02],
+       [-3.38997577e-02],
+       [-4.39021489e-02],
+       [-5.39001411e-02],
+       [-6.38927325e-02],
+       [-7.38789220e-02],
+       [-8.38577088e-02],
+       [-9.38280931e-02],
+       [-1.03789076e-01],
+       [-1.13739659e-01],
+       [-1.23678846e-01],
+       [-1.33605640e-01],
+       [-1.43519046e-01],
+       [-1.53418073e-01],
+       [-1.63301726e-01],
+       [-1.73169017e-01],
+       [-1.83018957e-01],
+       [-1.92850558e-01],
+       [-2.02662836e-01],
+       [-2.12454807e-01],
+       [-2.22225490e-01],
+       [-2.31973906e-01],
+       [-2.41699079e-01],
+       [-2.51400034e-01],
+       [-2.61075798e-01],
+       [-2.70725403e-01],
+       [-2.80347881e-01],
+       [-2.89942268e-01],
+       [-2.99507604e-01],
+       [-3.09042928e-01],
+       [-3.18547287e-01],
+       [-3.28019728e-01],
+       [-3.37459301e-01],
+       [-3.46865061e-01],
+       [-3.56236066e-01],
+       [-3.65571375e-01],
+       [-3.74870055e-01],
+       [-3.84131173e-01],
+       [-3.93353801e-01],
+       [-4.02537015e-01],
+       [-4.11679896e-01],
+       [-4.20781526e-01],
+       [-4.29840994e-01],
+       [-4.38857392e-01],
+       [-4.47829817e-01],
+       [-4.56757370e-01],
+       [-4.65639155e-01],
+       [-4.74474285e-01],
+       [-4.83261871e-01],
+       [-4.92001036e-01],
+       [-5.00690902e-01],
+       [-5.09330599e-01],
+       [-5.17919262e-01],
+       [-5.26456029e-01],
+       [-5.34940046e-01],
+       [-5.43370462e-01],
+       [-5.51746432e-01],
+       [-5.60067118e-01],
+       [-5.68331685e-01],
+       [-5.76539306e-01],
+       [-5.84689158e-01],
+       [-5.92780425e-01],
+       [-6.00812295e-01],
+       [-6.08783964e-01],
+       [-6.16694633e-01],
+       [-6.24543510e-01],
+       [-6.32329808e-01],
+       [-6.40052747e-01],
+       [-6.47711552e-01],
+       [-6.55305458e-01],
+       [-6.62833702e-01],
+       [-6.70295531e-01],
+       [-6.77690196e-01],
+       [-6.85016957e-01],
+       [-6.92275080e-01],
+       [-6.99463837e-01],
+       [-7.06582509e-01],
+       [-7.13630381e-01],
+       [-7.20606748e-01],
+       [-7.27510910e-01],
+       [-7.34342176e-01],
+       [-7.41099862e-01],
+       [-7.47783289e-01],
+       [-7.54391789e-01],
+       [-7.60924700e-01],
+       [-7.67381366e-01],
+       [-7.73761141e-01],
+       [-7.80063386e-01],
+       [-7.86287469e-01],
+       [-7.92432766e-01],
+       [-7.98498661e-01],
+       [-8.04484548e-01],
+       [-8.10389826e-01],
+       [-8.16213903e-01],
+       [-8.21956196e-01],
+       [-8.27616129e-01],
+       [-8.33193136e-01],
+       [-8.38686657e-01],
+       [-8.44096142e-01],
+       [-8.49421049e-01],
+       [-8.54660845e-01],
+       [-8.59815004e-01],
+       [-8.64883010e-01],
+       [-8.69864355e-01],
+       [-8.74758541e-01],
+       [-8.79565076e-01],
+       [-8.84283479e-01],
+       [-8.88913277e-01],
+       [-8.93454007e-01],
+       [-8.97905213e-01],
+       [-9.02266449e-01],
+       [-9.06537279e-01],
+       [-9.10717274e-01],
+       [-9.14806016e-01],
+       [-9.18803095e-01],
+       [-9.22708110e-01],
+       [-9.26520671e-01],
+       [-9.30240394e-01],
+       [-9.33866908e-01],
+       [-9.37399849e-01],
+       [-9.40838863e-01],
+       [-9.44183606e-01],
+       [-9.47433742e-01],
+       [-9.50588945e-01],
+       [-9.53648900e-01],
+       [-9.56613300e-01],
+       [-9.59481847e-01],
+       [-9.62254255e-01],
+       [-9.64930246e-01],
+       [-9.67509551e-01],
+       [-9.69991913e-01],
+       [-9.72377081e-01],
+       [-9.74664818e-01],
+       [-9.76854895e-01],
+       [-9.78947090e-01],
+       [-9.80941196e-01],
+       [-9.82837012e-01],
+       [-9.84634348e-01],
+       [-9.86333025e-01],
+       [-9.87932871e-01],
+       [-9.89433727e-01],
+       [-9.90835442e-01],
+       [-9.92137877e-01],
+       [-9.93340899e-01],
+       [-9.94444389e-01],
+       [-9.95448237e-01],
+       [-9.96352341e-01],
+       [-9.97156611e-01],
+       [-9.97860966e-01],
+       [-9.98465337e-01],
+       [-9.98969661e-01],
+       [-9.99373890e-01],
+       [-9.99677982e-01],
+       [-9.99881906e-01],
+       [-9.99985643e-01],
+       [-9.99989182e-01],
+       [-9.99892522e-01],
+       [-9.99695674e-01],
+       [-9.99398657e-01],
+       [-9.99001501e-01],
+       [-9.98504245e-01],
+       [-9.97906940e-01],
+       [-9.97209644e-01],
+       [-9.96412429e-01],
+       [-9.95515375e-01],
+       [-9.94518569e-01],
+       [-9.93422114e-01],
+       [-9.92226118e-01],
+       [-9.90930702e-01],
+       [-9.89535995e-01],
+       [-9.88042137e-01],
+       [-9.86449278e-01],
+       [-9.84757577e-01],
+       [-9.82967204e-01],
+       [-9.81078338e-01],
+       [-9.79091169e-01],
+       [-9.77005895e-01],
+       [-9.74822726e-01],
+       [-9.72541880e-01],
+       [-9.70163586e-01],
+       [-9.67688082e-01],
+       [-9.65115616e-01],
+       [-9.62446446e-01],
+       [-9.59680840e-01],
+       [-9.56819074e-01],
+       [-9.53861435e-01],
+       [-9.50808220e-01],
+       [-9.47659734e-01],
+       [-9.44416293e-01],
+       [-9.41078223e-01],
+       [-9.37645857e-01],
+       [-9.34119539e-01],
+       [-9.30499623e-01],
+       [-9.26786471e-01],
+       [-9.22980456e-01],
+       [-9.19081959e-01],
+       [-9.15091370e-01],
+       [-9.11009089e-01],
+       [-9.06835526e-01],
+       [-9.02571099e-01],
+       [-8.98216234e-01],
+       [-8.93771368e-01],
+       [-8.89236948e-01],
+       [-8.84613426e-01],
+       [-8.79901266e-01],
+       [-8.75100941e-01],
+       [-8.70212930e-01],
+       [-8.65237726e-01],
+       [-8.60175824e-01],
+       [-8.55027734e-01],
+       [-8.49793970e-01],
+       [-8.44475058e-01],
+       [-8.39071529e-01]])
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>&lt;matplotlib.colorbar.Colorbar at 0x7f5d4c0728b0&gt;
+</code></pre></div>
+<p><img alt="" src="../08customizing%20colorbar_files/figure-gfm/cell-5-output-2.png" /></p>
+<h2 id="customizing-colorbars_1">Customizing Colorbars<a class="headerlink" href="#customizing-colorbars_1" title="Permanent link">&para;</a></h2>
+<p>We can specify the colormap using the cmap argument to the plotting
+function that is creating the visualization</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>&lt;matplotlib.image.AxesImage at 0x7f5d3a3e2490&gt;
+</code></pre></div>
+<p><img alt="" src="../08customizing%20colorbar_files/figure-gfm/cell-6-output-2.png" /></p>
+<p>All the available colormaps are in the plt.cm namespace; using IPython’s
+tab- completion feature will give you a full list of built-in
+possibilities:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">#plt.imshow(I, cmap=&#39;winter_r&#39;)</span>
+</code></pre></div>
+<p>But being able to choose a colormap is just the first step: more
+important is how to decide among the possibilities! The choice turns out
+to be much more subtle than you might initially expect.</p>
+<h2 id="choosing-the-colormap">Choosing the colormap<a class="headerlink" href="#choosing-the-colormap" title="Permanent link">&para;</a></h2>
+<p>A full treatment of color choice within visualization is beyond the
+scope of this book, but for entertaining reading on this subject and
+others,</p>
+<p>Broadly, you should be aware of three different categories of
+colormaps:<br />
+<em>Sequential colormaps</em><br />
+These consist of one continuous sequence of colors (e.g., binary or
+viridis).<br />
+<em>Divergent colormaps</em> These usually contain two distinct colors, which
+show positive and negative deviations from a mean (e.g., RdBu or
+PuOr).<br />
+<em>Qualitative colormaps</em><br />
+These mix colors with no particular sequence (e.g., rainbow or jet).</p>
+<p>The jet colormap, which was the default in Matplotlib prior to version
+2.0, is an example of a qualitative colormap. Its status as the default
+was quite unfortunate, because qualitative maps are often a poor choice
+for representing quantitative data. Among the problems is the fact that
+qualitative maps usually do not display any uni‐ form progression in
+brightness as the scale increases.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LinearSegmentedColormap</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">def</span> <span class="nf">grayscale_cmap</span><span class="p">(</span><span class="n">cmap</span><span class="p">):</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a grayscale version of the given colormap&quot;&quot;&quot;</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="n">cmap</span><span class="p">)</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="n">colors</span> <span class="o">=</span> <span class="n">cmap</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">cmap</span><span class="o">.</span><span class="n">N</span><span class="p">))</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="c1"># convert RGBA to perceived grayscale luminance</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="c1"># cf. http://alienryderflex.com/hsp.html</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="n">RGB_weight</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.299</span><span class="p">,</span> <span class="mf">0.587</span><span class="p">,</span> <span class="mf">0.114</span><span class="p">]</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    <span class="n">luminance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">colors</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">RGB_weight</span><span class="p">))</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>    <span class="n">colors</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">luminance</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>    <span class="k">return</span> <span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="n">cmap</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;_gray&quot;</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> <span class="n">cmap</span><span class="o">.</span><span class="n">N</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">def</span> <span class="nf">view_colormap</span><span class="p">(</span><span class="n">cmap</span><span class="p">):</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot a colormap with its grayscale equivalent&quot;&quot;&quot;</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="n">cmap</span><span class="p">)</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="n">colors</span> <span class="o">=</span> <span class="n">cmap</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">cmap</span><span class="o">.</span><span class="n">N</span><span class="p">))</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="n">cmap</span> <span class="o">=</span> <span class="n">grayscale_cmap</span><span class="p">(</span><span class="n">cmap</span><span class="p">)</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>    <span class="n">grayscale</span> <span class="o">=</span> <span class="n">cmap</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">cmap</span><span class="o">.</span><span class="n">N</span><span class="p">))</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>    <span class="n">subplot_kw</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[]))</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">([</span><span class="n">colors</span><span class="p">],</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">([</span><span class="n">grayscale</span><span class="p">],</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">view_colormap</span><span class="p">(</span><span class="s1">&#39;jet&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="" src="../08customizing%20colorbar_files/figure-gfm/cell-10-output-1.png" /></p>
+<p>Notice the bright stripes in the grayscale image. Even in full color,
+this uneven bright‐ ness means that the eye will be drawn to certain
+portions of the color range, which will potentially emphasize
+unimportant parts of the dataset. It’s better to use a color‐ map such
+as viridis (the default as of Matplotlib 2.0), which is specifically
+construc‐ ted to have an even brightness variation across the range.
+Thus, it not only plays well with our color perception, but also will
+translate well to grayscale printing</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">view_colormap</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="" src="../08customizing%20colorbar_files/figure-gfm/cell-11-output-1.png" /></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">view_colormap</span><span class="p">(</span><span class="s1">&#39;cubehelix&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="" src="../08customizing%20colorbar_files/figure-gfm/cell-12-output-1.png" /></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">view_colormap</span><span class="p">(</span><span class="s1">&#39;RdBu&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="" src="../08customizing%20colorbar_files/figure-gfm/cell-13-output-1.png" /></p>
+<h3 id="color-limits-and-extensions">Color limits and extensions<a class="headerlink" href="#color-limits-and-extensions" title="Permanent link">&para;</a></h3>
+<p>Matplotlib allows for a large range of colorbar customization. The
+colorbar itself is simply an instance of plt.Axes, so all of the axes
+and tick formatting tricks we’ve learned are applicable. The colorbar
+has some interesting flexibility; for example, we can narrow the color
+limits and indicate the out-of-bounds values with a triangular arrow at
+the top and bottom by setting the extend property. This might come in
+handy, for example, if you’re displaying an image that is subject to
+noise</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># make noise in 1% of the image pixel</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="n">speckles</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">I</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span><span class="o">&lt;</span><span class="mf">0.01</span><span class="p">)</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="n">I</span><span class="p">[</span><span class="n">speckles</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">speckles</span><span class="p">))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mf">3.5</span><span class="p">))</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu&#39;</span><span class="p">)</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu&#39;</span><span class="p">)</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="n">plt</span><span class="o">.</span><span class="n">clim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="" src="../08customizing%20colorbar_files/figure-gfm/cell-15-output-1.png" /></p>
+<h2 id="discrete-colorbars">Discrete colorbars<a class="headerlink" href="#discrete-colorbars" title="Permanent link">&para;</a></h2>
+<p>Colormaps are by default continuous, but sometimes you’d like to
+represent discrete values. The easiest way to do this is to use the
+plt.cm.get_cmap() function, and pass the name of a suitable colormap
+along with the number of desired bins</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;Blues&#39;</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="n">plt</span><span class="o">.</span><span class="n">clim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+</code></pre></div>
+<p><img alt="" src="../08customizing%20colorbar_files/figure-gfm/cell-16-output-1.png" /></p>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../07customized%20plot%20legends/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 07customized plot legends" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              07customized plot legends
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../09multiple%20subplots/" class="md-footer__link md-footer__link--next" aria-label="Next: 09multiple subplots" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              09multiple subplots
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Created by Jawad Haider
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/qalmaqihir" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/jawad-haider-uca/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/channel/UCB-D3NBU6UZ5N7IGKOJxtqQ" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://t.me/Qalmaqihir" target="_blank" rel="noopener" title="t.me" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M248 8C111.033 8 0 119.033 0 256s111.033 248 248 248 248-111.033 248-248S384.967 8 248 8Zm114.952 168.66c-3.732 39.215-19.881 134.378-28.1 178.3-3.476 18.584-10.322 24.816-16.948 25.425-14.4 1.326-25.338-9.517-39.287-18.661-21.827-14.308-34.158-23.215-55.346-37.177-24.485-16.135-8.612-25 5.342-39.5 3.652-3.793 67.107-61.51 68.335-66.746.153-.655.3-3.1-1.154-4.384s-3.59-.849-5.135-.5q-3.283.746-104.608 69.142-14.845 10.194-26.894 9.934c-8.855-.191-25.888-5.006-38.551-9.123-15.531-5.048-27.875-7.717-26.8-16.291q.84-6.7 18.45-13.7 108.446-47.248 144.628-62.3c68.872-28.647 83.183-33.623 92.511-33.789 2.052-.034 6.639.474 9.61 2.885a10.452 10.452 0 0 1 3.53 6.716 43.765 43.765 0 0 1 .417 9.769Z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/qalmaqihir" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://instagram.com/qalmaqihir" target="_blank" rel="noopener" title="instagram.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["search.share", "search.highlight", "search.sugguest", "content.code.annotate", "content.tooltips", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.e21f8df8.min.js"></script>
+      
+    
+  </body>
+</html>
