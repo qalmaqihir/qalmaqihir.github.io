@@ -1,22 +1,25 @@
-# qalmaqihir.github.io
-See the website Documentation
 	
 # Welcome to cs-notes :notebook:
 <center>
-	<a href='https://qalmaqihir.github.io/'>![Image](/assets/baner.png)</a>
+	<a href='https://qalmaqihir.github.io/'> [Image](https://github.com/qalmaqihir/qalmaqihir.github.io/blob/main/docs/assets/baner.png)</a>
 </center>
 This site holds my notes for different computer science courses. In the start I wanted to dedicate this to only Machine Learning part, but then I extended it to all Computer Science.
 <hr>
-> ## Help us spread this content: :wolf:
-> share, like, comment, save & watch :bird:  
->[LinkedIn](https://www.linkedin.com/in/jawad-haider-uca/) :simple-linkedin: 
->[Twitter](https://twitter.com/qalmaqihir)  :simple-twitter:
->[Github](https://github.com/qalmaqihir) :simple-github:
->[Instagram]( https://instagram.com/qalmaqihir)  :simple-instagram: 
->[Telegram](https://t.me/Qalmaqihir) :simple-telegram:
->[Youtube](https://www.youtube.com/channel/UCB-D3NBU6UZ5N7IGKOJxtqQ) :simple-youtube:
+
+
+> ## Help us spread this content: :wolf:  
+> share, like, comment, save & watch :bird:    
+>[LinkedIn](https://www.linkedin.com/in/jawad-haider-uca/) :simple-linkedin:   
+>[Twitter](https://twitter.com/qalmaqihir)  :simple-twitter:  
+>[Github](https://github.com/qalmaqihir) :simple-github:  
+>[Instagram]( https://instagram.com/qalmaqihir)  :simple-instagram:   
+>[Telegram](https://t.me/Qalmaqihir) :simple-telegram:  
+>[Youtube](https://www.youtube.com/channel/UCB-D3NBU6UZ5N7IGKOJxtqQ) :simple-youtube:  
+
+
 <hr>
- 
+   
+   
 ## The courses and notes are as follow: :sparkles:
 ### [Books Notes](https://qalmaqihir.github.io/booksnotes/) :skateboard:
 > _contains notes for some well known books_
