@@ -26,7 +26,7 @@ This site holds my notes for different computer science courses. In the start I 
 > _Here you will see problem solving and solutions with explaination to coding challenges from Leetcode, code forces, exercism and many other_
 
 ###  [Core Computer Science](https://qalmaqihir.github.io/corecs/) :desktop:
->_Here you will find topics related to Computer Science core subjects, programming languages, and much more_
+>_Here you will find topics related to Computer Science core subjects, Specialization Courses, programming languages, and much more_
 
 ###  [My Research](https://qalmaqihir.github.io/myresearch/) :abacus:
 >_My Research publication and conference papers for anyone interested in doing research in the fields of Machine Learning, Combinotorial Optimization Problem_
