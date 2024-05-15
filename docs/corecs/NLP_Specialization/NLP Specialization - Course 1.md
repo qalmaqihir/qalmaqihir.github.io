@@ -7,7 +7,7 @@ Note 2023-12-04T07.41.32
 ========================
 ## Week 1 Sentiment Analysis with  Logistic Regression
 
-Learn to extract features from text into numerical vectors, then build a binary classifier for tweets using a logistic regression!
+Learn to extract features from text into numerical vectors, then build a binary classifier for tweets using a logistic regression!  
 
 **Learning Objectives**
 

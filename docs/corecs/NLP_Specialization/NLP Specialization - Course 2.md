@@ -8,7 +8,7 @@ Note 2024-01-02T11.32.18
 
 # Week 1 Autocorrect
 
-Learn about autocorrect, minimum edit distance, and dynamic programming, then build your own spellchecker to correct misspelled words!
+Learn about autocorrect, minimum edit distance, and dynamic programming, then build your own spellchecker to correct misspelled words!  
 
 **Learning Objectives**
 
