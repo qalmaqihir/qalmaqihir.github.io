@@ -1,0 +1,5149 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="All of my Computer Science & AI/ML/DL/ Book notes, BootCamp notes & Useful materials for anyone who  wants to learn; Knowledge should be free for those who need it.">
+      
+      
+        <meta name="author" content="Jawad Haider">
+      
+      
+        <link rel="canonical" href="https://qalmaqihir.github.io/corecs/NLP_Specialization/NLP%20Specialization%20-%20Course%202/">
+      
+      <link rel="icon" href="../../../assets/logo.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-8.5.3">
+    
+    
+      
+        <title>NLP Specialization - Course 2 - CS Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.80dcb947.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#nlp-specialization-course-2" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+Follow us on
+<a href="https://twitter.com/qalmaqihir" target="_blank" rel="noopener">
+    <span class="twemoji twitter" style="color: #1DA1F2">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path
+                d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z">
+            </path>
+        </svg>
+    </span>
+    <strong>Twitter</strong>
+</a> and
+
+<a href="https://www.youtube.com/channel/UCB-D3NBU6UZ5N7IGKOJxtqQ?sub_confirmation=1" target="_blank" rel="noopener">
+    <span class="twemoji youtube" style="color: #FF0000;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+            <path
+                d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z">
+            </path>
+        </svg>
+    </span>
+    <strong>YouTube</strong>
+</a>  and stay <strong>Updated !</strong> for New Content
+
+<!-- We use the twemoji project for the pancake emoji symbol
+and for other emoji and icon purposes.
+Check them out here: https://github.com/twitter/twemoji
+-->
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="CS Notes" class="md-header__button md-logo" aria-label="CS Notes" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CS Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              NLP Specialization - Course 2
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/qalmaqihir/qalmaqihir.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    qalmaqihir/qalmaqihir.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../booksnotes/" class="md-tabs__link">
+        Books Notes
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../bootcampsnotes/" class="md-tabs__link">
+        Bootcamps Notes
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../competitiveprogramming/" class="md-tabs__link">
+        Competitive Programming
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link md-tabs__link--active">
+        Core Computer Science
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../myresearch/" class="md-tabs__link">
+        My Research
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../about/" class="md-tabs__link">
+        About
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../blogs/" class="md-tabs__link">
+        Blog
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../contact/" class="md-tabs__link">
+        Contact
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="CS Notes" class="md-nav__button md-logo" aria-label="CS Notes" data-md-component="logo">
+      
+  <img src="../../../assets/logo.png" alt="logo">
+
+    </a>
+    CS Notes
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/qalmaqihir/qalmaqihir.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    qalmaqihir/qalmaqihir.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../..">Home</a>
+          
+            <label for="__nav_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/" class="md-nav__link">
+        Books Notes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/" class="md-nav__link">
+        Bootcamps Notes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../competitiveprogramming/" class="md-nav__link">
+        Competitive Programming
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        Core Computer Science
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../myresearch/" class="md-nav__link">
+        My Research
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../blogs/" class="md-nav__link">
+        Blogs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact/" class="md-nav__link">
+        Contact
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../booksnotes/">Books Notes</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Books Notes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Books Notes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../booksnotes/pythonDataScienceHandBook/">Data Science Handbook</a>
+          
+            <label for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Data Science Handbook" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Data Science Handbook
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_3" type="checkbox" id="__nav_2_2_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_2_3">
+          Chapter 2 - Introduction to Numpy
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Chapter 2 - Introduction to Numpy" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 2 - Introduction to Numpy
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/00_Understanding_Data_Types_in_Python/" class="md-nav__link">
+        00 Understanding Data Types in Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/01_basics_of_numpy_arrays/" class="md-nav__link">
+        01 basics of numpy arrays
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/02_Computation_on_NumPy_Arrays/" class="md-nav__link">
+        02 Computation on NumPy Arrays
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/03_Aggregation_Min_Max/" class="md-nav__link">
+        03 Aggregation Min Max
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/04_Computation_on_Arrays_Broadcasting/" class="md-nav__link">
+        04 Computation on Arrays Broadcasting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/05_Comparisons_%20Masks_and_Boolean_Logic/" class="md-nav__link">
+        05 Comparisons  Masks and Boolean Logic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/06_Fany_Indexing/" class="md-nav__link">
+        06 Fany Indexing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/07_Sorted_Arrays/" class="md-nav__link">
+        07 Sorted Arrays
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/08_%20Structured_Data/" class="md-nav__link">
+        08  Structured Data
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_4" type="checkbox" id="__nav_2_2_4" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_2_4">
+          Chapter 3 - Data Manipulation with Pandas
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Chapter 3 - Data Manipulation with Pandas" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 3 - Data Manipulation with Pandas
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/01_Introduction%20to%20Pandas%20Objects/" class="md-nav__link">
+        01 Introduction to Pandas Objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/02_Data%20Indexing%20and%20Selection/" class="md-nav__link">
+        02 Data Indexing and Selection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/03_Operating%20on%20Data%20in%20Pandas/" class="md-nav__link">
+        03 Operating on Data in Pandas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/04_Handling%20Missing%20Data/" class="md-nav__link">
+        04 Handling Missing Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/05_Hierarchical%20Indexing/" class="md-nav__link">
+        05 Hierarchical Indexing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/06_Combine%20dataset%20Concat%20and%20Append/" class="md-nav__link">
+        06 Combine dataset Concat and Append
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/07_Combining%20Dataset%20Merge%20and%20Join/" class="md-nav__link">
+        07 Combining Dataset Merge and Join
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/08_Aggregation%20and%20Grouping/" class="md-nav__link">
+        08 Aggregation and Grouping
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/09_Pivot%20Tables/" class="md-nav__link">
+        09 Pivot Tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/10_Vectoried%20String%20Operations/" class="md-nav__link">
+        10 Vectoried String Operations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/11_Working%20with%20Time%20Series/" class="md-nav__link">
+        11 Working with Time Series
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/12-Frequency%20Offset/" class="md-nav__link">
+        12 Frequency Offset
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/13_Resampling%20Shifting%20and%20Windowing/" class="md-nav__link">
+        13 Resampling Shifting and Windowing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/Example%20Visualizing%20Seattle%20Bicycle%20Counts/" class="md-nav__link">
+        Example Visualizing Seattle Bicycle Counts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/Example_%20Birthrate%20Data/" class="md-nav__link">
+        Example  Birthrate Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/Example_%20US%20States%20Data%20%28Merge%20and%20Join%29/" class="md-nav__link">
+        Example  US States Data (Merge and Join)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/Example_Recipe%20Database/" class="md-nav__link">
+        Example Recipe Database
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_5" type="checkbox" id="__nav_2_2_5" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_2_5">
+          Chapter 4 - Visualization with Matplotlib
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Chapter 4 - Visualization with Matplotlib" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 4 - Visualization with Matplotlib
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/01general%20Matplotlib%20tips/" class="md-nav__link">
+        01general Matplotlib tips
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/02simple_lineplots/" class="md-nav__link">
+        02simple lineplots
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/03simple%20scatter%20plots/" class="md-nav__link">
+        03simple scatter plots
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/04visualizing%20errors/" class="md-nav__link">
+        04visualizing errors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/05density%20and%20contour%20plots/" class="md-nav__link">
+        05density and contour plots
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/06Histograms%20Binnings%20and%20Density/" class="md-nav__link">
+        06Histograms Binnings and Density
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/07customized%20plot%20legends/" class="md-nav__link">
+        07customized plot legends
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/08customizing%20colorbar/" class="md-nav__link">
+        08customizing colorbar
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/09multiple%20subplots/" class="md-nav__link">
+        09multiple subplots
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/10text%20and%20annotation%20Example/" class="md-nav__link">
+        10text and annotation Example
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/11customizing%20ticks/" class="md-nav__link">
+        11customizing ticks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/12customizing%20matplotlib%20configuration%20and%20stylesheets/" class="md-nav__link">
+        12customizing matplotlib configuration and stylesheets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/13threedimensional%20plotting/" class="md-nav__link">
+        13threedimensional plotting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/14_geographic%20data%20with%20basemap/" class="md-nav__link">
+        14 geographic data with basemap
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/15visualiztion%20with%20seaborn/" class="md-nav__link">
+        15visualiztion with seaborn
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/example%20California%20cities/" class="md-nav__link">
+        example California cities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/Example%20Exploring%20Marathon%20Finishing%20times/" class="md-nav__link">
+        Example Exploring Marathon Finishing times
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/Example%20Handwritten%20Digits/" class="md-nav__link">
+        Example Handwritten Digits
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/example%20surface%20temperature%20data/" class="md-nav__link">
+        Example surface temperature data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/Example%20Visualizing%20a%20Mobius%20Strip/" class="md-nav__link">
+        Example Visualizing a Mobius Strip
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../booksnotes/pythonDataScienceHandBook/">Machine Learning Handbook</a>
+          
+            <label for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Machine Learning Handbook" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Machine Learning Handbook
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../bootcampsnotes/">Bootcamps Notes</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Bootcamps Notes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Bootcamps Notes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Numpy Crash Course
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Numpy Crash Course" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Numpy Crash Course
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2_1" type="checkbox" id="__nav_3_2_1" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2_1">
+          Numpy Topics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Numpy Topics" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Numpy Topics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/numpy/00-NumPy-Arrays/" class="md-nav__link">
+        00 NumPy Arrays
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/numpy/01-NumPy-Indexing-and-Selection/" class="md-nav__link">
+        01 NumPy Indexing and Selection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/numpy/02-NumPy-Operations/" class="md-nav__link">
+        02 NumPy Operations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/numpy/03-NumPy-Exercises/" class="md-nav__link">
+        03 NumPy Exercises
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/numpy/04-NumPy-Exercises-Solutions/" class="md-nav__link">
+        04 NumPy Exercises Solutions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_3">
+          Pandas Crash Course
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Pandas Crash Course" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Pandas Crash Course
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3_1" type="checkbox" id="__nav_3_3_1" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_1">
+          Pandas Topics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Pandas Topics" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Pandas Topics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/pandas/00-Intro-to-Pandas/" class="md-nav__link">
+        00 Intro to Pandas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/pandas/01-Series/" class="md-nav__link">
+        01 Series
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/pandas/02-DataFrames/" class="md-nav__link">
+        02 DataFrames
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/pandas/03-Missing-Data/" class="md-nav__link">
+        03 Missing Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/pandas/04-Groupby/" class="md-nav__link">
+        04 Groupby
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/pandas/05-Operations/" class="md-nav__link">
+        05 Operations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/pandas/06-Data-Input-and-Output/" class="md-nav__link">
+        06 Data Input and Output
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/pandas/07-Pandas-Exercises/" class="md-nav__link">
+        07 Pandas Exercises
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/pandas/08-Pandas-Exercises-Solutions/" class="md-nav__link">
+        08 Pandas Exercises Solutions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_4">
+          PyTorch Baics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="PyTorch Baics" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          PyTorch Baics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_1" type="checkbox" id="__nav_3_4_1" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_4_1">
+          PyTorch Topics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="PyTorch Topics" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          PyTorch Topics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/pytorch/00-Tensor-Basics/" class="md-nav__link">
+        00 Tensor Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/pytorch/01-Tensor-Operations/" class="md-nav__link">
+        01 Tensor Operations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/pytorch/02-PyTorch-Basics-Exercises/" class="md-nav__link">
+        02 PyTorch Basics Exercises
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/pytorch/03-PyTorch-Basics-Exercises-Solutions/" class="md-nav__link">
+        03 PyTorch Basics Exercises Solutions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_5">
+          PyTorch for Deeplearning Bootcamp
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="PyTorch for Deeplearning Bootcamp" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          PyTorch for Deeplearning Bootcamp
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5_1" type="checkbox" id="__nav_3_5_1" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_5_1">
+          ANN - Artificial Neural Networks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ANN - Artificial Neural Networks" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          ANN - Artificial Neural Networks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/00-PyTorch-Gradients/" class="md-nav__link">
+        00 PyTorch Gradients
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/01-Linear-Regression-with-PyTorch/" class="md-nav__link">
+        01 Linear Regression with PyTorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/02-DataSets-with-Pytorch/" class="md-nav__link">
+        02 DataSets with Pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/03-Basic-PyTorch-NN/" class="md-nav__link">
+        03 Basic PyTorch NN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/04a-Full-ANN-Code-Along-Regression/" class="md-nav__link">
+        04a Full ANN Code Along Regression
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/04b-Full-ANN-Code-Along-Classification/" class="md-nav__link">
+        04b Full ANN Code Along Classification
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/05-Neural-Network-Exercises/" class="md-nav__link">
+        05 Neural Network Exercises
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/06-Neural-Network-Exercises-Solutions/" class="md-nav__link">
+        06 Neural Network Exercises Solutions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/07-Recap-Saving-and-Loading-Trained-Models/" class="md-nav__link">
+        07 Recap Saving and Loading Trained Models
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5_2" type="checkbox" id="__nav_3_5_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_5_2">
+          CNN - Convolutional Neural Networks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="CNN - Convolutional Neural Networks" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          CNN - Convolutional Neural Networks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/pytorchDLbootcamp/03-CNN-Convolutional-Neural-Networks/00-MNIST-ANN-Code-Along/" class="md-nav__link">
+        00 MNIST ANN Code Along
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/pytorchDLbootcamp/03-CNN-Convolutional-Neural-Networks/01-MNIST-with-CNN/" class="md-nav__link">
+        01 MNIST with CNN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/pytorchDLbootcamp/03-CNN-Convolutional-Neural-Networks/02-CIFAR-CNN-Code-Along/" class="md-nav__link">
+        02 CIFAR CNN Code Along
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/pytorchDLbootcamp/03-CNN-Convolutional-Neural-Networks/03-Loading-Real-Image-Data/" class="md-nav__link">
+        03 Loading Real Image Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/pytorchDLbootcamp/03-CNN-Convolutional-Neural-Networks/04-CNN-on-Custom-Images/" class="md-nav__link">
+        04 CNN on Custom Images
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/pytorchDLbootcamp/03-CNN-Convolutional-Neural-Networks/05-CNN-Exercises/" class="md-nav__link">
+        05 CNN Exercises
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/pytorchDLbootcamp/03-CNN-Convolutional-Neural-Networks/06-CNN-Exercises-Solutions/" class="md-nav__link">
+        06 CNN Exercises Solutions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5_3" type="checkbox" id="__nav_3_5_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_5_3">
+          RNN - Recurrent Neural Networks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="RNN - Recurrent Neural Networks" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          RNN - Recurrent Neural Networks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/pytorchDLbootcamp/04-RNN-Recurrent-Neural-Networks/00-Basic-RNN/" class="md-nav__link">
+        00 Basic RNN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/pytorchDLbootcamp/04-RNN-Recurrent-Neural-Networks/01-RNN-on-a-Time-Series/" class="md-nav__link">
+        01 RNN on a Time Series
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/pytorchDLbootcamp/04-RNN-Recurrent-Neural-Networks/02-RNN-Exercises/" class="md-nav__link">
+        02 RNN Exercises
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/pytorchDLbootcamp/04-RNN-Recurrent-Neural-Networks/03-RNN-Exercises-Solutions/" class="md-nav__link">
+        03 RNN Exercises Solutions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5_4" type="checkbox" id="__nav_3_5_4" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_5_4">
+          Using GPU
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Using GPU" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_5_4">
+          <span class="md-nav__icon md-icon"></span>
+          Using GPU
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/pytorchDLbootcamp/05-Using-GPU/00-Using-GPU-and-CUDA/" class="md-nav__link">
+        00 Using GPU and CUDA
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5_5" type="checkbox" id="__nav_3_5_5" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_5_5">
+          NLP with PyTorch
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="NLP with PyTorch" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_5_5">
+          <span class="md-nav__icon md-icon"></span>
+          NLP with PyTorch
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/pytorchDLbootcamp/06-NLP-with-PyTorch/00-RNN-for-Text-Generation%20/" class="md-nav__link">
+        00 RNN for Text Generation 
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6">
+          Tensorflow for Deeplearning Bootcamp
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tensorflow for Deeplearning Bootcamp" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          Tensorflow for Deeplearning Bootcamp
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_1" type="checkbox" id="__nav_3_6_1" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_1">
+          Colab Basics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Colab Basics" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_6_1">
+          <span class="md-nav__icon md-icon"></span>
+          Colab Basics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/TensorFlowDLBootCamp/ColabBasics/TF2_0_Demo/" class="md-nav__link">
+        TF2 0 Demo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/TensorFlowDLBootCamp/ColabBasics/TF2_0_Installing_Tensorflow/" class="md-nav__link">
+        TF2 0 Installing Tensorflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/TensorFlowDLBootCamp/ColabBasics/TF2_0_Loading_Data/" class="md-nav__link">
+        TF2 0 Loading Data
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_2" type="checkbox" id="__nav_3_6_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_2">
+          Machine Learning Basics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Machine Learning Basics" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          Machine Learning Basics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/TensorFlowDLBootCamp/MachineLearningBasics/TF2_0_Linear_Classification/" class="md-nav__link">
+        TF2 0 Linear Classification
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/TensorFlowDLBootCamp/MachineLearningBasics/TF2_0_Linear_Regression/" class="md-nav__link">
+        TF2 0 Linear Regression
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_3" type="checkbox" id="__nav_3_6_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_3">
+          ANN - Artificial Neural Networks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ANN - Artificial Neural Networks" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_6_3">
+          <span class="md-nav__icon md-icon"></span>
+          ANN - Artificial Neural Networks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/TensorFlowDLBootCamp/ANN/TF2_0_ANN_MNIST/" class="md-nav__link">
+        TF2 0 ANN MNIST
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/TensorFlowDLBootCamp/ANN/TF2_0_ANN_Regression/" class="md-nav__link">
+        TF2 0 ANN Regression
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_4" type="checkbox" id="__nav_3_6_4" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_4">
+          CNN - Convolutional Neural Networks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="CNN - Convolutional Neural Networks" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_6_4">
+          <span class="md-nav__icon md-icon"></span>
+          CNN - Convolutional Neural Networks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/TensorFlowDLBootCamp/CNN/TF2_0_Fashion_MNIST/" class="md-nav__link">
+        TF2 0 Fashion MNIST
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/TensorFlowDLBootCamp/CNN/TF2_0_CIFAR/" class="md-nav__link">
+        TF2 0 CIFAR
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/TensorFlowDLBootCamp/CNN/TF2_0_CIFAR_Improved/" class="md-nav__link">
+        TF2 0 CIFAR Improved
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_5" type="checkbox" id="__nav_3_6_5" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_5">
+          RNN - Recurrent Neural Network
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="RNN - Recurrent Neural Network" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_6_5">
+          <span class="md-nav__icon md-icon"></span>
+          RNN - Recurrent Neural Network
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/TensorFlowDLBootCamp/RNN/TF2_0_Autoregressive_Model/" class="md-nav__link">
+        TF2 0 Autoregressive Model
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/TensorFlowDLBootCamp/RNN/TF2_0_SimpleRNN_Sine/" class="md-nav__link">
+        TF2 0 SimpleRNN Sine
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/TensorFlowDLBootCamp/RNN/TF2_0_RNN_Shapes/" class="md-nav__link">
+        TF2 0 RNN Shapes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/TensorFlowDLBootCamp/RNN/TF2_0_LSTM_Nonlinear/" class="md-nav__link">
+        TF2 0 LSTM Nonlinear
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/TensorFlowDLBootCamp/RNN/TF2_0_Long_Distance/" class="md-nav__link">
+        TF2 0 Long Distance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/TensorFlowDLBootCamp/RNN/TF2_0_RNN_MNIST/" class="md-nav__link">
+        TF2 0 RNN MNIST
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/TensorFlowDLBootCamp/RNN/TF2_0_Stock_Returns/" class="md-nav__link">
+        TF2 0 Stock Returns
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_6" type="checkbox" id="__nav_3_6_6" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_6">
+          NLP - Natural Language Processing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="NLP - Natural Language Processing" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_6_6">
+          <span class="md-nav__icon md-icon"></span>
+          NLP - Natural Language Processing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/TensorFlowDLBootCamp/NaturalLanguageProcessing/TF2_0_Text_Preprocessing/" class="md-nav__link">
+        TF2 0 Text Preprocessing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/TensorFlowDLBootCamp/NaturalLanguageProcessing/TF2_0_Spam_Detection_CNN/" class="md-nav__link">
+        TF2 0 Spam Detection CNN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/TensorFlowDLBootCamp/NaturalLanguageProcessing/TF2_0_Spam_Detection_RNN/" class="md-nav__link">
+        TF2 0 Spam Detection RNN
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_7" type="checkbox" id="__nav_3_6_7" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_7">
+          Recommendar Systems
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Recommendar Systems" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_6_7">
+          <span class="md-nav__icon md-icon"></span>
+          Recommendar Systems
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/TensorFlowDLBootCamp/RecommenderSystem/TF2_0_Recommender_System/" class="md-nav__link">
+        TF2 0 Recommender System
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_8" type="checkbox" id="__nav_3_6_8" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_8">
+          Transfer Learning
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Transfer Learning" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_6_8">
+          <span class="md-nav__icon md-icon"></span>
+          Transfer Learning
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/TensorFlowDLBootCamp/TransferLearning/TF2_0_Transfer_Learning/" class="md-nav__link">
+        TF2 0 Transfer Learning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/TensorFlowDLBootCamp/TransferLearning/TF2_0_Transfer_Learning_with_Data_Augmentation/" class="md-nav__link">
+        TF2 0 Transfer Learning with Data Augmentation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_9" type="checkbox" id="__nav_3_6_9" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_9">
+          GANs - Generative Adversarial Networks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="GANs - Generative Adversarial Networks" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_6_9">
+          <span class="md-nav__icon md-icon"></span>
+          GANs - Generative Adversarial Networks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/TensorFlowDLBootCamp/GANs/TF2_0_GAN/" class="md-nav__link">
+        TF2 0 GAN
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_10" type="checkbox" id="__nav_3_6_10" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_10">
+          Advance Tensorflow
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Advance Tensorflow" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_6_10">
+          <span class="md-nav__icon md-icon"></span>
+          Advance Tensorflow
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/TensorFlowDLBootCamp/AdvanceTensorflowUage/TF2_0_Serving/" class="md-nav__link">
+        TF2 0 Serving
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/TensorFlowDLBootCamp/AdvanceTensorflowUage/TF2_0_Mirrored_Strategy/" class="md-nav__link">
+        TF2 0 Mirrored Strategy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/TensorFlowDLBootCamp/AdvanceTensorflowUage/TF2_0_TFLite/" class="md-nav__link">
+        TF2 0 TFLite
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/TensorFlowDLBootCamp/AdvanceTensorflowUage/TPU/" class="md-nav__link">
+        TPU
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_11" type="checkbox" id="__nav_3_6_11" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_11">
+          Low-level Transorflow
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Low-level Transorflow" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_6_11">
+          <span class="md-nav__icon md-icon"></span>
+          Low-level Transorflow
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/TensorFlowDLBootCamp/LowLevelTensorflow/TF2_0_Basic_Computation/" class="md-nav__link">
+        TF2 0 Basic Computation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/TensorFlowDLBootCamp/LowLevelTensorflow/TF2_0_Variables_and_Gradient_Tape/" class="md-nav__link">
+        TF2 0 Variables and Gradient Tape
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../bootcampsnotes/TensorFlowDLBootCamp/LowLevelTensorflow/TF2_0_Build_Your_Own_Model/" class="md-nav__link">
+        TF2 0 Build Your Own Model
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../competitiveprogramming/">Competitive Programming</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Competitive Programming" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Competitive Programming
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../">Core Computer Science</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Core Computer Science" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Core Computer Science
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5_2">
+          ML Specialization
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ML Specialization" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          ML Specialization
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML_Specialization/ML%20Specialization%20-%20Course%201/" class="md-nav__link">
+        ML Specialization - Course 1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML_Specialization/ML%20Specialization%20-%20Course%202/" class="md-nav__link">
+        ML Specialization - Course 2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ML_Specialization/ML%20Specialization%20-%20Course%203/" class="md-nav__link">
+        ML Specialization - Course 3
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" type="checkbox" id="__nav_5_3" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5_3">
+          NLP Specialization
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="NLP Specialization" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          NLP Specialization
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NLP%20Specialization%20-%20Course%201/" class="md-nav__link">
+        NLP Specialization - Course 1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        NLP Specialization - Course 2
+      </a>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NLP%20Specialization%20-%20Course%203/" class="md-nav__link">
+        NLP Specialization - Course 3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NLP%20Specialization%20-%20Course%204/" class="md-nav__link">
+        NLP Specialization - Course 4
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" type="checkbox" id="__nav_5_4" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5_4">
+          IBM Data Science Specialization
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="IBM Data Science Specialization" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_4">
+          <span class="md-nav__icon md-icon"></span>
+          IBM Data Science Specialization
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Coming Soon" class="md-nav__link">
+        None
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_5" type="checkbox" id="__nav_5_5" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5_5">
+          NLP Specialization
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="NLP Specialization" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_5">
+          <span class="md-nav__icon md-icon"></span>
+          NLP Specialization
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Coming Soon" class="md-nav__link">
+        None
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../myresearch/">My Research</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="My Research" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          My Research
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          About
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="About" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          About
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../blogs/">Blog</a>
+          
+            <label for="__nav_8">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Blog" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Blog
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_2" type="checkbox" id="__nav_8_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_8_2">
+          2022
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="2022" data-md-level="2">
+        <label class="md-nav__title" for="__nav_8_2">
+          <span class="md-nav__icon md-icon"></span>
+          2022
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../blogs/2022/How-to-use-these-resources/" class="md-nav__link">
+        How-to-use-these-resources
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../blogs/2022/How-to-contribute/" class="md-nav__link">
+        How to contribute
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          Contact
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Contact" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Contact
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact/" class="md-nav__link">
+        Contact
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <a href="https://github.com/qalmaqihir/qalmaqihir.github.io/edit/master/docs/corecs/NLP_Specialization/NLP Specialization - Course 2.md" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+<h1 id="nlp-specialization-course-2">NLP Specialization - Course 2<a class="headerlink" href="#nlp-specialization-course-2" title="Permanent link">&para;</a></h1>
+<h1 id="natural-language-processing-with-probabilistic-models">Natural Language Processing With Probabilistic Models<a class="headerlink" href="#natural-language-processing-with-probabilistic-models" title="Permanent link">&para;</a></h1>
+<p>Note 2024-01-02T11.32.18</p>
+<p>========================</p>
+<h1 id="week-1-autocorrect">Week 1 Autocorrect<a class="headerlink" href="#week-1-autocorrect" title="Permanent link">&para;</a></h1>
+<p>Learn about autocorrect, minimum edit distance, and dynamic programming, then build your own spellchecker to correct misspelled words!  </p>
+<p><strong>Learning Objectives</strong></p>
+<div class="highlight"><pre><span></span><code>Word probabilities
+Dynamic programming
+Minimum edit distance
+Autocorrect
+</code></pre></div>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>You use auto-correct everyday. When you send your friend a text message, or when you make a mistake in a query, there is an autocorrect behind the scenes that corrects the sentence for you. This week you are also going to learn about minimum edit distance, which tells you the minimum amount of edits to change one word into another. In doing that, you will learn about dynamic programming which is an important programming concept which frequently comes up in interviews and could be used to solve a lot of optimization problems.</p>
+<h2 id="autocorrect">Autocorrect<a class="headerlink" href="#autocorrect" title="Permanent link">&para;</a></h2>
+<p>Autocorrects are used everywhere. You use them in your phones, tablets, and computers. </p>
+<p><img alt="" src="../autocorrect.png" /></p>
+<p>To implement autocorrect in this week's assignment, you have to follow these steps: </p>
+<div class="highlight"><pre><span></span><code>Identify a misspelled word
+
+Find strings n edit distance away: (these could be random strings)
+
+Filter candidates: (keep only the real words from the previous steps)
+
+Calculate word probabilities: (choose the word that is most likely to occur in that context)
+</code></pre></div>
+<h2 id="building-the-model">Building the model<a class="headerlink" href="#building-the-model" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Identify the misspelled word<br />
+When identifying the misspelled word, you can check whether it is in the vocabulary. If you don't find it, then it is probably a typo.  </li>
+<li>Find strings n edit distance away<br />
+<img alt="" src="../step2.png" /></li>
+<li>Filter candidates  In this step, you want to take all the words generated above and then only keep the actual words that make sense and that you can find in your vocabulary.<br />
+<img alt="" src="../step3.png" /> </li>
+</ol>
+<h2 id="building-the-model-ii">Building the model II<a class="headerlink" href="#building-the-model-ii" title="Permanent link">&para;</a></h2>
+<p>4.0 Calculating word probabilities</p>
+<p><img alt="" src="../4.0.png" /></p>
+<p>Note that you are storing the count of words and then you can use that to generate the probabilities. For this week, you will be counting the probabilities of words occurring.  If you want to build a slightly more sophisticated auto-correct you can keep track of two words occurring next to each other instead. You can then use the previous word to decide. For example which combo is more likely, there friend or their friend?  For this week however you will be implementing the probabilities by just using the word frequencies. Here is a summary of everything you have seen before in the previous two videos. </p>
+<p><img alt="" src="../4.1.png" /></p>
+<h2 id="minimum-edit-distance">Minimum edit distance<a class="headerlink" href="#minimum-edit-distance" title="Permanent link">&para;</a></h2>
+<p>Minimum edit distance allows you to:</p>
+<div class="highlight"><pre><span></span><code>Evaluate similarity between two strings
+
+Find the minimum number of edits between two strings
+
+Implement spelling correction, document similarity, machine translation, DNA sequencing, and more
+</code></pre></div>
+<p>Remember that the edits include:</p>
+<div class="highlight"><pre><span></span><code>Insert  (add a letter)              ‘to’:  ‘top’, ‘two’ …
+
+Delete  (remove a letter)           ‘hat’: ‘ha’, ‘at’, ‘ht’
+
+Replace (change 1 letter to another)    ‘jaw’: ‘jar’, ‘paw’, …
+</code></pre></div>
+<p>Here is a concrete example where we calculate the cost (i.e. edit distance) between two strings. </p>
+<p><img alt="" src="../edit.png" /></p>
+<p>Note that as your strings get larger it gets much harder to calculate the minimum edit distance. Hence you will now learn about the minimum edit distance algorithm!</p>
+<h2 id="minimum-edit-distance-algorithm">Minimum edit distance algorithm<a class="headerlink" href="#minimum-edit-distance-algorithm" title="Permanent link">&para;</a></h2>
+<p>When computing the minimum edit distance, you would start with a source word and transform it into the target word. Let's look at the following example: </p>
+<p><img alt="" src="../miniEdit.png" /></p>
+<p>To go from #→##→# you need a cost of 0. From  p→#p→# you get 1, because that is the cost of a delete.  p→sp→s is 2 because that is the minimum cost one could use to get from p to s. You can keep going this way by populating one element at a time, but it turns out there is a faster way to do this. You will learn about it next. </p>
+<h2 id="minimum-edit-distance-algorithm-ii">Minimum edit distance algorithm II<a class="headerlink" href="#minimum-edit-distance-algorithm-ii" title="Permanent link">&para;</a></h2>
+<p>To populate the following table: </p>
+<p><img alt="" src="../1PM.png" /></p>
+<p>There are three equations: </p>
+<div class="highlight"><pre><span></span><code>D[i,j] = D[i-1, j] + del_cost: this indicates you want to populate the current cell (i,j) by using the cost in the cell found directly above.
+
+D[i,j] = D[i, j-1] + ins_cost: this indicates you want to populate the current cell (i,j) by using the cost in the cell found directly to its left.
+
+D[i,j] = D[i-1, j-1] + rep_cost: the rep cost can be 2 or 0 depending if you are going to actually replace it or not.
+</code></pre></div>
+<p>At every time step you check the three possible paths where you can come from and you select the least expensive one. Once you are done, you get the following: </p>
+<p><img alt="" src="../PM.png" /></p>
+<h2 id="minimum-edit-distance-algorithm-iii">Minimum edit distance algorithm III<a class="headerlink" href="#minimum-edit-distance-algorithm-iii" title="Permanent link">&para;</a></h2>
+<p>To summarize, you have seen the levenshtein distance which specifies the cost per operation. If you need to reconstruct the path of how you got from one string to the other, you can use a backtrace. You should keep a simple pointer in each cell letting you know where you came from to get there. So you know the path taken across the table from the top left corner, to the bottom right corner. You can then reconstruct it. </p>
+<p>This method for computation instead of brute force is a technique known as dynamic programming. You first solve the smallest subproblem first and then reusing that result you solve the next biggest subproblem, saving that result, reusing it again, and so on. This is exactly what you did by populating each cell from the top right to the bottom left. It’s a well-known technique in computer science! </p>
+<h1 id="week-2-part-of-speech-tagging-and-hidden-markov-chain">Week 2 Part of Speech Tagging And Hidden Markov Chain<a class="headerlink" href="#week-2-part-of-speech-tagging-and-hidden-markov-chain" title="Permanent link">&para;</a></h1>
+<p>Learn about Markov chains and Hidden Markov models, then use them to create part-of-speech tags for a Wall Street Journal text corpus!</p>
+<p><strong>Learning Objectives</strong></p>
+<div class="highlight"><pre><span></span><code>Markov chains
+Hidden Markov models
+Part-of-speech tagging
+Viterbi algorithm
+Transition probabilities
+Emission probabilities
+</code></pre></div>
+<h2 id="part-of-speech-tagging">Part of Speech Tagging<a class="headerlink" href="#part-of-speech-tagging" title="Permanent link">&para;</a></h2>
+<p>Part of Speech Tagging (POS) is the process of assigning a part of speech to a word. By doing so, you will learn the following: </p>
+<p><img alt="" src="../pos.png" /></p>
+<div class="highlight"><pre><span></span><code>Markov Chains
+
+Hidden Markov Models
+
+Viterbi algorithm
+</code></pre></div>
+<p>Here is a concrete example:</p>
+<p>You can use part of speech tagging for: </p>
+<div class="highlight"><pre><span></span><code>Identifying named entities
+
+Speech recognition
+
+Coreference Resolution
+</code></pre></div>
+<p>You can use the probabilities of POS tags happening near one another to come up with the most reasonable output.</p>
+<h2 id="markov-chains">Markov Chains<a class="headerlink" href="#markov-chains" title="Permanent link">&para;</a></h2>
+<p>You can use Markov chains to identify the probability of the next word. For example below, you can see that the most likely word after a verb is a noun. </p>
+<p><img alt="" src="../M1.png" /></p>
+<p>To properly model the probabilities we need to identify the probabilities of the POS tags and for the words. </p>
+<p>The circles of the graph represent the states of your model. A state refers to a certain condition of the present moment.  You can think of these as the POS tags of the current word.</p>
+<p><img alt="" src="../M2.png" /></p>
+<p>Q={q1,q2,q3}Q={q1​,q2​,q3​} is the set of all states in your model. </p>
+<h2 id="markov-chains-and-pos-tags">Markov Chains and POS Tags<a class="headerlink" href="#markov-chains-and-pos-tags" title="Permanent link">&para;</a></h2>
+<p>To help identify the parts of speech for every word, you need to build a transition matrix that gives you the probabilities from one state to another.  </p>
+<p><img alt="" src="../MC1.png" /></p>
+<p>In the diagram above, the blue circles correspond to the part of speech tags, and the arrows correspond to the transition probabilities from one part of speech to another. You can populate the table on the right from the diagram on the left. The first row in your A matrix corresponds to the initial distribution among all the states. According to the table, the sentence has a 40% chance to start as a noun, 10% chance to start with a verb, and a 50% chance to start with another part of speech tag. </p>
+<p>In more general notation, you can write the transition matrix A, given some states Q, as follows: </p>
+<p><img alt="" src="../MC2.png" /></p>
+<h2 id="hidden-markov-models">Hidden Markov Models<a class="headerlink" href="#hidden-markov-models" title="Permanent link">&para;</a></h2>
+<p>In the previous video, I showed you an example with a simple markov model. The transition probabilities allowed you to identify the transition probability from one POS to another. We will now explore hidden markov models. In hidden markov models you make use of emission probabilities that give you the probability to go from one state (POS tag) to a specific word. </p>
+<p><img alt="" src="../HM1.png" /></p>
+<p>For example, given that you are in a verb state, you can go to other words with certain probabilities. This emission matrix B, will be used with your transition matrix A, to help you identify the part of speech of a word in a sentence. To populate your matrix B, you can just have a labelled dataset and compute the probabilities of going from a POS to each word in your vocabulary. Here is a recap of what you have seen so far: </p>
+<p>Note that the sum of each row in your A and B matrix has to be 1. Next, I will show you how you can calculate the probabilities inside these matrices.</p>
+<p><img alt="" src="../HM2.png" /></p>
+<h2 id="calculating-probabilities">Calculating Probabilities<a class="headerlink" href="#calculating-probabilities" title="Permanent link">&para;</a></h2>
+<p>Here is a visual representation on how to calculate the probabilities:</p>
+<p><img alt="" src="../CP1.png" />
+The number of times that blue is followed by purple is 2 out of 3. We will use the same logic to populate our transition and emission matrices. In the transition matrix we will count the number of times tag t(i−1),t(i)t(i−1)​,t(i)​ show up near each other and divide by the total number of times t(i−1)t(i−1)​ shows up (which is the same as the number of times it shows up followed by anything else).</p>
+<p><img alt="" src="../CP2.png" /></p>
+<p>C(t(i−1),t(i))C(t(i−1)​,t(i)​) is the count of times tag (i-1) shows up before tag i. From this you can compute the probability that a tag shows up after another tag. </p>
+<h2 id="populating-the-transition-matrix">Populating the Transition Matrix<a class="headerlink" href="#populating-the-transition-matrix" title="Permanent link">&para;</a></h2>
+<p>To populate the transition matrix you have to keep track of the number of times each tag shows up before another tag. </p>
+<p><img alt="" src="../PT1.png" /></p>
+<p>In the table above, you can see that green corresponds to nouns (NN), purple corresponds to verbs (VB), and blue corresponds to other (O). Orange (ππ)  corresponds to the initial state. The numbers inside the matrix correspond to the number of times a part of speech tag shows up right after another one. </p>
+<p>To go from O to NN or in other words to calculate P(O∣NN)P(O∣NN) you have to compute the following: </p>
+<p><img alt="" src="../PT2.png" /></p>
+<p>To generalize:</p>
+<p>P(ti∣ti−1)=C(ti−1,ti)∑j=1NC(ti−1,tj)P(ti​∣ti−1​)=∑j=1N​C(ti−1​,tj​)C(ti−1​,ti​)​</p>
+<p>Unfortunately, sometimes you might not see two POS tags in front each other. This will give you a probability of 0. To solve this issue, you will "smooth" it as follows: </p>
+<p><img alt="" src="../PT3.png" /></p>
+<p>The ϵϵ allows you to not have any two sequences showing up with 0 probability. Why is this important? </p>
+<h2 id="populating-the-emission-matrix">Populating the Emission Matrix<a class="headerlink" href="#populating-the-emission-matrix" title="Permanent link">&para;</a></h2>
+<p>To populate the emission matrix, you have to keep track of the words associated with their parts of speech tags. </p>
+<p><img alt="" src="../PE1.png" /></p>
+<p>To populate the matrix, we will also use smoothing as we have previously used: </p>
+<p>P(wi∣ti)=C(ti,wi)+ϵ∑j=1VC(ti,wj)+N∗ϵ=C(ti,wi)+ϵC(ti)+N∗ϵP(wi​∣ti​)​=∑j=1V​C(ti​,wj​)+N∗ϵC(ti​,wi​)+ϵ​=C(ti​)+N∗ϵC(ti​,wi​)+ϵ​​</p>
+<p>Where C(ti,wi)C(ti​,wi​) is the count associated with how many times the tag titi​ is associated with the word wiwi​. The epsilon above is the smoothing parameter. In the next video, we will talk about the Viterbi algorithm and discuss how you can use the transition and emission matrix to come up with probabilities. </p>
+<h2 id="the-viterbi-algorithm">The Viterbi Algorithm<a class="headerlink" href="#the-viterbi-algorithm" title="Permanent link">&para;</a></h2>
+<p>The Viterbi algorithm makes use of the transition probabilities and the emission probabilities as follows. </p>
+<p><img alt="" src="../VA1.png" /></p>
+<p>To go from ππ to OO you need to multiply the corresponding transition probability (0.3) and the corresponding emission probability (0.5), which gives you 0.15. You keep doing that for all the words, until you get the probability of an entire sequence. </p>
+<p><img alt="" src="../VA2.png" />
+You can then see how you will just pick the sequence with the highest probability. We will show you a systematic way to accomplish this (Viterbi!). </p>
+<h2 id="viterbi-initialization">Viterbi Initialization<a class="headerlink" href="#viterbi-initialization" title="Permanent link">&para;</a></h2>
+<p>Now to populate the first column, you just multiply the initial ππ distribution, for each tag, times bi,cindex⁡(w1)bi,cindex(w1​)​. Where the i, corresponds to the tag of the initial distribution and the cindex(w1)cindex(w1​), is the index of word 1 in the emission matrix. And that's it, you are done with populating the first column of your new C matrix.  You will now need to keep track what part of speech you are coming from. Hence we introduce a matrix D, which allows you to store the labels that represent the different states you are going through when finding the most likely sequence of POS tags for the given sequence of words w1,…,wKw1​,…,wK​. At first you set the first column to 0, because you are not coming from any POS tag. </p>
+<p><img alt="" src="../VB1.png" /></p>
+<p>You will now populate a matrix C of dimension (num_tags, num_words). This matrix will have the probabilities that will tell you what part of speech each word belongs to. </p>
+<p><img alt="" src="../VB2.png" /></p>
+<p>These two matrices will make more sense in the next videos. </p>
+<h2 id="viterbi-forward-pass">Viterbi: Forward Pass<a class="headerlink" href="#viterbi-forward-pass" title="Permanent link">&para;</a></h2>
+<p>This will be best illustrated with an example: </p>
+<p><img alt="" src="../VBF1.png" /></p>
+<p>So to populate a cell (i.e. 1,2) in the image above, you have to take the max of [kth cells in the previous column, times the corresponding transition probability of the kth POS to the first POS times the emission probability of the first POS and the current word you are looking at]. You do that for all the cells. Take a paper and a pencil, and make sure you understand how it is done. </p>
+<p>The general rule is ci,j=max⁡kck,j−1∗ak,i∗bi,cindex(wj)ci,j​=maxk​ck,j−1​∗ak,i​∗bi,cindex(wj​)​</p>
+<p>Now to populate the D matrix, you will keep track of the argmax of where you came from as follows: </p>
+<p><img alt="" src="../VBF2.png" /></p>
+<p>Note that the only difference between cijcij​ and dijdij​, is that in the former you compute the probability and in the latter you keep track of the index of the row where that probability came from. So you keep track of which kk was used to get that max probability. </p>
+<h2 id="viterbi-backward-pass">Viterbi: Backward Pass<a class="headerlink" href="#viterbi-backward-pass" title="Permanent link">&para;</a></h2>
+<p>Great, now that you know how to compute A, B, C, and D, we will put it all together and show you how to construct the path that will give you the part of speech tags for your sentence. </p>
+<p><img alt="" src="../VBB1.png" /></p>
+<p>The equation above just gives you the index of the highest row in the last column of C. Once you have that, you can go ahead and start using your D matrix as follows: </p>
+<p><img alt="" src="../VBB2.png" /></p>
+<p>Note that since we started at index one, hence the last word (w5w5​) is t1t1​. Then we go to the first row of D and what ever that number is, it indicated the row of the next part of speech tag. Then next part of speech tag indicates the row of the next and so forth. This allows you to reconstruct the POS tags for your sentence. You will be implementing this in this week's programming assignment. Good luck! </p>
+<h1 id="week-3-autocomplete-and-language-model">Week 3 Autocomplete And Language Model<a class="headerlink" href="#week-3-autocomplete-and-language-model" title="Permanent link">&para;</a></h1>
+<p>Learn about how N-gram language models work by calculating sequence probabilities, then build your own autocomplete language model using a text corpus from Twitter!</p>
+<p><strong>Learning Objectives</strong></p>
+<div class="highlight"><pre><span></span><code>Conditional probabilities
+Text pre-processing
+Language modeling
+Perplexity
+K-smoothing
+N-grams
+Backoff
+Tokenization
+</code></pre></div>
+<h2 id="n-grams-overview">N-Grams Overview<a class="headerlink" href="#n-grams-overview" title="Permanent link">&para;</a></h2>
+<p>N-grams are fundamental and give you a foundation that will allow you to understand more complicated models in the specialization. These models allow you to calculate probabilities of certain words happening in a specific sequence. Using that, you can build an auto-correct or even a search suggestion tool. </p>
+<p>Other applications of N-gram language modeling includes: </p>
+<p><img alt="" src="../ng.png" /></p>
+<p>This week you are going to learn to:</p>
+<div class="highlight"><pre><span></span><code>Process a text corpus to N-gram language model
+
+Handle out of vocabulary words
+
+Implement smoothing for previously unseen N-grams
+
+Language model evaluation
+</code></pre></div>
+<h2 id="n-grams-and-probabilities">N-grams and Probabilities<a class="headerlink" href="#n-grams-and-probabilities" title="Permanent link">&para;</a></h2>
+<p>Before we start computing probabilities of certain sequences, we need to first define what is an N-gram language model:</p>
+<p><img alt="" src="../np1.png" /></p>
+<p>Now given the those definitions, we can label a sentence as follows: </p>
+<p><img alt="" src="../np2.png" /></p>
+<p>In other notation you can write: </p>
+<div class="highlight"><pre><span></span><code>w1m=w1w2w3....wm
+
+w1^3=w1w2w3
+
+wm−2m=wm−2wm−1wmwm−2m​=wm−2​wm−1​wm​
+</code></pre></div>
+<p>Given the following corpus: I am happy because I am learning.</p>
+<div class="highlight"><pre><span></span><code>Size of corpus m = 7.
+
+P(I)=27P(I)=72​
+
+P(happy)=17P(happy)=71​
+</code></pre></div>
+<p>To generalize, the probability of a unigram is P(w)=C(w)mP(w)=mC(w)​
+Bigram Probability:</p>
+<p><img alt="" src="../np3.png" /></p>
+<p>Trigram Probability:</p>
+<p>To compute the probability of a trigram:</p>
+<div class="highlight"><pre><span></span><code>P(w3∣w12)=C(w12w3)C(w12)P(w3​∣w12​)=C(w12​)C(w12​w3​)​
+
+C(w12w3)=C(w1w2w3)=C(w13)C(w12​w3​)=C(w1​w2​w3​)=C(w13​)
+</code></pre></div>
+<p>N-gram Probability:</p>
+<div class="highlight"><pre><span></span><code>P(wN∣w1N−1)=C(w1N−1wN)C(w1N−1)P(wN​∣w1N−1​)=C(w1N−1​)C(w1N−1​wN​)​
+
+C(w1N−1wN)=C(w1N)C(w1N−1​wN​)=C(w1N​)
+</code></pre></div>
+<h2 id="sequence-probabilities">Sequence Probabilities<a class="headerlink" href="#sequence-probabilities" title="Permanent link">&para;</a></h2>
+<p>You just saw how to compute sequence probabilities, their short comings, and finally how to approximate N-gram probabilities. In doing so, you try to approximate the probability of a sentence. For example, what is the probability of the following sentence: The teacher drinks tea. To compute it, you will make use of the following: </p>
+<div class="highlight"><pre><span></span><code>P(B∣A)=P(A,B)P(A)⟹P(A,B)=P(A)P(B∣A)P(B∣A)=P(A)P(A,B)​⟹P(A,B)=P(A)P(B∣A)
+
+P(A,B,C,D)=P(A)P(B∣A)P(C∣A,B)P(D∣A,B,C)P(A,B,C,D)=P(A)P(B∣A)P(C∣A,B)P(D∣A,B,C)
+</code></pre></div>
+<p>To compute the probability of a sequence, you can compute the following:</p>
+<p>P( the teacher drinks tea )=P(the)P( teacher the)P( drinks the teacher)P(tea∣the teacher drinks )P( the teacher drinks tea )=P(the)P( teacher the)P( drinks the teacher)P(tea∣the teacher drinks )​​</p>
+<p>One of the main issues with computing the probabilities above is the corpus rarely contains the exact same phrases as the ones you computed your probabilities on. Hence, you can easily end up getting a probability of 0. The Markov assumption indicates that only the last word matters. Hence: </p>
+<div class="highlight"><pre><span></span><code> Bigram P(wn∣w1n−1)≈P(wn∣wn−1) Bigram P(wn​∣w1n−1​)≈P(wn​∣wn−1​)
+
+ N-gram P(wn∣w1n−1)≈P(wn∣wn−N+1n−1) N-gram P(wn​∣w1n−1​)≈P(wn​∣wn−N+1n−1​)
+</code></pre></div>
+<p>You can model the entire sentence as follows: </p>
+<div class="highlight"><pre><span></span><code>P(w1n)≈∏i=1nP(wi∣wi−1)P(w1n​)≈∏i=1n​P(wi​∣wi−1​)
+
+P(w1n)≈P(w1)P(w2∣w1)…P(wn∣wn−1)P(w1n​)≈P(w1​)P(w2​∣w1​)…P(wn​∣wn−1​)
+</code></pre></div>
+<h2 id="starting-and-ending-sentences">Starting and Ending Sentences<a class="headerlink" href="#starting-and-ending-sentences" title="Permanent link">&para;</a></h2>
+<p>We usually start and end a sentence with the following tokens respectively: <s> </s>. </p>
+<p>When computing probabilities using a unigram, you can append an <s> in the beginning of the sentence. To generalize to an N-gram language model, you can add N-1 start tokens <s>. </p>
+<p>For the end of sentence token </s>, you only need one even if it is an N-gram. Here is an example: </p>
+<p><img alt="" src="../ng4.png" /></p>
+<p>Make sure you know how to compute the probabilities above! </p>
+<h2 id="the-n-gram-language-model">The N-gram Language Model<a class="headerlink" href="#the-n-gram-language-model" title="Permanent link">&para;</a></h2>
+<p>We covered a lot of concepts in the previous video.  You have seen: </p>
+<div class="highlight"><pre><span></span><code>Count matrix
+
+Probability matrix
+
+Language model
+
+Log probability to avoid underflow
+
+Generative language model
+</code></pre></div>
+<p>In the count matrix:</p>
+<div class="highlight"><pre><span></span><code>Rows correspond to the unique corpus N-1 grams.
+
+Columns correspond to the unique corpus words.
+</code></pre></div>
+<p>Here is an example of the count matrix of a bigram. </p>
+<p><img alt="" src="../ng5.png" /></p>
+<p>To convert it into a probability matrix, you can use the following formula:</p>
+<div class="highlight"><pre><span></span><code>P(wn∣wn−N+1n−1)=C(wn−N+1n−1,wn)C(wn−N+1n−1)P(wn​∣wn−N+1n−1​)=C(wn−N+1n−1​)C(wn−N+1n−1​,wn​)​
+
+sum⁡(row)=∑w∈VC(wn−N+1n−1,w)=C(wn−N+1n−1)sum(row)=∑w∈V​C(wn−N+1n−1​,w)=C(wn−N+1n−1​)
+</code></pre></div>
+<p>Now given the probability matrix, you can generate the language model. You can compute the sentence probability and the next word prediction. </p>
+<p>To compute the probability of a sequence, you needed to compute: </p>
+<p>P(w1n)≈∏i=1nP(wi∣wi−1)P(w1n​)≈∏i=1n​P(wi​∣wi−1​) </p>
+<p>To avoid underflow, you can multiply by the log. </p>
+<p>log⁡(P(w1n))≈∑i=1nlog⁡(P(wi∣wi−1))log(P(w1n​))≈∑i=1n​log(P(wi​∣wi−1​))</p>
+<p>Finally here is a summary to create the generative model: </p>
+<p><img alt="" src="../ng6.png" /></p>
+<h2 id="language-model-evaluation">Language Model Evaluation<a class="headerlink" href="#language-model-evaluation" title="Permanent link">&para;</a></h2>
+<p>Splitting the Data</p>
+<p>We will now discuss the train/val/test splits and perplexity.
+Train/Val/Test splits</p>
+<p>Smaller Corpora: </p>
+<div class="highlight"><pre><span></span><code>80% train
+
+10% val
+
+10% test
+</code></pre></div>
+<p>Larger Corpora: </p>
+<div class="highlight"><pre><span></span><code>98% train
+
+1% val
+
+1% test
+</code></pre></div>
+<p>There are two main methods for splitting the data: </p>
+<p><img alt="" src="../lm1.png" /></p>
+<h3 id="perplexity">Perplexity<a class="headerlink" href="#perplexity" title="Permanent link">&para;</a></h3>
+<p>Perplexity is used to tell us whether a set of sentences look like they were written by humans rather than by a simple program choosing words at random. A text that is written by humans is more likely to have lower perplexity, where a text generated by random word choice would have a higher perplexity.</p>
+<p>Concretely, here are the formulas to calculate perplexity. </p>
+<p>PP(W)=P(s1,s2,…,sm)−1mPP(W)=P(s1​,s2​,…,sm​)−m1​</p>
+<p>PP(W)=∏i=1m∏j=1∣si∣1P(wj(i)∣wj−1(i))mPP(W)=m∏i=1m​∏j=1∣si​∣​P(wj(i)​∣wj−1(i)​)1​</p>
+<p>​</p>
+<p>wj(i)→jwj(i)​→j corresponds to the jth word in the ith sentence. If you were to concatenate all the sentences then wiwi​ is the ith word in the test set. To compute the log perplexity, you go from </p>
+<p>PP(W)=∏i=1m1P(wi∣wi−1)mPP(W)=m∏i=1m​P(wi​∣wi−1​)1​</p>
+<p>​To </p>
+<p>log⁡PP(W)=−1m∑i=1mlog⁡2(P(wi∣wi−1))logPP(W)=−m1​∑i=1m​log2​(P(wi​∣wi−1​))</p>
+<h2 id="out-of-vocabulary-words">Out of Vocabulary Words<a class="headerlink" href="#out-of-vocabulary-words" title="Permanent link">&para;</a></h2>
+<p>Many times, you will be dealing with unknown words in the corpus. So how do you choose your vocabulary? What is a vocabulary?</p>
+<p>A vocabulary is a set of unique words supported by your language model. In some tasks like speech recognition or question answering, you will encounter and generate words only from a fixed set of words. Hence, a closed vocabulary.  </p>
+<p>Open vocabulary means that you may encounter words from outside the vocabulary, like a name of a new city in the training set. Here is one recipe that would allow you to handle unknown words. </p>
+<div class="highlight"><pre><span></span><code>Create vocabulary V
+
+Replace any word in corpus and not in V by &lt;UNK&gt;
+
+Count the probabilities with &lt;UNK&gt; as with any other word
+</code></pre></div>
+<p><img alt="" src="../oov.png" /></p>
+<p>The example above shows how you can use min_frequency and replace all the words that show up fewer times than min_frequency by UNK. You can then treat UNK as a regular word. 
+Criteria to create the vocabulary</p>
+<div class="highlight"><pre><span></span><code>Min word frequency f
+
+Max |V|, include words by frequency
+
+Use &lt;UNK&gt; sparingly (Why?)
+
+Perplexity -  only compare LMs with the same V
+</code></pre></div>
+<h2 id="smoothing">Smoothing<a class="headerlink" href="#smoothing" title="Permanent link">&para;</a></h2>
+<p>The three main concepts covered here are dealing with missing n-grams, smoothing, and Backoff and interpolation. </p>
+<p>P(wn∣wn−N+1n−1)=C(wn−N+1n−1,wn)C(wn−N+1n−1) can be 0P(wn​∣wn−N+1n−1​)=C(wn−N+1n−1​)C(wn−N+1n−1​,wn​)​ can be 0</p>
+<p>Hence we can add-1 smoothing as follows to fix that problem: </p>
+<p>P(wn∣wn−1)=C(wn−1,wn)+1∑w∈V(C(wn−1,w)+1)=C(wn−1,wn)+1C(wn−1)+VP(wn​∣wn−1​)=∑w∈V​(C(wn−1​,w)+1)C(wn−1​,wn​)+1​=C(wn−1​)+VC(wn−1​,wn​)+1​</p>
+<p>Add-k smoothing is very similar: </p>
+<p>P(wn∣wn−1)=C(wn−1,wn)+k∑w∈V(C(wn−1,w)+k)=C(wn−1,wn)+kC(wn−1)+k∗VP(wn​∣wn−1​)=∑w∈V​(C(wn−1​,w)+k)C(wn−1​,wn​)+k​=C(wn−1​)+k∗VC(wn−1​,wn​)+k​</p>
+<p>When using back-off:</p>
+<div class="highlight"><pre><span></span><code>If N-gram missing =&gt; use (N-1)-gram, …: Using the lower level N-grams (i.e. (N-1)-gram, (N-2)-gram, down to unigram) distorts the probability distribution. Especially for smaller corpora, some probability needs to be discounted from higher level N-grams to use it for lower level N-grams.
+
+Probability discounting e.g. Katz backoff: makes use of discounting.
+
+“Stupid” backoff: If the higher order N-gram probability is missing, the lower order N-gram probability is used, just multiplied by a constant. A constant of about 0.4 was experimentally shown to work well.
+</code></pre></div>
+<p>Here is a visualization: </p>
+<p><img alt="" src="../smoothing.png" /></p>
+<p>You can also use interpolation when computing probabilities as follows: </p>
+<p>P<sup>(wn∣wn−2wn−1)=λ1×P(wn∣wn−2wn−1)+λ2×P(wn∣wn−1)+λ3×P(wn)P</sup>(wn​∣wn−2​wn−1​)=λ1​×P(wn​∣wn−2​wn−1​)+λ2​×P(wn​∣wn−1​)+λ3​×P(wn​)​</p>
+<p>Where</p>
+<p>∑iλi=1∑i​λi​=1</p>
+<h2 id="week-summary">Week Summary<a class="headerlink" href="#week-summary" title="Permanent link">&para;</a></h2>
+<p>This week you learned the following concepts</p>
+<div class="highlight"><pre><span></span><code>N-Grams and probabilities
+
+Approximate sentence probability from N-Grams
+
+Build a language model from a corpus
+
+Fix missing information
+
+Out of vocabulary words with &lt;UNK&gt;
+
+Missing N-Gram in corpus with smoothing, backoff and interpolation
+
+Evaluate language model with perplexity
+
+Coding assignment!
+</code></pre></div>
+<h1 id="week-4-word-embeddings-with-neural-networks">Week 4 Word Embeddings with Neural Networks<a class="headerlink" href="#week-4-word-embeddings-with-neural-networks" title="Permanent link">&para;</a></h1>
+<p>Learn about how word embeddings carry the semantic meaning of words, which makes them much more powerful for NLP tasks, then build your own Continuous bag-of-words model to create word embeddings from Shakespeare text.
+Learning Objectives</p>
+<div class="highlight"><pre><span></span><code>Gradient descent
+One-hot vectors
+Neural networks
+Word embeddings
+Continuous bag-of-words model
+Text pre-processing
+Tokenization
+Data generators
+</code></pre></div>
+<h2 id="overview_1">Overview<a class="headerlink" href="#overview_1" title="Permanent link">&para;</a></h2>
+<p>Word embeddings are used in most NLP applications. Whenever you are dealing with text, you first have to find a way to encode the words as numbers. Word embedding are a very common technique that allows you to do so. Here are a few applications of word embeddings that you should be able to implement by the time you complete the specialization.</p>
+<p><img alt="" src="../w41.png" /></p>
+<p><img alt="" src="../w4.png" /></p>
+<p>By the end of this week you will be able to: </p>
+<div class="highlight"><pre><span></span><code>Identify the key concepts of word representations
+
+Generate word embeddings
+
+Prepare text for machine learning
+
+Implement the continuous bag-of-words modelOverview
+</code></pre></div>
+<h2 id="basic-word-representations">Basic Word Representations<a class="headerlink" href="#basic-word-representations" title="Permanent link">&para;</a></h2>
+<p>Basic Word Representations</p>
+<p>Basic word representations could be classified into the following:</p>
+<div class="highlight"><pre><span></span><code>Integers
+
+One-hot vectors
+
+Word embeddings
+</code></pre></div>
+<p><img alt="" src="../word.png" /></p>
+<p>To the left, you have an example where you use integers to represent a word. The issue there is that there is no reason why one word corresponds to a bigger number than another. To fix this problem we introduce one hot vectors (diagram on the right). To implement one hot vectors, you have to initialize a vector of zeros of dimension V  and then put a 1 in the index corresponding to the word you are representing.</p>
+<p>The <strong>pros</strong> of one-hot vectors:  simple and require no implied ordering. </p>
+<p>The <strong>cons</strong> of one-hot vectors: huge and encode no meaning. </p>
+<h2 id="word-embeddings">Word Embeddings<a class="headerlink" href="#word-embeddings" title="Permanent link">&para;</a></h2>
+<p>So why use word embeddings? Let's take a look.</p>
+<p><img alt="" src="../emb.png" /></p>
+<p>From the plot above, you can see that when encoding a word in 2D, similar words tend to be found next to each other. Perhaps the first coordinate represents whether a word is positive or negative. The second coordinate tell you whether the word is abstract or concrete. This is just an example, in the real world you will find embeddings with hundreds of dimensions. You can think of each coordinate as a number telling you something about the word. </p>
+<p>The pros:</p>
+<div class="highlight"><pre><span></span><code>Low dimensions (less than V)
+
+Allow you to encode meaning
+</code></pre></div>
+<h2 id="how-to-create-word-embeddings">How to Create Word Embeddings?<a class="headerlink" href="#how-to-create-word-embeddings" title="Permanent link">&para;</a></h2>
+<p>To create word embeddings you always need a corpus of text, and an embedding method.</p>
+<p>The context of a word tells you what type of words tend to occur near that specific word. The context is important as this is what will give meaning to each word embedding.</p>
+<h4 id="embeddings">Embeddings<a class="headerlink" href="#embeddings" title="Permanent link">&para;</a></h4>
+<p>There are many types of possible methods that allow you to learn the word embeddings. The machine learning model performs a learning task, and the main by-products of this task are the word embeddings. The task could be to learn to predict a word based on the surrounding words in a sentence of the corpus, as in the case of the continuous bag-of-words.</p>
+<p>The task is self-supervised: it is both unsupervised in the sense that the input data — the corpus — is unlabelled, and supervised in the sense that the data itself provides the necessary context which would ordinarily make up the labels. </p>
+<p>When training word vectors, there are some parameters you need to tune. (i.e. the dimension of the word vector)</p>
+<p><img alt="" src="../w43.png" /></p>
+<h2 id="word-embedding-methods">Word Embedding Methods<a class="headerlink" href="#word-embedding-methods" title="Permanent link">&para;</a></h2>
+<h3 id="classical-methods">Classical Methods<a class="headerlink" href="#classical-methods" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>**word2vec** (Google, 2013)
+
+**Continuous bag-of-words (CBOW):** the model learns to predict the center word given some context words.
+
+Continuous skip-gram / Skip-gram with negative sampling (SGNS): the model learns to predict the words surrounding a given input word.
+
+**Global Vectors (GloVe)** (Stanford, 2014): factorizes the logarithm of the corpus&#39;s word co-occurrence matrix,  similar to the count matrix you’ve used before.
+
+fastText (Facebook, 2016): based on the skip-gram model and takes into account the structure of words by representing words as an n-gram of characters. It supports out-of-vocabulary (OOV) words.
+</code></pre></div>
+<h3 id="deep-learning-contextual-embeddings">Deep learning, contextual embeddings<a class="headerlink" href="#deep-learning-contextual-embeddings" title="Permanent link">&para;</a></h3>
+<p>In these more advanced models, words have different embeddings depending on their context. You can download pre-trained embeddings for the following models. </p>
+<div class="highlight"><pre><span></span><code>**BERT** (Google, 2018):
+
+**ELMo** (Allen Institute for AI, 2018)
+
+**GPT-2** (OpenAI, 2018)
+</code></pre></div>
+<h2 id="continuous-bag-of-words-model">Continuous Bag of Words Model<a class="headerlink" href="#continuous-bag-of-words-model" title="Permanent link">&para;</a></h2>
+<p>To create word embeddings, you need a corpus and a learning algorithm. The by-product of this task would be a set of word embeddings. In the case of the continuous bag-of-words model, the objective of the task is to predict a missing word based on the surrounding words.</p>
+<p><img alt="" src="../bg1.png" /></p>
+<p>Here is a visualization that shows you how the models works.</p>
+<p><img alt="" src="../bg2.png" /></p>
+<p>As you can see, the window size in the image above is 5. The context size, C, is 2. C usually tells you how many words before or after the center word the model will use to make the prediction. Here is another visualization that shows an overview of the model. </p>
+<p><img alt="" src="../bg3.png" /></p>
+<h2 id="cleaning-and-tokenization">Cleaning and Tokenization<a class="headerlink" href="#cleaning-and-tokenization" title="Permanent link">&para;</a></h2>
+<p>Before implementing any natural language processing algorithm, you might want to clean the data and tokenize it. Here are a few things to keep track of when handling your data.</p>
+<p><img alt="" src="../cle.png" /></p>
+<p>You can clean data using python as follows: </p>
+<p><img alt="" src="../cle2.png" />
+You can add as many conditions as you want in the lines corresponding to the green rectangle above. </p>
+<h2 id="sliding-window-of-words-in-python">Sliding Window of words in Python<a class="headerlink" href="#sliding-window-of-words-in-python" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="../COD.png" /></p>
+<p>The code above shows you a function which takes in two parameters. </p>
+<div class="highlight"><pre><span></span><code>Words: a list of words.
+
+C: the context size.
+</code></pre></div>
+<p>We first start by setting i to C. Then we single out the center_word, and the context_words. We then yield those and increment i. </p>
+<h2 id="transforming-words-into-vectors">Transforming Words into Vectors<a class="headerlink" href="#transforming-words-into-vectors" title="Permanent link">&para;</a></h2>
+<p>To transform the context vectors into one single vector, you can use the following. </p>
+<p><img alt="" src="../ts1.png" /></p>
+<p>As you can see, we started with one-hot vectors for the context words and and we transform them into a single vector by taking an average. As a result you end up having the following vectors that you can use for your training. </p>
+<p><img alt="" src="../ts2.png" /></p>
+<h2 id="architecture-for-the-cbow-model">Architecture for the CBOW Model<a class="headerlink" href="#architecture-for-the-cbow-model" title="Permanent link">&para;</a></h2>
+<p>The architecture for the CBOW model could be described as follows</p>
+<p><img alt="" src="../ar.png" /></p>
+<p>You have an input, X, which is the average of all context vectors. You then multiply it by W1W1​ and add b1b1​. The result goes through a ReLU function to give you your hidden layer. That layer is then multiplied by W2W2​ and you add b2b2​. The result goes through a softmax which gives you a distribution over V, vocabulary words. You pick the vocabulary word that corresponds to the arg-max of the output. </p>
+<h2 id="architecture-of-the-cbow-model-dimensions">Architecture of the CBOW Model: Dimensions<a class="headerlink" href="#architecture-of-the-cbow-model-dimensions" title="Permanent link">&para;</a></h2>
+<p>The equations for the previous model are: </p>
+<p>z1=W1x+b1</p>
+<p>h=ReLU(z1)</p>
+<p>z2=W2h+b2</p>
+<p>y^=softmax(z2)</p>
+<p>Here, you can see the dimensions: </p>
+<p><img alt="" src="../dim.png" /></p>
+<p>Make sure you go through the matrix multiplications and understand why the dimensions make sense. </p>
+<h2 id="architecture-of-the-cbow-model-dimensions_1">Architecture of the CBOW Model: Dimensions<a class="headerlink" href="#architecture-of-the-cbow-model-dimensions_1" title="Permanent link">&para;</a></h2>
+<p>When dealing with batch input, you can stack the examples as columns. You can then proceed to multiply the matrices as follows: </p>
+<p><img alt="" src="../dim2.png" /></p>
+<p>In the diagram above, you can see the dimensions of each matrix. Note that your Y<sup>Y</sup> is of dimension V by m. Each column is the prediction of the column corresponding to the context words.  So the first column in Y<sup>Y</sup> is the prediction corresponding to the first column of X. </p>
+<h2 id="architecture-of-the-cbow-model-activation-functions">Architecture of the CBOW Model: Activation Functions<a class="headerlink" href="#architecture-of-the-cbow-model-activation-functions" title="Permanent link">&para;</a></h2>
+<h3 id="relu-funciton">ReLU funciton<a class="headerlink" href="#relu-funciton" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../ReLU.png" /></p>
+<p>The rectified linear unit (ReLU), is one of the most popular activation functions. When you feed a vector, namely x, into a ReLU function. You end up taking x=max(0,x)x=max(0,x). This is a drawing that shows ReLU. </p>
+<h3 id="softmax-function">Softmax function<a class="headerlink" href="#softmax-function" title="Permanent link">&para;</a></h3>
+<p>The softmax function takes a vector and transforms it into a probability distribution. For example, given the following vector z, you can transform it into a probability distribution as follows. </p>
+<p><img alt="" src="../softmax.png" /></p>
+<p>As you can see, you can compute  <span class="arithmatex">\(<span class="arithmatex">\(y^=ezi/∑j=1Vezj\)</span>\)</span></p>
+<h2 id="training-a-cbow-model-cost-function">Training a CBOW Model: Cost Function<a class="headerlink" href="#training-a-cbow-model-cost-function" title="Permanent link">&para;</a></h2>
+<p>The cost function for the CBOW model is a cross-entropy loss defined as: </p>
+<div class="arithmatex">\[J=−∑k=1Vyklog⁡y^k\]</div>
+<p>Here is an example where you use the equation above. </p>
+<p><img alt="" src="../log.png" /></p>
+<p>Why is the cost 4.61 in the example above? </p>
+<h2 id="training-a-cbow-model-forward-propagation">Training a CBOW Model: Forward Propagation<a class="headerlink" href="#training-a-cbow-model-forward-propagation" title="Permanent link">&para;</a></h2>
+<p>Forward propagation is defined as: </p>
+<p>Z1=W1X+B1</p>
+<p>H=ReLU(Z1)</p>
+<p>Z2=W2H+B2</p>
+<p>Y^=softmax(Z2)</p>
+<p>In the image below you start from the left and you forward propagate all the way to the right. </p>
+<p><img alt="" src="../cost.png" /></p>
+<p>To calculate the loss of a batch, you have to compute the following: </p>
+<div class="arithmatex">\[Jbatch=−1m∑1m∑j=1Vyj(i)log⁡y^j(i)\]</div>
+<p>Given, your predicted center word matrix, and actual center word matrix, you can compute the loss. </p>
+<p><img alt="" src="../y.png" /></p>
+<h2 id="training-a-cbow-model-backpropagation-and-gradient-descent">Training a CBOW Model: Backpropagation and Gradient Descent<a class="headerlink" href="#training-a-cbow-model-backpropagation-and-gradient-descent" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Backpropagation</strong>: calculate partial derivatives of cost with respect to weights and biases.</li>
+</ul>
+<p>When computing the back-prop in this model, you need to compute the following:</p>
+<p>∂Jbatch∂W1,∂Jbatch∂W2,∂Jbatch∂b1,∂Jbatch∂b2\frac{\partial J_{b a t c h}}{\partial \mathbf{W}<em a="a" b="b" c="c" h="h" t="t">{1}}, \frac{\partial J</em>}}{\partial \mathbf{W<em a="a" b="b" c="c" h="h" t="t">{2}}, \frac{\partial J</em>}}{\partial \mathbf{b<em a="a" b="b" c="c" h="h" t="t">{1}}, \frac{\partial J</em>∂W1​∂Jbatch​​,∂W2​∂Jbatch​​,∂b1​∂Jbatch​​,∂b2​∂Jbatch​​}}{\partial \mathbf{b}_{2}</p>
+<p><em>Gradient descent: **update weights and biases**</em></p>
+<p>Now to update the weights you can iterate as follows:</p>
+<p><span class="arithmatex">\(W1:=W1−α∂Jbatch ∂W1  
+W2:=W2−α∂Jbatch ∂W2
+b1:=b1−α∂Jbatch ∂b1    
+b2:=b2−α∂Jbatch ∂b2\begin{array}{l}\mathbf{W}_{\mathbf{1}}:=\mathbf{W}_{\mathbf{1}}-\alpha \frac{\partial J_{\text {batch }}}{\partial \mathbf{W}_{\mathbf{1}}} \\ \mathbf{W}_{\mathbf{2}}:=\mathbf{W}_{2}-\alpha \frac{\partial J_{\text {batch }}}{\partial \mathbf{W}_{\mathbf{2}}} \\ \mathbf{b}_{1}:=\mathbf{b}_{1}-\alpha \frac{\partial J_{\text {batch }}}{\partial \mathbf{b}_{\mathbf{1}}} \\ \mathbf{b}_{\mathbf{2}}:=\mathbf{b}_{2}-\alpha \frac{\partial J_{\text {batch }}}{\partial \mathbf{b}_{2}}\end{array}W1​:=W1​−α∂W1​∂Jbatch ​​W2​:=W2​−α∂W2​∂Jbatch ​​b1​:=b1​−α∂b1​∂Jbatch ​​b2​:=b2​−α∂b2​∂Jbatch\)</span></p>
+<p>A smaller alpha allows for more gradual updates to the weights and biases, whereas a larger number allows for a faster update of the weights. If α \alphaα is too large, you might not learn anything, if it is too small, your model will take forever to train. </p>
+<h2 id="extracting-word-embedding-vectors">Extracting Word Embedding Vectors<a class="headerlink" href="#extracting-word-embedding-vectors" title="Permanent link">&para;</a></h2>
+<p>There are two options to extract word embeddings after training the continuous bag of words model. You can use w1w1​ as follows: </p>
+<p><img alt="" src="../emb1.png" /></p>
+<p>If you were to use w1w1​, each column will correspond to the embeddings of a specific word. You can also use w2w2​ as follows: </p>
+<p><img alt="" src="../emb2.png" /></p>
+<p>The final option is to take an average of both matrices as follows: </p>
+<p><img alt="" src="../emb3.png" /></p>
+<h2 id="evaluating-word-embeddings-intrinsic-evaluation">Evaluating Word Embeddings: Intrinsic Evaluation<a class="headerlink" href="#evaluating-word-embeddings-intrinsic-evaluation" title="Permanent link">&para;</a></h2>
+<p>Intrinsic evaluation allows you to test relationships between words. It allows you to capture semantic analogies as, “France” is to “Paris” as “Italy” is to &lt;?&gt; and also syntactic analogies as “seen” is to “saw” as “been” is to &lt;?&gt;. </p>
+<p>Ambiguous cases could be much harder to track: </p>
+<p><img alt="" src="../eval.png" /></p>
+<p>Here are a few  ways that allow to use intrinsic evaluation.</p>
+<p><img alt="" src="../eval2.png" /></p>
+<h2 id="evaluating-word-embeddings-extrinsic-evaluation">Evaluating Word Embeddings: Extrinsic Evaluation<a class="headerlink" href="#evaluating-word-embeddings-extrinsic-evaluation" title="Permanent link">&para;</a></h2>
+<p>Extrinsic evaluation tests word embeddings on external tasks like named entity recognition, parts-of-speech tagging, etc. </p>
+<div class="highlight"><pre><span></span><code>+ Evaluates actual usefulness of embeddings
+
+- Time Consuming
+
+- More difficult to trouble shoot
+</code></pre></div>
+<p>So now you know both intrinsic and extrinsic evaluation. </p>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>This week you learned the following concepts.</p>
+<div class="highlight"><pre><span></span><code>Data preparation
+
+Word representations
+
+Continuous bag-of-words model
+
+Evaluation
+</code></pre></div>
+<p>You have all the foundations now. From now on, you will start using some advanced AI libraries in the next courses. Congratulations and good luck with the assignment :) </p>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../NLP%20Specialization%20-%20Course%201/" class="md-footer__link md-footer__link--prev" aria-label="Previous: NLP Specialization - Course 1" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              NLP Specialization - Course 1
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../NLP%20Specialization%20-%20Course%203/" class="md-footer__link md-footer__link--next" aria-label="Next: NLP Specialization - Course 3" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              NLP Specialization - Course 3
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2020-2024 – Jawad Haider  <a href="#__consent">Change cookie settings</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/qalmaqihir" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/jawad-haider-uca/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/channel/UCB-D3NBU6UZ5N7IGKOJxtqQ" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://t.me/Qalmaqihir" target="_blank" rel="noopener" title="t.me" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M248 8C111.033 8 0 119.033 0 256s111.033 248 248 248 248-111.033 248-248S384.967 8 248 8Zm114.952 168.66c-3.732 39.215-19.881 134.378-28.1 178.3-3.476 18.584-10.322 24.816-16.948 25.425-14.4 1.326-25.338-9.517-39.287-18.661-21.827-14.308-34.158-23.215-55.346-37.177-24.485-16.135-8.612-25 5.342-39.5 3.652-3.793 67.107-61.51 68.335-66.746.153-.655.3-3.1-1.154-4.384s-3.59-.849-5.135-.5q-3.283.746-104.608 69.142-14.845 10.194-26.894 9.934c-8.855-.191-25.888-5.006-38.551-9.123-15.531-5.048-27.875-7.717-26.8-16.291q.84-6.7 18.45-13.7 108.446-47.248 144.628-62.3c68.872-28.647 83.183-33.623 92.511-33.789 2.052-.034 6.639.474 9.61 2.885a10.452 10.452 0 0 1 3.53 6.716 43.765 43.765 0 0 1 .417 9.769Z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/qalmaqihir" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://instagram.com/qalmaqihir" target="_blank" rel="noopener" title="instagram.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["search.share", "search.highlight", "search.sugguest", "content.code.annotate", "content.tooltips", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.e21f8df8.min.js"></script>
+      
+    
+  </body>
+</html>

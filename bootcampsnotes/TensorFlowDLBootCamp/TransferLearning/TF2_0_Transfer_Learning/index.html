@@ -1,0 +1,5428 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="All of my Computer Science & AI/ML/DL/ Book notes, BootCamp notes & Useful materials for anyone who  wants to learn; Knowledge should be free for those who need it.">
+      
+      
+        <meta name="author" content="Jawad Haider">
+      
+      
+        <link rel="canonical" href="https://qalmaqihir.github.io/bootcampsnotes/TensorFlowDLBootCamp/TransferLearning/TF2_0_Transfer_Learning/">
+      
+      <link rel="icon" href="../../../../assets/logo.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-8.5.3">
+    
+    
+      
+        <title>TF2 0 Transfer Learning - CS Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.80dcb947.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#transfer-learning" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+Follow us on
+<a href="https://twitter.com/qalmaqihir" target="_blank" rel="noopener">
+    <span class="twemoji twitter" style="color: #1DA1F2">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path
+                d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z">
+            </path>
+        </svg>
+    </span>
+    <strong>Twitter</strong>
+</a> and
+
+<a href="https://www.youtube.com/channel/UCB-D3NBU6UZ5N7IGKOJxtqQ?sub_confirmation=1" target="_blank" rel="noopener">
+    <span class="twemoji youtube" style="color: #FF0000;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+            <path
+                d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z">
+            </path>
+        </svg>
+    </span>
+    <strong>YouTube</strong>
+</a>  and stay <strong>Updated !</strong> for New Content
+
+<!-- We use the twemoji project for the pancake emoji symbol
+and for other emoji and icon purposes.
+Check them out here: https://github.com/twitter/twemoji
+-->
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="CS Notes" class="md-header__button md-logo" aria-label="CS Notes" data-md-component="logo">
+      
+  <img src="../../../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CS Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              TF2 0 Transfer Learning
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/qalmaqihir/qalmaqihir.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    qalmaqihir/qalmaqihir.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../booksnotes/" class="md-tabs__link">
+        Books Notes
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../" class="md-tabs__link md-tabs__link--active">
+        Bootcamps Notes
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../competitiveprogramming/" class="md-tabs__link">
+        Competitive Programming
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../corecs/" class="md-tabs__link">
+        Core Computer Science
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../myresearch/" class="md-tabs__link">
+        My Research
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../about/" class="md-tabs__link">
+        About
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../blogs/" class="md-tabs__link">
+        Blog
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../contact/" class="md-tabs__link">
+        Contact
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="CS Notes" class="md-nav__button md-logo" aria-label="CS Notes" data-md-component="logo">
+      
+  <img src="../../../../assets/logo.png" alt="logo">
+
+    </a>
+    CS Notes
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/qalmaqihir/qalmaqihir.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    qalmaqihir/qalmaqihir.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../..">Home</a>
+          
+            <label for="__nav_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/" class="md-nav__link">
+        Books Notes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../" class="md-nav__link">
+        Bootcamps Notes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../competitiveprogramming/" class="md-nav__link">
+        Competitive Programming
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../corecs/" class="md-nav__link">
+        Core Computer Science
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../myresearch/" class="md-nav__link">
+        My Research
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../about/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blogs/" class="md-nav__link">
+        Blogs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../contact/" class="md-nav__link">
+        Contact
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../booksnotes/">Books Notes</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Books Notes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Books Notes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../booksnotes/pythonDataScienceHandBook/">Data Science Handbook</a>
+          
+            <label for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Data Science Handbook" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Data Science Handbook
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_3" type="checkbox" id="__nav_2_2_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_2_3">
+          Chapter 2 - Introduction to Numpy
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Chapter 2 - Introduction to Numpy" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 2 - Introduction to Numpy
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/00_Understanding_Data_Types_in_Python/" class="md-nav__link">
+        00 Understanding Data Types in Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/01_basics_of_numpy_arrays/" class="md-nav__link">
+        01 basics of numpy arrays
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/02_Computation_on_NumPy_Arrays/" class="md-nav__link">
+        02 Computation on NumPy Arrays
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/03_Aggregation_Min_Max/" class="md-nav__link">
+        03 Aggregation Min Max
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/04_Computation_on_Arrays_Broadcasting/" class="md-nav__link">
+        04 Computation on Arrays Broadcasting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/05_Comparisons_%20Masks_and_Boolean_Logic/" class="md-nav__link">
+        05 Comparisons  Masks and Boolean Logic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/06_Fany_Indexing/" class="md-nav__link">
+        06 Fany Indexing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/07_Sorted_Arrays/" class="md-nav__link">
+        07 Sorted Arrays
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/08_%20Structured_Data/" class="md-nav__link">
+        08  Structured Data
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_4" type="checkbox" id="__nav_2_2_4" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_2_4">
+          Chapter 3 - Data Manipulation with Pandas
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Chapter 3 - Data Manipulation with Pandas" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 3 - Data Manipulation with Pandas
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/01_Introduction%20to%20Pandas%20Objects/" class="md-nav__link">
+        01 Introduction to Pandas Objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/02_Data%20Indexing%20and%20Selection/" class="md-nav__link">
+        02 Data Indexing and Selection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/03_Operating%20on%20Data%20in%20Pandas/" class="md-nav__link">
+        03 Operating on Data in Pandas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/04_Handling%20Missing%20Data/" class="md-nav__link">
+        04 Handling Missing Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/05_Hierarchical%20Indexing/" class="md-nav__link">
+        05 Hierarchical Indexing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/06_Combine%20dataset%20Concat%20and%20Append/" class="md-nav__link">
+        06 Combine dataset Concat and Append
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/07_Combining%20Dataset%20Merge%20and%20Join/" class="md-nav__link">
+        07 Combining Dataset Merge and Join
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/08_Aggregation%20and%20Grouping/" class="md-nav__link">
+        08 Aggregation and Grouping
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/09_Pivot%20Tables/" class="md-nav__link">
+        09 Pivot Tables
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/10_Vectoried%20String%20Operations/" class="md-nav__link">
+        10 Vectoried String Operations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/11_Working%20with%20Time%20Series/" class="md-nav__link">
+        11 Working with Time Series
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/12-Frequency%20Offset/" class="md-nav__link">
+        12 Frequency Offset
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/13_Resampling%20Shifting%20and%20Windowing/" class="md-nav__link">
+        13 Resampling Shifting and Windowing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/Example%20Visualizing%20Seattle%20Bicycle%20Counts/" class="md-nav__link">
+        Example Visualizing Seattle Bicycle Counts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/Example_%20Birthrate%20Data/" class="md-nav__link">
+        Example  Birthrate Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/Example_%20US%20States%20Data%20%28Merge%20and%20Join%29/" class="md-nav__link">
+        Example  US States Data (Merge and Join)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/Example_Recipe%20Database/" class="md-nav__link">
+        Example Recipe Database
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_5" type="checkbox" id="__nav_2_2_5" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_2_5">
+          Chapter 4 - Visualization with Matplotlib
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Chapter 4 - Visualization with Matplotlib" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Chapter 4 - Visualization with Matplotlib
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/01general%20Matplotlib%20tips/" class="md-nav__link">
+        01general Matplotlib tips
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/02simple_lineplots/" class="md-nav__link">
+        02simple lineplots
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/03simple%20scatter%20plots/" class="md-nav__link">
+        03simple scatter plots
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/04visualizing%20errors/" class="md-nav__link">
+        04visualizing errors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/05density%20and%20contour%20plots/" class="md-nav__link">
+        05density and contour plots
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/06Histograms%20Binnings%20and%20Density/" class="md-nav__link">
+        06Histograms Binnings and Density
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/07customized%20plot%20legends/" class="md-nav__link">
+        07customized plot legends
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/08customizing%20colorbar/" class="md-nav__link">
+        08customizing colorbar
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/09multiple%20subplots/" class="md-nav__link">
+        09multiple subplots
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/10text%20and%20annotation%20Example/" class="md-nav__link">
+        10text and annotation Example
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/11customizing%20ticks/" class="md-nav__link">
+        11customizing ticks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/12customizing%20matplotlib%20configuration%20and%20stylesheets/" class="md-nav__link">
+        12customizing matplotlib configuration and stylesheets
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/13threedimensional%20plotting/" class="md-nav__link">
+        13threedimensional plotting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/14_geographic%20data%20with%20basemap/" class="md-nav__link">
+        14 geographic data with basemap
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/15visualiztion%20with%20seaborn/" class="md-nav__link">
+        15visualiztion with seaborn
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/example%20California%20cities/" class="md-nav__link">
+        example California cities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/Example%20Exploring%20Marathon%20Finishing%20times/" class="md-nav__link">
+        Example Exploring Marathon Finishing times
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/Example%20Handwritten%20Digits/" class="md-nav__link">
+        Example Handwritten Digits
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/example%20surface%20temperature%20data/" class="md-nav__link">
+        Example surface temperature data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../booksnotes/pythonDataScienceHandBook/chpt4_Visualization%20with%20Matplotlib/Example%20Visualizing%20a%20Mobius%20Strip/" class="md-nav__link">
+        Example Visualizing a Mobius Strip
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../booksnotes/pythonDataScienceHandBook/">Machine Learning Handbook</a>
+          
+            <label for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Machine Learning Handbook" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Machine Learning Handbook
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../">Bootcamps Notes</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Bootcamps Notes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Bootcamps Notes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          Numpy Crash Course
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Numpy Crash Course" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Numpy Crash Course
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2_1" type="checkbox" id="__nav_3_2_1" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2_1">
+          Numpy Topics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Numpy Topics" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Numpy Topics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../numpy/00-NumPy-Arrays/" class="md-nav__link">
+        00 NumPy Arrays
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../numpy/01-NumPy-Indexing-and-Selection/" class="md-nav__link">
+        01 NumPy Indexing and Selection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../numpy/02-NumPy-Operations/" class="md-nav__link">
+        02 NumPy Operations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../numpy/03-NumPy-Exercises/" class="md-nav__link">
+        03 NumPy Exercises
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../numpy/04-NumPy-Exercises-Solutions/" class="md-nav__link">
+        04 NumPy Exercises Solutions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_3">
+          Pandas Crash Course
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Pandas Crash Course" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Pandas Crash Course
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3_1" type="checkbox" id="__nav_3_3_1" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_3_1">
+          Pandas Topics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Pandas Topics" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Pandas Topics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pandas/00-Intro-to-Pandas/" class="md-nav__link">
+        00 Intro to Pandas
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pandas/01-Series/" class="md-nav__link">
+        01 Series
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pandas/02-DataFrames/" class="md-nav__link">
+        02 DataFrames
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pandas/03-Missing-Data/" class="md-nav__link">
+        03 Missing Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pandas/04-Groupby/" class="md-nav__link">
+        04 Groupby
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pandas/05-Operations/" class="md-nav__link">
+        05 Operations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pandas/06-Data-Input-and-Output/" class="md-nav__link">
+        06 Data Input and Output
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pandas/07-Pandas-Exercises/" class="md-nav__link">
+        07 Pandas Exercises
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pandas/08-Pandas-Exercises-Solutions/" class="md-nav__link">
+        08 Pandas Exercises Solutions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_4">
+          PyTorch Baics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="PyTorch Baics" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          PyTorch Baics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4_1" type="checkbox" id="__nav_3_4_1" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_4_1">
+          PyTorch Topics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="PyTorch Topics" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          PyTorch Topics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pytorch/00-Tensor-Basics/" class="md-nav__link">
+        00 Tensor Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pytorch/01-Tensor-Operations/" class="md-nav__link">
+        01 Tensor Operations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pytorch/02-PyTorch-Basics-Exercises/" class="md-nav__link">
+        02 PyTorch Basics Exercises
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pytorch/03-PyTorch-Basics-Exercises-Solutions/" class="md-nav__link">
+        03 PyTorch Basics Exercises Solutions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_5">
+          PyTorch for Deeplearning Bootcamp
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="PyTorch for Deeplearning Bootcamp" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          PyTorch for Deeplearning Bootcamp
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5_1" type="checkbox" id="__nav_3_5_1" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_5_1">
+          ANN - Artificial Neural Networks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ANN - Artificial Neural Networks" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          ANN - Artificial Neural Networks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/00-PyTorch-Gradients/" class="md-nav__link">
+        00 PyTorch Gradients
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/01-Linear-Regression-with-PyTorch/" class="md-nav__link">
+        01 Linear Regression with PyTorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/02-DataSets-with-Pytorch/" class="md-nav__link">
+        02 DataSets with Pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/03-Basic-PyTorch-NN/" class="md-nav__link">
+        03 Basic PyTorch NN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/04a-Full-ANN-Code-Along-Regression/" class="md-nav__link">
+        04a Full ANN Code Along Regression
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/04b-Full-ANN-Code-Along-Classification/" class="md-nav__link">
+        04b Full ANN Code Along Classification
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/05-Neural-Network-Exercises/" class="md-nav__link">
+        05 Neural Network Exercises
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/06-Neural-Network-Exercises-Solutions/" class="md-nav__link">
+        06 Neural Network Exercises Solutions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/07-Recap-Saving-and-Loading-Trained-Models/" class="md-nav__link">
+        07 Recap Saving and Loading Trained Models
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5_2" type="checkbox" id="__nav_3_5_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_5_2">
+          CNN - Convolutional Neural Networks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="CNN - Convolutional Neural Networks" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          CNN - Convolutional Neural Networks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pytorchDLbootcamp/03-CNN-Convolutional-Neural-Networks/00-MNIST-ANN-Code-Along/" class="md-nav__link">
+        00 MNIST ANN Code Along
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pytorchDLbootcamp/03-CNN-Convolutional-Neural-Networks/01-MNIST-with-CNN/" class="md-nav__link">
+        01 MNIST with CNN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pytorchDLbootcamp/03-CNN-Convolutional-Neural-Networks/02-CIFAR-CNN-Code-Along/" class="md-nav__link">
+        02 CIFAR CNN Code Along
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pytorchDLbootcamp/03-CNN-Convolutional-Neural-Networks/03-Loading-Real-Image-Data/" class="md-nav__link">
+        03 Loading Real Image Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pytorchDLbootcamp/03-CNN-Convolutional-Neural-Networks/04-CNN-on-Custom-Images/" class="md-nav__link">
+        04 CNN on Custom Images
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pytorchDLbootcamp/03-CNN-Convolutional-Neural-Networks/05-CNN-Exercises/" class="md-nav__link">
+        05 CNN Exercises
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pytorchDLbootcamp/03-CNN-Convolutional-Neural-Networks/06-CNN-Exercises-Solutions/" class="md-nav__link">
+        06 CNN Exercises Solutions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5_3" type="checkbox" id="__nav_3_5_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_5_3">
+          RNN - Recurrent Neural Networks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="RNN - Recurrent Neural Networks" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          RNN - Recurrent Neural Networks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pytorchDLbootcamp/04-RNN-Recurrent-Neural-Networks/00-Basic-RNN/" class="md-nav__link">
+        00 Basic RNN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pytorchDLbootcamp/04-RNN-Recurrent-Neural-Networks/01-RNN-on-a-Time-Series/" class="md-nav__link">
+        01 RNN on a Time Series
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pytorchDLbootcamp/04-RNN-Recurrent-Neural-Networks/02-RNN-Exercises/" class="md-nav__link">
+        02 RNN Exercises
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pytorchDLbootcamp/04-RNN-Recurrent-Neural-Networks/03-RNN-Exercises-Solutions/" class="md-nav__link">
+        03 RNN Exercises Solutions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5_4" type="checkbox" id="__nav_3_5_4" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_5_4">
+          Using GPU
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Using GPU" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_5_4">
+          <span class="md-nav__icon md-icon"></span>
+          Using GPU
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pytorchDLbootcamp/05-Using-GPU/00-Using-GPU-and-CUDA/" class="md-nav__link">
+        00 Using GPU and CUDA
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5_5" type="checkbox" id="__nav_3_5_5" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_5_5">
+          NLP with PyTorch
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="NLP with PyTorch" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_5_5">
+          <span class="md-nav__icon md-icon"></span>
+          NLP with PyTorch
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pytorchDLbootcamp/06-NLP-with-PyTorch/00-RNN-for-Text-Generation%20/" class="md-nav__link">
+        00 RNN for Text Generation 
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" type="checkbox" id="__nav_3_6" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6">
+          Tensorflow for Deeplearning Bootcamp
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tensorflow for Deeplearning Bootcamp" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          Tensorflow for Deeplearning Bootcamp
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_1" type="checkbox" id="__nav_3_6_1" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_1">
+          Colab Basics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Colab Basics" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_6_1">
+          <span class="md-nav__icon md-icon"></span>
+          Colab Basics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ColabBasics/TF2_0_Demo/" class="md-nav__link">
+        TF2 0 Demo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ColabBasics/TF2_0_Installing_Tensorflow/" class="md-nav__link">
+        TF2 0 Installing Tensorflow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ColabBasics/TF2_0_Loading_Data/" class="md-nav__link">
+        TF2 0 Loading Data
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_2" type="checkbox" id="__nav_3_6_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_2">
+          Machine Learning Basics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Machine Learning Basics" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          Machine Learning Basics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MachineLearningBasics/TF2_0_Linear_Classification/" class="md-nav__link">
+        TF2 0 Linear Classification
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MachineLearningBasics/TF2_0_Linear_Regression/" class="md-nav__link">
+        TF2 0 Linear Regression
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_3" type="checkbox" id="__nav_3_6_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_3">
+          ANN - Artificial Neural Networks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ANN - Artificial Neural Networks" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_6_3">
+          <span class="md-nav__icon md-icon"></span>
+          ANN - Artificial Neural Networks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ANN/TF2_0_ANN_MNIST/" class="md-nav__link">
+        TF2 0 ANN MNIST
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ANN/TF2_0_ANN_Regression/" class="md-nav__link">
+        TF2 0 ANN Regression
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_4" type="checkbox" id="__nav_3_6_4" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_4">
+          CNN - Convolutional Neural Networks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="CNN - Convolutional Neural Networks" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_6_4">
+          <span class="md-nav__icon md-icon"></span>
+          CNN - Convolutional Neural Networks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CNN/TF2_0_Fashion_MNIST/" class="md-nav__link">
+        TF2 0 Fashion MNIST
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CNN/TF2_0_CIFAR/" class="md-nav__link">
+        TF2 0 CIFAR
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CNN/TF2_0_CIFAR_Improved/" class="md-nav__link">
+        TF2 0 CIFAR Improved
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_5" type="checkbox" id="__nav_3_6_5" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_5">
+          RNN - Recurrent Neural Network
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="RNN - Recurrent Neural Network" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_6_5">
+          <span class="md-nav__icon md-icon"></span>
+          RNN - Recurrent Neural Network
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../RNN/TF2_0_Autoregressive_Model/" class="md-nav__link">
+        TF2 0 Autoregressive Model
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../RNN/TF2_0_SimpleRNN_Sine/" class="md-nav__link">
+        TF2 0 SimpleRNN Sine
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../RNN/TF2_0_RNN_Shapes/" class="md-nav__link">
+        TF2 0 RNN Shapes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../RNN/TF2_0_LSTM_Nonlinear/" class="md-nav__link">
+        TF2 0 LSTM Nonlinear
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../RNN/TF2_0_Long_Distance/" class="md-nav__link">
+        TF2 0 Long Distance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../RNN/TF2_0_RNN_MNIST/" class="md-nav__link">
+        TF2 0 RNN MNIST
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../RNN/TF2_0_Stock_Returns/" class="md-nav__link">
+        TF2 0 Stock Returns
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_6" type="checkbox" id="__nav_3_6_6" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_6">
+          NLP - Natural Language Processing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="NLP - Natural Language Processing" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_6_6">
+          <span class="md-nav__icon md-icon"></span>
+          NLP - Natural Language Processing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NaturalLanguageProcessing/TF2_0_Text_Preprocessing/" class="md-nav__link">
+        TF2 0 Text Preprocessing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NaturalLanguageProcessing/TF2_0_Spam_Detection_CNN/" class="md-nav__link">
+        TF2 0 Spam Detection CNN
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../NaturalLanguageProcessing/TF2_0_Spam_Detection_RNN/" class="md-nav__link">
+        TF2 0 Spam Detection RNN
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_7" type="checkbox" id="__nav_3_6_7" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_7">
+          Recommendar Systems
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Recommendar Systems" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_6_7">
+          <span class="md-nav__icon md-icon"></span>
+          Recommendar Systems
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../RecommenderSystem/TF2_0_Recommender_System/" class="md-nav__link">
+        TF2 0 Recommender System
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_8" type="checkbox" id="__nav_3_6_8" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_8">
+          Transfer Learning
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Transfer Learning" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_6_8">
+          <span class="md-nav__icon md-icon"></span>
+          Transfer Learning
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          TF2 0 Transfer Learning
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        TF2 0 Transfer Learning
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#transfer-learning" class="md-nav__link">
+    Transfer Learning
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TF2_0_Transfer_Learning_with_Data_Augmentation/" class="md-nav__link">
+        TF2 0 Transfer Learning with Data Augmentation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_9" type="checkbox" id="__nav_3_6_9" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_9">
+          GANs - Generative Adversarial Networks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="GANs - Generative Adversarial Networks" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_6_9">
+          <span class="md-nav__icon md-icon"></span>
+          GANs - Generative Adversarial Networks
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GANs/TF2_0_GAN/" class="md-nav__link">
+        TF2 0 GAN
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_10" type="checkbox" id="__nav_3_6_10" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_10">
+          Advance Tensorflow
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Advance Tensorflow" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_6_10">
+          <span class="md-nav__icon md-icon"></span>
+          Advance Tensorflow
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AdvanceTensorflowUage/TF2_0_Serving/" class="md-nav__link">
+        TF2 0 Serving
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AdvanceTensorflowUage/TF2_0_Mirrored_Strategy/" class="md-nav__link">
+        TF2 0 Mirrored Strategy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AdvanceTensorflowUage/TF2_0_TFLite/" class="md-nav__link">
+        TF2 0 TFLite
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../AdvanceTensorflowUage/TPU/" class="md-nav__link">
+        TPU
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6_11" type="checkbox" id="__nav_3_6_11" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_6_11">
+          Low-level Transorflow
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Low-level Transorflow" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_6_11">
+          <span class="md-nav__icon md-icon"></span>
+          Low-level Transorflow
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LowLevelTensorflow/TF2_0_Basic_Computation/" class="md-nav__link">
+        TF2 0 Basic Computation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LowLevelTensorflow/TF2_0_Variables_and_Gradient_Tape/" class="md-nav__link">
+        TF2 0 Variables and Gradient Tape
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LowLevelTensorflow/TF2_0_Build_Your_Own_Model/" class="md-nav__link">
+        TF2 0 Build Your Own Model
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../competitiveprogramming/">Competitive Programming</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Competitive Programming" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Competitive Programming
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../corecs/">Core Computer Science</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Core Computer Science" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Core Computer Science
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5_2">
+          ML Specialization
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ML Specialization" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          ML Specialization
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../corecs/ML_Specialization/ML%20Specialization%20-%20Course%201/" class="md-nav__link">
+        ML Specialization - Course 1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../corecs/ML_Specialization/ML%20Specialization%20-%20Course%202/" class="md-nav__link">
+        ML Specialization - Course 2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../corecs/ML_Specialization/ML%20Specialization%20-%20Course%203/" class="md-nav__link">
+        ML Specialization - Course 3
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" type="checkbox" id="__nav_5_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5_3">
+          NLP Specialization
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="NLP Specialization" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          NLP Specialization
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../corecs/NLP_Specialization/NLP%20Specialization%20-%20Course%201/" class="md-nav__link">
+        NLP Specialization - Course 1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../corecs/NLP_Specialization/NLP%20Specialization%20-%20Course%202/" class="md-nav__link">
+        NLP Specialization - Course 2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../corecs/NLP_Specialization/NLP%20Specialization%20-%20Course%203/" class="md-nav__link">
+        NLP Specialization - Course 3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../corecs/NLP_Specialization/NLP%20Specialization%20-%20Course%204/" class="md-nav__link">
+        NLP Specialization - Course 4
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" type="checkbox" id="__nav_5_4" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5_4">
+          IBM Data Science Specialization
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="IBM Data Science Specialization" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_4">
+          <span class="md-nav__icon md-icon"></span>
+          IBM Data Science Specialization
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Coming Soon" class="md-nav__link">
+        None
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_5" type="checkbox" id="__nav_5_5" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5_5">
+          NLP Specialization
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="NLP Specialization" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_5">
+          <span class="md-nav__icon md-icon"></span>
+          NLP Specialization
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Coming Soon" class="md-nav__link">
+        None
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../myresearch/">My Research</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="My Research" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          My Research
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          About
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="About" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          About
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../about/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../blogs/">Blog</a>
+          
+            <label for="__nav_8">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Blog" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Blog
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_2" type="checkbox" id="__nav_8_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_8_2">
+          2022
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="2022" data-md-level="2">
+        <label class="md-nav__title" for="__nav_8_2">
+          <span class="md-nav__icon md-icon"></span>
+          2022
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blogs/2022/How-to-use-these-resources/" class="md-nav__link">
+        How-to-use-these-resources
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blogs/2022/How-to-contribute/" class="md-nav__link">
+        How to contribute
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          Contact
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Contact" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Contact
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../contact/" class="md-nav__link">
+        Contact
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#transfer-learning" class="md-nav__link">
+    Transfer Learning
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <a href="https://github.com/qalmaqihir/qalmaqihir.github.io/edit/master/docs/bootcampsnotes/TensorFlowDLBootCamp/TransferLearning/TF2_0_Transfer_Learning.md" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+  <h1>TF2 0 Transfer Learning</h1>
+
+<p>================
+by Jawad Haider</p>
+<ul>
+<li><a href="#transfer-learning" id="toc-transfer-learning">Transfer
+  Learning</a></li>
+</ul>
+<h2 id="transfer-learning">Transfer Learning<a class="headerlink" href="#transfer-learning" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Install TensorFlow</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># !pip install -q tensorflow-gpu==2.0.0-rc0</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>  <span class="o">%</span><span class="n">tensorflow_version</span> <span class="mf">2.</span><span class="n">x</span>  <span class="c1"># Colab only.</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>  <span class="k">pass</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="nb">print</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>`%tensorflow_version` only switches the major version: `1.x` or `2.x`.
+You set: `2.x  # Colab only.`. This will be interpreted as: `2.x`.
+
+
+TensorFlow is already loaded. Please restart the runtime to change versions.
+2.0.0-rc0
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># More imports</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Flatten</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">from</span> <span class="nn">tensorflow.keras.applications.vgg16</span> <span class="kn">import</span> <span class="n">VGG16</span> <span class="k">as</span> <span class="n">PretrainedModel</span><span class="p">,</span> \
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>  <span class="n">preprocess_input</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Model</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="kn">from</span> <span class="nn">tensorflow.keras.optimizers</span> <span class="kn">import</span> <span class="n">SGD</span><span class="p">,</span> <span class="n">Adam</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="kn">from</span> <span class="nn">tensorflow.keras.preprocessing</span> <span class="kn">import</span> <span class="n">image</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="kn">from</span> <span class="nn">tensorflow.keras.preprocessing.image</span> <span class="kn">import</span> <span class="n">ImageDataGenerator</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Data from: https://mmspg.epfl.ch/downloads/food-image-datasets/</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># !wget --passive-ftp --prefer-family=ipv4 --ftp-user FoodImage@grebvm2.epfl.ch \</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1">#  --ftp-password Cahc1moo -nc ftp://tremplin.epfl.ch/Food-5K.zip</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="err">!</span><span class="n">wget</span> <span class="o">-</span><span class="n">nc</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">lazyprogrammer</span><span class="o">.</span><span class="n">me</span><span class="o">/</span><span class="n">course_files</span><span class="o">/</span><span class="n">Food</span><span class="o">-</span><span class="mi">5</span><span class="n">K</span><span class="o">.</span><span class="n">zip</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>File ‘Food-5K.zip’ already there; not retrieving.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="err">!</span><span class="n">unzip</span> <span class="o">-</span><span class="n">qq</span> <span class="o">-</span><span class="n">o</span> <span class="n">Food</span><span class="o">-</span><span class="mi">5</span><span class="n">K</span><span class="o">.</span><span class="n">zip</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="err">!</span><span class="n">ls</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>sample_data
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="err">!</span><span class="n">mv</span> <span class="n">Food</span><span class="o">-</span><span class="mi">5</span><span class="n">K</span><span class="o">/*</span> <span class="o">.</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="err">!</span><span class="n">ls</span> <span class="n">training</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>0_0.jpg     0_1387.jpg  0_422.jpg  0_809.jpg   1_1195.jpg  1_230.jpg  1_617.jpg
+0_1000.jpg  0_1388.jpg  0_423.jpg  0_80.jpg    1_1196.jpg  1_231.jpg  1_618.jpg
+0_1001.jpg  0_1389.jpg  0_424.jpg  0_810.jpg   1_1197.jpg  1_232.jpg  1_619.jpg
+0_1002.jpg  0_138.jpg   0_425.jpg  0_811.jpg   1_1198.jpg  1_233.jpg  1_61.jpg
+0_1003.jpg  0_1390.jpg  0_426.jpg  0_812.jpg   1_1199.jpg  1_234.jpg  1_620.jpg
+0_1004.jpg  0_1391.jpg  0_427.jpg  0_813.jpg   1_119.jpg   1_235.jpg  1_621.jpg
+0_1005.jpg  0_1392.jpg  0_428.jpg  0_814.jpg   1_11.jpg    1_236.jpg  1_622.jpg
+0_1006.jpg  0_1393.jpg  0_429.jpg  0_815.jpg   1_1200.jpg  1_237.jpg  1_623.jpg
+0_1007.jpg  0_1394.jpg  0_42.jpg   0_816.jpg   1_1201.jpg  1_238.jpg  1_624.jpg
+0_1008.jpg  0_1395.jpg  0_430.jpg  0_817.jpg   1_1202.jpg  1_239.jpg  1_625.jpg
+0_1009.jpg  0_1396.jpg  0_431.jpg  0_818.jpg   1_1203.jpg  1_23.jpg   1_626.jpg
+0_100.jpg   0_1397.jpg  0_432.jpg  0_819.jpg   1_1204.jpg  1_240.jpg  1_627.jpg
+0_1010.jpg  0_1398.jpg  0_433.jpg  0_81.jpg    1_1205.jpg  1_241.jpg  1_628.jpg
+0_1011.jpg  0_1399.jpg  0_434.jpg  0_820.jpg   1_1206.jpg  1_242.jpg  1_629.jpg
+0_1012.jpg  0_139.jpg   0_435.jpg  0_821.jpg   1_1207.jpg  1_243.jpg  1_62.jpg
+0_1013.jpg  0_13.jpg    0_436.jpg  0_822.jpg   1_1208.jpg  1_244.jpg  1_630.jpg
+0_1014.jpg  0_1400.jpg  0_437.jpg  0_823.jpg   1_1209.jpg  1_245.jpg  1_631.jpg
+0_1015.jpg  0_1401.jpg  0_438.jpg  0_824.jpg   1_120.jpg   1_246.jpg  1_632.jpg
+0_1016.jpg  0_1402.jpg  0_439.jpg  0_825.jpg   1_1210.jpg  1_247.jpg  1_633.jpg
+0_1017.jpg  0_1403.jpg  0_43.jpg   0_826.jpg   1_1211.jpg  1_248.jpg  1_634.jpg
+0_1018.jpg  0_1404.jpg  0_440.jpg  0_827.jpg   1_1212.jpg  1_249.jpg  1_635.jpg
+0_1019.jpg  0_1405.jpg  0_441.jpg  0_828.jpg   1_1213.jpg  1_24.jpg   1_636.jpg
+0_101.jpg   0_1406.jpg  0_442.jpg  0_829.jpg   1_1214.jpg  1_250.jpg  1_637.jpg
+0_1020.jpg  0_1407.jpg  0_443.jpg  0_82.jpg    1_1215.jpg  1_251.jpg  1_638.jpg
+0_1021.jpg  0_1408.jpg  0_444.jpg  0_830.jpg   1_1216.jpg  1_252.jpg  1_639.jpg
+0_1022.jpg  0_1409.jpg  0_445.jpg  0_831.jpg   1_1217.jpg  1_253.jpg  1_63.jpg
+0_1023.jpg  0_140.jpg   0_446.jpg  0_832.jpg   1_1218.jpg  1_254.jpg  1_640.jpg
+0_1024.jpg  0_1410.jpg  0_447.jpg  0_833.jpg   1_1219.jpg  1_255.jpg  1_641.jpg
+0_1025.jpg  0_1411.jpg  0_448.jpg  0_834.jpg   1_121.jpg   1_256.jpg  1_642.jpg
+0_1026.jpg  0_1412.jpg  0_449.jpg  0_835.jpg   1_1220.jpg  1_257.jpg  1_643.jpg
+0_1027.jpg  0_1413.jpg  0_44.jpg   0_836.jpg   1_1221.jpg  1_258.jpg  1_644.jpg
+0_1028.jpg  0_1414.jpg  0_450.jpg  0_837.jpg   1_1222.jpg  1_259.jpg  1_645.jpg
+0_1029.jpg  0_1415.jpg  0_451.jpg  0_838.jpg   1_1223.jpg  1_25.jpg   1_646.jpg
+0_102.jpg   0_1416.jpg  0_452.jpg  0_839.jpg   1_1224.jpg  1_260.jpg  1_647.jpg
+0_1030.jpg  0_1417.jpg  0_453.jpg  0_83.jpg    1_1225.jpg  1_261.jpg  1_648.jpg
+0_1031.jpg  0_1418.jpg  0_454.jpg  0_840.jpg   1_1226.jpg  1_262.jpg  1_649.jpg
+0_1032.jpg  0_1419.jpg  0_455.jpg  0_841.jpg   1_1227.jpg  1_263.jpg  1_64.jpg
+0_1033.jpg  0_141.jpg   0_456.jpg  0_842.jpg   1_1228.jpg  1_264.jpg  1_650.jpg
+0_1034.jpg  0_1420.jpg  0_457.jpg  0_843.jpg   1_1229.jpg  1_265.jpg  1_651.jpg
+0_1035.jpg  0_1421.jpg  0_458.jpg  0_844.jpg   1_122.jpg   1_266.jpg  1_652.jpg
+0_1036.jpg  0_1422.jpg  0_459.jpg  0_845.jpg   1_1230.jpg  1_267.jpg  1_653.jpg
+0_1037.jpg  0_1423.jpg  0_45.jpg   0_846.jpg   1_1231.jpg  1_268.jpg  1_654.jpg
+0_1038.jpg  0_1424.jpg  0_460.jpg  0_847.jpg   1_1232.jpg  1_269.jpg  1_655.jpg
+0_1039.jpg  0_1425.jpg  0_461.jpg  0_848.jpg   1_1233.jpg  1_26.jpg   1_656.jpg
+0_103.jpg   0_1426.jpg  0_462.jpg  0_849.jpg   1_1234.jpg  1_270.jpg  1_657.jpg
+0_1040.jpg  0_1427.jpg  0_463.jpg  0_84.jpg    1_1235.jpg  1_271.jpg  1_658.jpg
+0_1041.jpg  0_1428.jpg  0_464.jpg  0_850.jpg   1_1236.jpg  1_272.jpg  1_659.jpg
+0_1042.jpg  0_1429.jpg  0_465.jpg  0_851.jpg   1_1237.jpg  1_273.jpg  1_65.jpg
+0_1043.jpg  0_142.jpg   0_466.jpg  0_852.jpg   1_1238.jpg  1_274.jpg  1_660.jpg
+0_1044.jpg  0_1430.jpg  0_467.jpg  0_853.jpg   1_1239.jpg  1_275.jpg  1_661.jpg
+0_1045.jpg  0_1431.jpg  0_468.jpg  0_854.jpg   1_123.jpg   1_276.jpg  1_662.jpg
+0_1046.jpg  0_1432.jpg  0_469.jpg  0_855.jpg   1_1240.jpg  1_277.jpg  1_663.jpg
+0_1047.jpg  0_1433.jpg  0_46.jpg   0_856.jpg   1_1241.jpg  1_278.jpg  1_664.jpg
+0_1048.jpg  0_1434.jpg  0_470.jpg  0_857.jpg   1_1242.jpg  1_279.jpg  1_665.jpg
+0_1049.jpg  0_1435.jpg  0_471.jpg  0_858.jpg   1_1243.jpg  1_27.jpg   1_666.jpg
+0_104.jpg   0_1436.jpg  0_472.jpg  0_859.jpg   1_1244.jpg  1_280.jpg  1_667.jpg
+0_1050.jpg  0_1437.jpg  0_473.jpg  0_85.jpg    1_1245.jpg  1_281.jpg  1_668.jpg
+0_1051.jpg  0_1438.jpg  0_474.jpg  0_860.jpg   1_1246.jpg  1_282.jpg  1_669.jpg
+0_1052.jpg  0_1439.jpg  0_475.jpg  0_861.jpg   1_1247.jpg  1_283.jpg  1_66.jpg
+0_1053.jpg  0_143.jpg   0_476.jpg  0_862.jpg   1_1248.jpg  1_284.jpg  1_670.jpg
+0_1054.jpg  0_1440.jpg  0_477.jpg  0_863.jpg   1_1249.jpg  1_285.jpg  1_671.jpg
+0_1055.jpg  0_1441.jpg  0_478.jpg  0_864.jpg   1_124.jpg   1_286.jpg  1_672.jpg
+0_1056.jpg  0_1442.jpg  0_479.jpg  0_865.jpg   1_1250.jpg  1_287.jpg  1_673.jpg
+0_1057.jpg  0_1443.jpg  0_47.jpg   0_866.jpg   1_1251.jpg  1_288.jpg  1_674.jpg
+0_1058.jpg  0_1444.jpg  0_480.jpg  0_867.jpg   1_1252.jpg  1_289.jpg  1_675.jpg
+0_1059.jpg  0_1445.jpg  0_481.jpg  0_868.jpg   1_1253.jpg  1_28.jpg   1_676.jpg
+0_105.jpg   0_1446.jpg  0_482.jpg  0_869.jpg   1_1254.jpg  1_290.jpg  1_677.jpg
+0_1060.jpg  0_1447.jpg  0_483.jpg  0_86.jpg    1_1255.jpg  1_291.jpg  1_678.jpg
+0_1061.jpg  0_1448.jpg  0_484.jpg  0_870.jpg   1_1256.jpg  1_292.jpg  1_679.jpg
+0_1062.jpg  0_1449.jpg  0_485.jpg  0_871.jpg   1_1257.jpg  1_293.jpg  1_67.jpg
+0_1063.jpg  0_144.jpg   0_486.jpg  0_872.jpg   1_1258.jpg  1_294.jpg  1_680.jpg
+0_1064.jpg  0_1450.jpg  0_487.jpg  0_873.jpg   1_1259.jpg  1_295.jpg  1_681.jpg
+0_1065.jpg  0_1451.jpg  0_488.jpg  0_874.jpg   1_125.jpg   1_296.jpg  1_682.jpg
+0_1066.jpg  0_1452.jpg  0_489.jpg  0_875.jpg   1_1260.jpg  1_297.jpg  1_683.jpg
+0_1067.jpg  0_1453.jpg  0_48.jpg   0_876.jpg   1_1261.jpg  1_298.jpg  1_684.jpg
+0_1068.jpg  0_1454.jpg  0_490.jpg  0_877.jpg   1_1262.jpg  1_299.jpg  1_685.jpg
+0_1069.jpg  0_1455.jpg  0_491.jpg  0_878.jpg   1_1263.jpg  1_29.jpg   1_686.jpg
+0_106.jpg   0_1456.jpg  0_492.jpg  0_879.jpg   1_1264.jpg  1_2.jpg    1_687.jpg
+0_1070.jpg  0_1457.jpg  0_493.jpg  0_87.jpg    1_1265.jpg  1_300.jpg  1_688.jpg
+0_1071.jpg  0_1458.jpg  0_494.jpg  0_880.jpg   1_1266.jpg  1_301.jpg  1_689.jpg
+0_1072.jpg  0_1459.jpg  0_495.jpg  0_881.jpg   1_1267.jpg  1_302.jpg  1_68.jpg
+0_1073.jpg  0_145.jpg   0_496.jpg  0_882.jpg   1_1268.jpg  1_303.jpg  1_690.jpg
+0_1074.jpg  0_1460.jpg  0_497.jpg  0_883.jpg   1_1269.jpg  1_304.jpg  1_691.jpg
+0_1075.jpg  0_1461.jpg  0_498.jpg  0_884.jpg   1_126.jpg   1_305.jpg  1_692.jpg
+0_1076.jpg  0_1462.jpg  0_499.jpg  0_885.jpg   1_1270.jpg  1_306.jpg  1_693.jpg
+0_1077.jpg  0_1463.jpg  0_49.jpg   0_886.jpg   1_1271.jpg  1_307.jpg  1_694.jpg
+0_1078.jpg  0_1464.jpg  0_4.jpg    0_887.jpg   1_1272.jpg  1_308.jpg  1_695.jpg
+0_1079.jpg  0_1465.jpg  0_500.jpg  0_888.jpg   1_1273.jpg  1_309.jpg  1_696.jpg
+0_107.jpg   0_1466.jpg  0_501.jpg  0_889.jpg   1_1274.jpg  1_30.jpg   1_697.jpg
+0_1080.jpg  0_1467.jpg  0_502.jpg  0_88.jpg    1_1275.jpg  1_310.jpg  1_698.jpg
+0_1081.jpg  0_1468.jpg  0_503.jpg  0_890.jpg   1_1276.jpg  1_311.jpg  1_699.jpg
+0_1082.jpg  0_1469.jpg  0_504.jpg  0_891.jpg   1_1277.jpg  1_312.jpg  1_69.jpg
+0_1083.jpg  0_146.jpg   0_505.jpg  0_892.jpg   1_1278.jpg  1_313.jpg  1_6.jpg
+0_1084.jpg  0_1470.jpg  0_506.jpg  0_893.jpg   1_1279.jpg  1_314.jpg  1_700.jpg
+0_1085.jpg  0_1471.jpg  0_507.jpg  0_894.jpg   1_127.jpg   1_315.jpg  1_701.jpg
+0_1086.jpg  0_1472.jpg  0_508.jpg  0_895.jpg   1_1280.jpg  1_316.jpg  1_702.jpg
+0_1087.jpg  0_1473.jpg  0_509.jpg  0_896.jpg   1_1281.jpg  1_317.jpg  1_703.jpg
+0_1088.jpg  0_1474.jpg  0_50.jpg   0_897.jpg   1_1282.jpg  1_318.jpg  1_704.jpg
+0_1089.jpg  0_1475.jpg  0_510.jpg  0_898.jpg   1_1283.jpg  1_319.jpg  1_705.jpg
+0_108.jpg   0_1476.jpg  0_511.jpg  0_899.jpg   1_1284.jpg  1_31.jpg   1_706.jpg
+0_1090.jpg  0_1477.jpg  0_512.jpg  0_89.jpg    1_1285.jpg  1_320.jpg  1_707.jpg
+0_1091.jpg  0_1478.jpg  0_513.jpg  0_8.jpg     1_1286.jpg  1_321.jpg  1_708.jpg
+0_1092.jpg  0_1479.jpg  0_514.jpg  0_900.jpg   1_1287.jpg  1_322.jpg  1_709.jpg
+0_1093.jpg  0_147.jpg   0_515.jpg  0_901.jpg   1_1288.jpg  1_323.jpg  1_70.jpg
+0_1094.jpg  0_1480.jpg  0_516.jpg  0_902.jpg   1_1289.jpg  1_324.jpg  1_710.jpg
+0_1095.jpg  0_1481.jpg  0_517.jpg  0_903.jpg   1_128.jpg   1_325.jpg  1_711.jpg
+0_1096.jpg  0_1482.jpg  0_518.jpg  0_904.jpg   1_1290.jpg  1_326.jpg  1_712.jpg
+0_1097.jpg  0_1483.jpg  0_519.jpg  0_905.jpg   1_1291.jpg  1_327.jpg  1_713.jpg
+0_1098.jpg  0_1484.jpg  0_51.jpg   0_906.jpg   1_1292.jpg  1_328.jpg  1_714.jpg
+0_1099.jpg  0_1485.jpg  0_520.jpg  0_907.jpg   1_1293.jpg  1_329.jpg  1_715.jpg
+0_109.jpg   0_1486.jpg  0_521.jpg  0_908.jpg   1_1294.jpg  1_32.jpg   1_716.jpg
+0_10.jpg    0_1487.jpg  0_522.jpg  0_909.jpg   1_1295.jpg  1_330.jpg  1_717.jpg
+0_1100.jpg  0_1488.jpg  0_523.jpg  0_90.jpg    1_1296.jpg  1_331.jpg  1_718.jpg
+0_1101.jpg  0_1489.jpg  0_524.jpg  0_910.jpg   1_1297.jpg  1_332.jpg  1_719.jpg
+0_1102.jpg  0_148.jpg   0_525.jpg  0_911.jpg   1_1298.jpg  1_333.jpg  1_71.jpg
+0_1103.jpg  0_1490.jpg  0_526.jpg  0_912.jpg   1_1299.jpg  1_334.jpg  1_720.jpg
+0_1104.jpg  0_1491.jpg  0_527.jpg  0_913.jpg   1_129.jpg   1_335.jpg  1_721.jpg
+0_1105.jpg  0_1492.jpg  0_528.jpg  0_914.jpg   1_12.jpg    1_336.jpg  1_722.jpg
+0_1106.jpg  0_1493.jpg  0_529.jpg  0_915.jpg   1_1300.jpg  1_337.jpg  1_723.jpg
+0_1107.jpg  0_1494.jpg  0_52.jpg   0_916.jpg   1_1301.jpg  1_338.jpg  1_724.jpg
+0_1108.jpg  0_1495.jpg  0_530.jpg  0_917.jpg   1_1302.jpg  1_339.jpg  1_725.jpg
+0_1109.jpg  0_1496.jpg  0_531.jpg  0_918.jpg   1_1303.jpg  1_33.jpg   1_726.jpg
+0_110.jpg   0_1497.jpg  0_532.jpg  0_919.jpg   1_1304.jpg  1_340.jpg  1_727.jpg
+0_1110.jpg  0_1498.jpg  0_533.jpg  0_91.jpg    1_1305.jpg  1_341.jpg  1_728.jpg
+0_1111.jpg  0_1499.jpg  0_534.jpg  0_920.jpg   1_1306.jpg  1_342.jpg  1_729.jpg
+0_1112.jpg  0_149.jpg   0_535.jpg  0_921.jpg   1_1307.jpg  1_343.jpg  1_72.jpg
+0_1113.jpg  0_14.jpg    0_536.jpg  0_922.jpg   1_1308.jpg  1_344.jpg  1_730.jpg
+0_1114.jpg  0_150.jpg   0_537.jpg  0_923.jpg   1_1309.jpg  1_345.jpg  1_731.jpg
+0_1115.jpg  0_151.jpg   0_538.jpg  0_924.jpg   1_130.jpg   1_346.jpg  1_732.jpg
+0_1116.jpg  0_152.jpg   0_539.jpg  0_925.jpg   1_1310.jpg  1_347.jpg  1_733.jpg
+0_1117.jpg  0_153.jpg   0_53.jpg   0_926.jpg   1_1311.jpg  1_348.jpg  1_734.jpg
+0_1118.jpg  0_154.jpg   0_540.jpg  0_927.jpg   1_1312.jpg  1_349.jpg  1_735.jpg
+0_1119.jpg  0_155.jpg   0_541.jpg  0_928.jpg   1_1313.jpg  1_34.jpg   1_736.jpg
+0_111.jpg   0_156.jpg   0_542.jpg  0_929.jpg   1_1314.jpg  1_350.jpg  1_737.jpg
+0_1120.jpg  0_157.jpg   0_543.jpg  0_92.jpg    1_1315.jpg  1_351.jpg  1_738.jpg
+0_1121.jpg  0_158.jpg   0_544.jpg  0_930.jpg   1_1316.jpg  1_352.jpg  1_739.jpg
+0_1122.jpg  0_159.jpg   0_545.jpg  0_931.jpg   1_1317.jpg  1_353.jpg  1_73.jpg
+0_1123.jpg  0_15.jpg    0_546.jpg  0_932.jpg   1_1318.jpg  1_354.jpg  1_740.jpg
+0_1124.jpg  0_160.jpg   0_547.jpg  0_933.jpg   1_1319.jpg  1_355.jpg  1_741.jpg
+0_1125.jpg  0_161.jpg   0_548.jpg  0_934.jpg   1_131.jpg   1_356.jpg  1_742.jpg
+0_1126.jpg  0_162.jpg   0_549.jpg  0_935.jpg   1_1320.jpg  1_357.jpg  1_743.jpg
+0_1127.jpg  0_163.jpg   0_54.jpg   0_936.jpg   1_1321.jpg  1_358.jpg  1_744.jpg
+0_1128.jpg  0_164.jpg   0_550.jpg  0_937.jpg   1_1322.jpg  1_359.jpg  1_745.jpg
+0_1129.jpg  0_165.jpg   0_551.jpg  0_938.jpg   1_1323.jpg  1_35.jpg   1_746.jpg
+0_112.jpg   0_166.jpg   0_552.jpg  0_939.jpg   1_1324.jpg  1_360.jpg  1_747.jpg
+0_1130.jpg  0_167.jpg   0_553.jpg  0_93.jpg    1_1325.jpg  1_361.jpg  1_748.jpg
+0_1131.jpg  0_168.jpg   0_554.jpg  0_940.jpg   1_1326.jpg  1_362.jpg  1_749.jpg
+0_1132.jpg  0_169.jpg   0_555.jpg  0_941.jpg   1_1327.jpg  1_363.jpg  1_74.jpg
+0_1133.jpg  0_16.jpg    0_556.jpg  0_942.jpg   1_1328.jpg  1_364.jpg  1_750.jpg
+0_1134.jpg  0_170.jpg   0_557.jpg  0_943.jpg   1_1329.jpg  1_365.jpg  1_751.jpg
+0_1135.jpg  0_171.jpg   0_558.jpg  0_944.jpg   1_132.jpg   1_366.jpg  1_752.jpg
+0_1136.jpg  0_172.jpg   0_559.jpg  0_945.jpg   1_1330.jpg  1_367.jpg  1_753.jpg
+0_1137.jpg  0_173.jpg   0_55.jpg   0_946.jpg   1_1331.jpg  1_368.jpg  1_754.jpg
+0_1138.jpg  0_174.jpg   0_560.jpg  0_947.jpg   1_1332.jpg  1_369.jpg  1_755.jpg
+0_1139.jpg  0_175.jpg   0_561.jpg  0_948.jpg   1_1333.jpg  1_36.jpg   1_756.jpg
+0_113.jpg   0_176.jpg   0_562.jpg  0_949.jpg   1_1334.jpg  1_370.jpg  1_757.jpg
+0_1140.jpg  0_177.jpg   0_563.jpg  0_94.jpg    1_1335.jpg  1_371.jpg  1_758.jpg
+0_1141.jpg  0_178.jpg   0_564.jpg  0_950.jpg   1_1336.jpg  1_372.jpg  1_759.jpg
+0_1142.jpg  0_179.jpg   0_565.jpg  0_951.jpg   1_1337.jpg  1_373.jpg  1_75.jpg
+0_1143.jpg  0_17.jpg    0_566.jpg  0_952.jpg   1_1338.jpg  1_374.jpg  1_760.jpg
+0_1144.jpg  0_180.jpg   0_567.jpg  0_953.jpg   1_1339.jpg  1_375.jpg  1_761.jpg
+0_1145.jpg  0_181.jpg   0_568.jpg  0_954.jpg   1_133.jpg   1_376.jpg  1_762.jpg
+0_1146.jpg  0_182.jpg   0_569.jpg  0_955.jpg   1_1340.jpg  1_377.jpg  1_763.jpg
+0_1147.jpg  0_183.jpg   0_56.jpg   0_956.jpg   1_1341.jpg  1_378.jpg  1_764.jpg
+0_1148.jpg  0_184.jpg   0_570.jpg  0_957.jpg   1_1342.jpg  1_379.jpg  1_765.jpg
+0_1149.jpg  0_185.jpg   0_571.jpg  0_958.jpg   1_1343.jpg  1_37.jpg   1_766.jpg
+0_114.jpg   0_186.jpg   0_572.jpg  0_959.jpg   1_1344.jpg  1_380.jpg  1_767.jpg
+0_1150.jpg  0_187.jpg   0_573.jpg  0_95.jpg    1_1345.jpg  1_381.jpg  1_768.jpg
+0_1151.jpg  0_188.jpg   0_574.jpg  0_960.jpg   1_1346.jpg  1_382.jpg  1_769.jpg
+0_1152.jpg  0_189.jpg   0_575.jpg  0_961.jpg   1_1347.jpg  1_383.jpg  1_76.jpg
+0_1153.jpg  0_18.jpg    0_576.jpg  0_962.jpg   1_1348.jpg  1_384.jpg  1_770.jpg
+0_1154.jpg  0_190.jpg   0_577.jpg  0_963.jpg   1_1349.jpg  1_385.jpg  1_771.jpg
+0_1155.jpg  0_191.jpg   0_578.jpg  0_964.jpg   1_134.jpg   1_386.jpg  1_772.jpg
+0_1156.jpg  0_192.jpg   0_579.jpg  0_965.jpg   1_1350.jpg  1_387.jpg  1_773.jpg
+0_1157.jpg  0_193.jpg   0_57.jpg   0_966.jpg   1_1351.jpg  1_388.jpg  1_774.jpg
+0_1158.jpg  0_194.jpg   0_580.jpg  0_967.jpg   1_1352.jpg  1_389.jpg  1_775.jpg
+0_1159.jpg  0_195.jpg   0_581.jpg  0_968.jpg   1_1353.jpg  1_38.jpg   1_776.jpg
+0_115.jpg   0_196.jpg   0_582.jpg  0_969.jpg   1_1354.jpg  1_390.jpg  1_777.jpg
+0_1160.jpg  0_197.jpg   0_583.jpg  0_96.jpg    1_1355.jpg  1_391.jpg  1_778.jpg
+0_1161.jpg  0_198.jpg   0_584.jpg  0_970.jpg   1_1356.jpg  1_392.jpg  1_779.jpg
+0_1162.jpg  0_199.jpg   0_585.jpg  0_971.jpg   1_1357.jpg  1_393.jpg  1_77.jpg
+0_1163.jpg  0_19.jpg    0_586.jpg  0_972.jpg   1_1358.jpg  1_394.jpg  1_780.jpg
+0_1164.jpg  0_1.jpg 0_587.jpg  0_973.jpg   1_1359.jpg  1_395.jpg  1_781.jpg
+0_1165.jpg  0_200.jpg   0_588.jpg  0_974.jpg   1_135.jpg   1_396.jpg  1_782.jpg
+0_1166.jpg  0_201.jpg   0_589.jpg  0_975.jpg   1_1360.jpg  1_397.jpg  1_783.jpg
+0_1167.jpg  0_202.jpg   0_58.jpg   0_976.jpg   1_1361.jpg  1_398.jpg  1_784.jpg
+0_1168.jpg  0_203.jpg   0_590.jpg  0_977.jpg   1_1362.jpg  1_399.jpg  1_785.jpg
+0_1169.jpg  0_204.jpg   0_591.jpg  0_978.jpg   1_1363.jpg  1_39.jpg   1_786.jpg
+0_116.jpg   0_205.jpg   0_592.jpg  0_979.jpg   1_1364.jpg  1_3.jpg    1_787.jpg
+0_1170.jpg  0_206.jpg   0_593.jpg  0_97.jpg    1_1365.jpg  1_400.jpg  1_788.jpg
+0_1171.jpg  0_207.jpg   0_594.jpg  0_980.jpg   1_1366.jpg  1_401.jpg  1_789.jpg
+0_1172.jpg  0_208.jpg   0_595.jpg  0_981.jpg   1_1367.jpg  1_402.jpg  1_78.jpg
+0_1173.jpg  0_209.jpg   0_596.jpg  0_982.jpg   1_1368.jpg  1_403.jpg  1_790.jpg
+0_1174.jpg  0_20.jpg    0_597.jpg  0_983.jpg   1_1369.jpg  1_404.jpg  1_791.jpg
+0_1175.jpg  0_210.jpg   0_598.jpg  0_984.jpg   1_136.jpg   1_405.jpg  1_792.jpg
+0_1176.jpg  0_211.jpg   0_599.jpg  0_985.jpg   1_1370.jpg  1_406.jpg  1_793.jpg
+0_1177.jpg  0_212.jpg   0_59.jpg   0_986.jpg   1_1371.jpg  1_407.jpg  1_794.jpg
+0_1178.jpg  0_213.jpg   0_5.jpg    0_987.jpg   1_1372.jpg  1_408.jpg  1_795.jpg
+0_1179.jpg  0_214.jpg   0_600.jpg  0_988.jpg   1_1373.jpg  1_409.jpg  1_796.jpg
+0_117.jpg   0_215.jpg   0_601.jpg  0_989.jpg   1_1374.jpg  1_40.jpg   1_797.jpg
+0_1180.jpg  0_216.jpg   0_602.jpg  0_98.jpg    1_1375.jpg  1_410.jpg  1_798.jpg
+0_1181.jpg  0_217.jpg   0_603.jpg  0_990.jpg   1_1376.jpg  1_411.jpg  1_799.jpg
+0_1182.jpg  0_218.jpg   0_604.jpg  0_991.jpg   1_1377.jpg  1_412.jpg  1_79.jpg
+0_1183.jpg  0_219.jpg   0_605.jpg  0_992.jpg   1_1378.jpg  1_413.jpg  1_7.jpg
+0_1184.jpg  0_21.jpg    0_606.jpg  0_993.jpg   1_1379.jpg  1_414.jpg  1_800.jpg
+0_1185.jpg  0_220.jpg   0_607.jpg  0_994.jpg   1_137.jpg   1_415.jpg  1_801.jpg
+0_1186.jpg  0_221.jpg   0_608.jpg  0_995.jpg   1_1380.jpg  1_416.jpg  1_802.jpg
+0_1187.jpg  0_222.jpg   0_609.jpg  0_996.jpg   1_1381.jpg  1_417.jpg  1_803.jpg
+0_1188.jpg  0_223.jpg   0_60.jpg   0_997.jpg   1_1382.jpg  1_418.jpg  1_804.jpg
+0_1189.jpg  0_224.jpg   0_610.jpg  0_998.jpg   1_1383.jpg  1_419.jpg  1_805.jpg
+0_118.jpg   0_225.jpg   0_611.jpg  0_999.jpg   1_1384.jpg  1_41.jpg   1_806.jpg
+0_1190.jpg  0_226.jpg   0_612.jpg  0_99.jpg    1_1385.jpg  1_420.jpg  1_807.jpg
+0_1191.jpg  0_227.jpg   0_613.jpg  0_9.jpg     1_1386.jpg  1_421.jpg  1_808.jpg
+0_1192.jpg  0_228.jpg   0_614.jpg  1_0.jpg     1_1387.jpg  1_422.jpg  1_809.jpg
+0_1193.jpg  0_229.jpg   0_615.jpg  1_1000.jpg  1_1388.jpg  1_423.jpg  1_80.jpg
+0_1194.jpg  0_22.jpg    0_616.jpg  1_1001.jpg  1_1389.jpg  1_424.jpg  1_810.jpg
+0_1195.jpg  0_230.jpg   0_617.jpg  1_1002.jpg  1_138.jpg   1_425.jpg  1_811.jpg
+0_1196.jpg  0_231.jpg   0_618.jpg  1_1003.jpg  1_1390.jpg  1_426.jpg  1_812.jpg
+0_1197.jpg  0_232.jpg   0_619.jpg  1_1004.jpg  1_1391.jpg  1_427.jpg  1_813.jpg
+0_1198.jpg  0_233.jpg   0_61.jpg   1_1005.jpg  1_1392.jpg  1_428.jpg  1_814.jpg
+0_1199.jpg  0_234.jpg   0_620.jpg  1_1006.jpg  1_1393.jpg  1_429.jpg  1_815.jpg
+0_119.jpg   0_235.jpg   0_621.jpg  1_1007.jpg  1_1394.jpg  1_42.jpg   1_816.jpg
+0_11.jpg    0_236.jpg   0_622.jpg  1_1008.jpg  1_1395.jpg  1_430.jpg  1_817.jpg
+0_1200.jpg  0_237.jpg   0_623.jpg  1_1009.jpg  1_1396.jpg  1_431.jpg  1_818.jpg
+0_1201.jpg  0_238.jpg   0_624.jpg  1_100.jpg   1_1397.jpg  1_432.jpg  1_819.jpg
+0_1202.jpg  0_239.jpg   0_625.jpg  1_1010.jpg  1_1398.jpg  1_433.jpg  1_81.jpg
+0_1203.jpg  0_23.jpg    0_626.jpg  1_1011.jpg  1_1399.jpg  1_434.jpg  1_820.jpg
+0_1204.jpg  0_240.jpg   0_627.jpg  1_1012.jpg  1_139.jpg   1_435.jpg  1_821.jpg
+0_1205.jpg  0_241.jpg   0_628.jpg  1_1013.jpg  1_13.jpg    1_436.jpg  1_822.jpg
+0_1206.jpg  0_242.jpg   0_629.jpg  1_1014.jpg  1_1400.jpg  1_437.jpg  1_823.jpg
+0_1207.jpg  0_243.jpg   0_62.jpg   1_1015.jpg  1_1401.jpg  1_438.jpg  1_824.jpg
+0_1208.jpg  0_244.jpg   0_630.jpg  1_1016.jpg  1_1402.jpg  1_439.jpg  1_825.jpg
+0_1209.jpg  0_245.jpg   0_631.jpg  1_1017.jpg  1_1403.jpg  1_43.jpg   1_826.jpg
+0_120.jpg   0_246.jpg   0_632.jpg  1_1018.jpg  1_1404.jpg  1_440.jpg  1_827.jpg
+0_1210.jpg  0_247.jpg   0_633.jpg  1_1019.jpg  1_1405.jpg  1_441.jpg  1_828.jpg
+0_1211.jpg  0_248.jpg   0_634.jpg  1_101.jpg   1_1406.jpg  1_442.jpg  1_829.jpg
+0_1212.jpg  0_249.jpg   0_635.jpg  1_1020.jpg  1_1407.jpg  1_443.jpg  1_82.jpg
+0_1213.jpg  0_24.jpg    0_636.jpg  1_1021.jpg  1_1408.jpg  1_444.jpg  1_830.jpg
+0_1214.jpg  0_250.jpg   0_637.jpg  1_1022.jpg  1_1409.jpg  1_445.jpg  1_831.jpg
+0_1215.jpg  0_251.jpg   0_638.jpg  1_1023.jpg  1_140.jpg   1_446.jpg  1_832.jpg
+0_1216.jpg  0_252.jpg   0_639.jpg  1_1024.jpg  1_1410.jpg  1_447.jpg  1_833.jpg
+0_1217.jpg  0_253.jpg   0_63.jpg   1_1025.jpg  1_1411.jpg  1_448.jpg  1_834.jpg
+0_1218.jpg  0_254.jpg   0_640.jpg  1_1026.jpg  1_1412.jpg  1_449.jpg  1_835.jpg
+0_1219.jpg  0_255.jpg   0_641.jpg  1_1027.jpg  1_1413.jpg  1_44.jpg   1_836.jpg
+0_121.jpg   0_256.jpg   0_642.jpg  1_1028.jpg  1_1414.jpg  1_450.jpg  1_837.jpg
+0_1220.jpg  0_257.jpg   0_643.jpg  1_1029.jpg  1_1415.jpg  1_451.jpg  1_838.jpg
+0_1221.jpg  0_258.jpg   0_644.jpg  1_102.jpg   1_1416.jpg  1_452.jpg  1_839.jpg
+0_1222.jpg  0_259.jpg   0_645.jpg  1_1030.jpg  1_1417.jpg  1_453.jpg  1_83.jpg
+0_1223.jpg  0_25.jpg    0_646.jpg  1_1031.jpg  1_1418.jpg  1_454.jpg  1_840.jpg
+0_1224.jpg  0_260.jpg   0_647.jpg  1_1032.jpg  1_1419.jpg  1_455.jpg  1_841.jpg
+0_1225.jpg  0_261.jpg   0_648.jpg  1_1033.jpg  1_141.jpg   1_456.jpg  1_842.jpg
+0_1226.jpg  0_262.jpg   0_649.jpg  1_1034.jpg  1_1420.jpg  1_457.jpg  1_843.jpg
+0_1227.jpg  0_263.jpg   0_64.jpg   1_1035.jpg  1_1421.jpg  1_458.jpg  1_844.jpg
+0_1228.jpg  0_264.jpg   0_650.jpg  1_1036.jpg  1_1422.jpg  1_459.jpg  1_845.jpg
+0_1229.jpg  0_265.jpg   0_651.jpg  1_1037.jpg  1_1423.jpg  1_45.jpg   1_846.jpg
+0_122.jpg   0_266.jpg   0_652.jpg  1_1038.jpg  1_1424.jpg  1_460.jpg  1_847.jpg
+0_1230.jpg  0_267.jpg   0_653.jpg  1_1039.jpg  1_1425.jpg  1_461.jpg  1_848.jpg
+0_1231.jpg  0_268.jpg   0_654.jpg  1_103.jpg   1_1426.jpg  1_462.jpg  1_849.jpg
+0_1232.jpg  0_269.jpg   0_655.jpg  1_1040.jpg  1_1427.jpg  1_463.jpg  1_84.jpg
+0_1233.jpg  0_26.jpg    0_656.jpg  1_1041.jpg  1_1428.jpg  1_464.jpg  1_850.jpg
+0_1234.jpg  0_270.jpg   0_657.jpg  1_1042.jpg  1_1429.jpg  1_465.jpg  1_851.jpg
+0_1235.jpg  0_271.jpg   0_658.jpg  1_1043.jpg  1_142.jpg   1_466.jpg  1_852.jpg
+0_1236.jpg  0_272.jpg   0_659.jpg  1_1044.jpg  1_1430.jpg  1_467.jpg  1_853.jpg
+0_1237.jpg  0_273.jpg   0_65.jpg   1_1045.jpg  1_1431.jpg  1_468.jpg  1_854.jpg
+0_1238.jpg  0_274.jpg   0_660.jpg  1_1046.jpg  1_1432.jpg  1_469.jpg  1_855.jpg
+0_1239.jpg  0_275.jpg   0_661.jpg  1_1047.jpg  1_1433.jpg  1_46.jpg   1_856.jpg
+0_123.jpg   0_276.jpg   0_662.jpg  1_1048.jpg  1_1434.jpg  1_470.jpg  1_857.jpg
+0_1240.jpg  0_277.jpg   0_663.jpg  1_1049.jpg  1_1435.jpg  1_471.jpg  1_858.jpg
+0_1241.jpg  0_278.jpg   0_664.jpg  1_104.jpg   1_1436.jpg  1_472.jpg  1_859.jpg
+0_1242.jpg  0_279.jpg   0_665.jpg  1_1050.jpg  1_1437.jpg  1_473.jpg  1_85.jpg
+0_1243.jpg  0_27.jpg    0_666.jpg  1_1051.jpg  1_1438.jpg  1_474.jpg  1_860.jpg
+0_1244.jpg  0_280.jpg   0_667.jpg  1_1052.jpg  1_1439.jpg  1_475.jpg  1_861.jpg
+0_1245.jpg  0_281.jpg   0_668.jpg  1_1053.jpg  1_143.jpg   1_476.jpg  1_862.jpg
+0_1246.jpg  0_282.jpg   0_669.jpg  1_1054.jpg  1_1440.jpg  1_477.jpg  1_863.jpg
+0_1247.jpg  0_283.jpg   0_66.jpg   1_1055.jpg  1_1441.jpg  1_478.jpg  1_864.jpg
+0_1248.jpg  0_284.jpg   0_670.jpg  1_1056.jpg  1_1442.jpg  1_479.jpg  1_865.jpg
+0_1249.jpg  0_285.jpg   0_671.jpg  1_1057.jpg  1_1443.jpg  1_47.jpg   1_866.jpg
+0_124.jpg   0_286.jpg   0_672.jpg  1_1058.jpg  1_1444.jpg  1_480.jpg  1_867.jpg
+0_1250.jpg  0_287.jpg   0_673.jpg  1_1059.jpg  1_1445.jpg  1_481.jpg  1_868.jpg
+0_1251.jpg  0_288.jpg   0_674.jpg  1_105.jpg   1_1446.jpg  1_482.jpg  1_869.jpg
+0_1252.jpg  0_289.jpg   0_675.jpg  1_1060.jpg  1_1447.jpg  1_483.jpg  1_86.jpg
+0_1253.jpg  0_28.jpg    0_676.jpg  1_1061.jpg  1_1448.jpg  1_484.jpg  1_870.jpg
+0_1254.jpg  0_290.jpg   0_677.jpg  1_1062.jpg  1_1449.jpg  1_485.jpg  1_871.jpg
+0_1255.jpg  0_291.jpg   0_678.jpg  1_1063.jpg  1_144.jpg   1_486.jpg  1_872.jpg
+0_1256.jpg  0_292.jpg   0_679.jpg  1_1064.jpg  1_1450.jpg  1_487.jpg  1_873.jpg
+0_1257.jpg  0_293.jpg   0_67.jpg   1_1065.jpg  1_1451.jpg  1_488.jpg  1_874.jpg
+0_1258.jpg  0_294.jpg   0_680.jpg  1_1066.jpg  1_1452.jpg  1_489.jpg  1_875.jpg
+0_1259.jpg  0_295.jpg   0_681.jpg  1_1067.jpg  1_1453.jpg  1_48.jpg   1_876.jpg
+0_125.jpg   0_296.jpg   0_682.jpg  1_1068.jpg  1_1454.jpg  1_490.jpg  1_877.jpg
+0_1260.jpg  0_297.jpg   0_683.jpg  1_1069.jpg  1_1455.jpg  1_491.jpg  1_878.jpg
+0_1261.jpg  0_298.jpg   0_684.jpg  1_106.jpg   1_1456.jpg  1_492.jpg  1_879.jpg
+0_1262.jpg  0_299.jpg   0_685.jpg  1_1070.jpg  1_1457.jpg  1_493.jpg  1_87.jpg
+0_1263.jpg  0_29.jpg    0_686.jpg  1_1071.jpg  1_1458.jpg  1_494.jpg  1_880.jpg
+0_1264.jpg  0_2.jpg 0_687.jpg  1_1072.jpg  1_1459.jpg  1_495.jpg  1_881.jpg
+0_1265.jpg  0_300.jpg   0_688.jpg  1_1073.jpg  1_145.jpg   1_496.jpg  1_882.jpg
+0_1266.jpg  0_301.jpg   0_689.jpg  1_1074.jpg  1_1460.jpg  1_497.jpg  1_883.jpg
+0_1267.jpg  0_302.jpg   0_68.jpg   1_1075.jpg  1_1461.jpg  1_498.jpg  1_884.jpg
+0_1268.jpg  0_303.jpg   0_690.jpg  1_1076.jpg  1_1462.jpg  1_499.jpg  1_885.jpg
+0_1269.jpg  0_304.jpg   0_691.jpg  1_1077.jpg  1_1463.jpg  1_49.jpg   1_886.jpg
+0_126.jpg   0_305.jpg   0_692.jpg  1_1078.jpg  1_1464.jpg  1_4.jpg    1_887.jpg
+0_1270.jpg  0_306.jpg   0_693.jpg  1_1079.jpg  1_1465.jpg  1_500.jpg  1_888.jpg
+0_1271.jpg  0_307.jpg   0_694.jpg  1_107.jpg   1_1466.jpg  1_501.jpg  1_889.jpg
+0_1272.jpg  0_308.jpg   0_695.jpg  1_1080.jpg  1_1467.jpg  1_502.jpg  1_88.jpg
+0_1273.jpg  0_309.jpg   0_696.jpg  1_1081.jpg  1_1468.jpg  1_503.jpg  1_890.jpg
+0_1274.jpg  0_30.jpg    0_697.jpg  1_1082.jpg  1_1469.jpg  1_504.jpg  1_891.jpg
+0_1275.jpg  0_310.jpg   0_698.jpg  1_1083.jpg  1_146.jpg   1_505.jpg  1_892.jpg
+0_1276.jpg  0_311.jpg   0_699.jpg  1_1084.jpg  1_1470.jpg  1_506.jpg  1_893.jpg
+0_1277.jpg  0_312.jpg   0_69.jpg   1_1085.jpg  1_1471.jpg  1_507.jpg  1_894.jpg
+0_1278.jpg  0_313.jpg   0_6.jpg    1_1086.jpg  1_1472.jpg  1_508.jpg  1_895.jpg
+0_1279.jpg  0_314.jpg   0_700.jpg  1_1087.jpg  1_1473.jpg  1_509.jpg  1_896.jpg
+0_127.jpg   0_315.jpg   0_701.jpg  1_1088.jpg  1_1474.jpg  1_50.jpg   1_897.jpg
+0_1280.jpg  0_316.jpg   0_702.jpg  1_1089.jpg  1_1475.jpg  1_510.jpg  1_898.jpg
+0_1281.jpg  0_317.jpg   0_703.jpg  1_108.jpg   1_1476.jpg  1_511.jpg  1_899.jpg
+0_1282.jpg  0_318.jpg   0_704.jpg  1_1090.jpg  1_1477.jpg  1_512.jpg  1_89.jpg
+0_1283.jpg  0_319.jpg   0_705.jpg  1_1091.jpg  1_1478.jpg  1_513.jpg  1_8.jpg
+0_1284.jpg  0_31.jpg    0_706.jpg  1_1092.jpg  1_1479.jpg  1_514.jpg  1_900.jpg
+0_1285.jpg  0_320.jpg   0_707.jpg  1_1093.jpg  1_147.jpg   1_515.jpg  1_901.jpg
+0_1286.jpg  0_321.jpg   0_708.jpg  1_1094.jpg  1_1480.jpg  1_516.jpg  1_902.jpg
+0_1287.jpg  0_322.jpg   0_709.jpg  1_1095.jpg  1_1481.jpg  1_517.jpg  1_903.jpg
+0_1288.jpg  0_323.jpg   0_70.jpg   1_1096.jpg  1_1482.jpg  1_518.jpg  1_904.jpg
+0_1289.jpg  0_324.jpg   0_710.jpg  1_1097.jpg  1_1483.jpg  1_519.jpg  1_905.jpg
+0_128.jpg   0_325.jpg   0_711.jpg  1_1098.jpg  1_1484.jpg  1_51.jpg   1_906.jpg
+0_1290.jpg  0_326.jpg   0_712.jpg  1_1099.jpg  1_1485.jpg  1_520.jpg  1_907.jpg
+0_1291.jpg  0_327.jpg   0_713.jpg  1_109.jpg   1_1486.jpg  1_521.jpg  1_908.jpg
+0_1292.jpg  0_328.jpg   0_714.jpg  1_10.jpg    1_1487.jpg  1_522.jpg  1_909.jpg
+0_1293.jpg  0_329.jpg   0_715.jpg  1_1100.jpg  1_1488.jpg  1_523.jpg  1_90.jpg
+0_1294.jpg  0_32.jpg    0_716.jpg  1_1101.jpg  1_1489.jpg  1_524.jpg  1_910.jpg
+0_1295.jpg  0_330.jpg   0_717.jpg  1_1102.jpg  1_148.jpg   1_525.jpg  1_911.jpg
+0_1296.jpg  0_331.jpg   0_718.jpg  1_1103.jpg  1_1490.jpg  1_526.jpg  1_912.jpg
+0_1297.jpg  0_332.jpg   0_719.jpg  1_1104.jpg  1_1491.jpg  1_527.jpg  1_913.jpg
+0_1298.jpg  0_333.jpg   0_71.jpg   1_1105.jpg  1_1492.jpg  1_528.jpg  1_914.jpg
+0_1299.jpg  0_334.jpg   0_720.jpg  1_1106.jpg  1_1493.jpg  1_529.jpg  1_915.jpg
+0_129.jpg   0_335.jpg   0_721.jpg  1_1107.jpg  1_1494.jpg  1_52.jpg   1_916.jpg
+0_12.jpg    0_336.jpg   0_722.jpg  1_1108.jpg  1_1495.jpg  1_530.jpg  1_917.jpg
+0_1300.jpg  0_337.jpg   0_723.jpg  1_1109.jpg  1_1496.jpg  1_531.jpg  1_918.jpg
+0_1301.jpg  0_338.jpg   0_724.jpg  1_110.jpg   1_1497.jpg  1_532.jpg  1_919.jpg
+0_1302.jpg  0_339.jpg   0_725.jpg  1_1110.jpg  1_1498.jpg  1_533.jpg  1_91.jpg
+0_1303.jpg  0_33.jpg    0_726.jpg  1_1111.jpg  1_1499.jpg  1_534.jpg  1_920.jpg
+0_1304.jpg  0_340.jpg   0_727.jpg  1_1112.jpg  1_149.jpg   1_535.jpg  1_921.jpg
+0_1305.jpg  0_341.jpg   0_728.jpg  1_1113.jpg  1_14.jpg    1_536.jpg  1_922.jpg
+0_1306.jpg  0_342.jpg   0_729.jpg  1_1114.jpg  1_150.jpg   1_537.jpg  1_923.jpg
+0_1307.jpg  0_343.jpg   0_72.jpg   1_1115.jpg  1_151.jpg   1_538.jpg  1_924.jpg
+0_1308.jpg  0_344.jpg   0_730.jpg  1_1116.jpg  1_152.jpg   1_539.jpg  1_925.jpg
+0_1309.jpg  0_345.jpg   0_731.jpg  1_1117.jpg  1_153.jpg   1_53.jpg   1_926.jpg
+0_130.jpg   0_346.jpg   0_732.jpg  1_1118.jpg  1_154.jpg   1_540.jpg  1_927.jpg
+0_1310.jpg  0_347.jpg   0_733.jpg  1_1119.jpg  1_155.jpg   1_541.jpg  1_928.jpg
+0_1311.jpg  0_348.jpg   0_734.jpg  1_111.jpg   1_156.jpg   1_542.jpg  1_929.jpg
+0_1312.jpg  0_349.jpg   0_735.jpg  1_1120.jpg  1_157.jpg   1_543.jpg  1_92.jpg
+0_1313.jpg  0_34.jpg    0_736.jpg  1_1121.jpg  1_158.jpg   1_544.jpg  1_930.jpg
+0_1314.jpg  0_350.jpg   0_737.jpg  1_1122.jpg  1_159.jpg   1_545.jpg  1_931.jpg
+0_1315.jpg  0_351.jpg   0_738.jpg  1_1123.jpg  1_15.jpg    1_546.jpg  1_932.jpg
+0_1316.jpg  0_352.jpg   0_739.jpg  1_1124.jpg  1_160.jpg   1_547.jpg  1_933.jpg
+0_1317.jpg  0_353.jpg   0_73.jpg   1_1125.jpg  1_161.jpg   1_548.jpg  1_934.jpg
+0_1318.jpg  0_354.jpg   0_740.jpg  1_1126.jpg  1_162.jpg   1_549.jpg  1_935.jpg
+0_1319.jpg  0_355.jpg   0_741.jpg  1_1127.jpg  1_163.jpg   1_54.jpg   1_936.jpg
+0_131.jpg   0_356.jpg   0_742.jpg  1_1128.jpg  1_164.jpg   1_550.jpg  1_937.jpg
+0_1320.jpg  0_357.jpg   0_743.jpg  1_1129.jpg  1_165.jpg   1_551.jpg  1_938.jpg
+0_1321.jpg  0_358.jpg   0_744.jpg  1_112.jpg   1_166.jpg   1_552.jpg  1_939.jpg
+0_1322.jpg  0_359.jpg   0_745.jpg  1_1130.jpg  1_167.jpg   1_553.jpg  1_93.jpg
+0_1323.jpg  0_35.jpg    0_746.jpg  1_1131.jpg  1_168.jpg   1_554.jpg  1_940.jpg
+0_1324.jpg  0_360.jpg   0_747.jpg  1_1132.jpg  1_169.jpg   1_555.jpg  1_941.jpg
+0_1325.jpg  0_361.jpg   0_748.jpg  1_1133.jpg  1_16.jpg    1_556.jpg  1_942.jpg
+0_1326.jpg  0_362.jpg   0_749.jpg  1_1134.jpg  1_170.jpg   1_557.jpg  1_943.jpg
+0_1327.jpg  0_363.jpg   0_74.jpg   1_1135.jpg  1_171.jpg   1_558.jpg  1_944.jpg
+0_1328.jpg  0_364.jpg   0_750.jpg  1_1136.jpg  1_172.jpg   1_559.jpg  1_945.jpg
+0_1329.jpg  0_365.jpg   0_751.jpg  1_1137.jpg  1_173.jpg   1_55.jpg   1_946.jpg
+0_132.jpg   0_366.jpg   0_752.jpg  1_1138.jpg  1_174.jpg   1_560.jpg  1_947.jpg
+0_1330.jpg  0_367.jpg   0_753.jpg  1_1139.jpg  1_175.jpg   1_561.jpg  1_948.jpg
+0_1331.jpg  0_368.jpg   0_754.jpg  1_113.jpg   1_176.jpg   1_562.jpg  1_949.jpg
+0_1332.jpg  0_369.jpg   0_755.jpg  1_1140.jpg  1_177.jpg   1_563.jpg  1_94.jpg
+0_1333.jpg  0_36.jpg    0_756.jpg  1_1141.jpg  1_178.jpg   1_564.jpg  1_950.jpg
+0_1334.jpg  0_370.jpg   0_757.jpg  1_1142.jpg  1_179.jpg   1_565.jpg  1_951.jpg
+0_1335.jpg  0_371.jpg   0_758.jpg  1_1143.jpg  1_17.jpg    1_566.jpg  1_952.jpg
+0_1336.jpg  0_372.jpg   0_759.jpg  1_1144.jpg  1_180.jpg   1_567.jpg  1_953.jpg
+0_1337.jpg  0_373.jpg   0_75.jpg   1_1145.jpg  1_181.jpg   1_568.jpg  1_954.jpg
+0_1338.jpg  0_374.jpg   0_760.jpg  1_1146.jpg  1_182.jpg   1_569.jpg  1_955.jpg
+0_1339.jpg  0_375.jpg   0_761.jpg  1_1147.jpg  1_183.jpg   1_56.jpg   1_956.jpg
+0_133.jpg   0_376.jpg   0_762.jpg  1_1148.jpg  1_184.jpg   1_570.jpg  1_957.jpg
+0_1340.jpg  0_377.jpg   0_763.jpg  1_1149.jpg  1_185.jpg   1_571.jpg  1_958.jpg
+0_1341.jpg  0_378.jpg   0_764.jpg  1_114.jpg   1_186.jpg   1_572.jpg  1_959.jpg
+0_1342.jpg  0_379.jpg   0_765.jpg  1_1150.jpg  1_187.jpg   1_573.jpg  1_95.jpg
+0_1343.jpg  0_37.jpg    0_766.jpg  1_1151.jpg  1_188.jpg   1_574.jpg  1_960.jpg
+0_1344.jpg  0_380.jpg   0_767.jpg  1_1152.jpg  1_189.jpg   1_575.jpg  1_961.jpg
+0_1345.jpg  0_381.jpg   0_768.jpg  1_1153.jpg  1_18.jpg    1_576.jpg  1_962.jpg
+0_1346.jpg  0_382.jpg   0_769.jpg  1_1154.jpg  1_190.jpg   1_577.jpg  1_963.jpg
+0_1347.jpg  0_383.jpg   0_76.jpg   1_1155.jpg  1_191.jpg   1_578.jpg  1_964.jpg
+0_1348.jpg  0_384.jpg   0_770.jpg  1_1156.jpg  1_192.jpg   1_579.jpg  1_965.jpg
+0_1349.jpg  0_385.jpg   0_771.jpg  1_1157.jpg  1_193.jpg   1_57.jpg   1_966.jpg
+0_134.jpg   0_386.jpg   0_772.jpg  1_1158.jpg  1_194.jpg   1_580.jpg  1_967.jpg
+0_1350.jpg  0_387.jpg   0_773.jpg  1_1159.jpg  1_195.jpg   1_581.jpg  1_968.jpg
+0_1351.jpg  0_388.jpg   0_774.jpg  1_115.jpg   1_196.jpg   1_582.jpg  1_969.jpg
+0_1352.jpg  0_389.jpg   0_775.jpg  1_1160.jpg  1_197.jpg   1_583.jpg  1_96.jpg
+0_1353.jpg  0_38.jpg    0_776.jpg  1_1161.jpg  1_198.jpg   1_584.jpg  1_970.jpg
+0_1354.jpg  0_390.jpg   0_777.jpg  1_1162.jpg  1_199.jpg   1_585.jpg  1_971.jpg
+0_1355.jpg  0_391.jpg   0_778.jpg  1_1163.jpg  1_19.jpg    1_586.jpg  1_972.jpg
+0_1356.jpg  0_392.jpg   0_779.jpg  1_1164.jpg  1_1.jpg     1_587.jpg  1_973.jpg
+0_1357.jpg  0_393.jpg   0_77.jpg   1_1165.jpg  1_200.jpg   1_588.jpg  1_974.jpg
+0_1358.jpg  0_394.jpg   0_780.jpg  1_1166.jpg  1_201.jpg   1_589.jpg  1_975.jpg
+0_1359.jpg  0_395.jpg   0_781.jpg  1_1167.jpg  1_202.jpg   1_58.jpg   1_976.jpg
+0_135.jpg   0_396.jpg   0_782.jpg  1_1168.jpg  1_203.jpg   1_590.jpg  1_977.jpg
+0_1360.jpg  0_397.jpg   0_783.jpg  1_1169.jpg  1_204.jpg   1_591.jpg  1_978.jpg
+0_1361.jpg  0_398.jpg   0_784.jpg  1_116.jpg   1_205.jpg   1_592.jpg  1_979.jpg
+0_1362.jpg  0_399.jpg   0_785.jpg  1_1170.jpg  1_206.jpg   1_593.jpg  1_97.jpg
+0_1363.jpg  0_39.jpg    0_786.jpg  1_1171.jpg  1_207.jpg   1_594.jpg  1_980.jpg
+0_1364.jpg  0_3.jpg 0_787.jpg  1_1172.jpg  1_208.jpg   1_595.jpg  1_981.jpg
+0_1365.jpg  0_400.jpg   0_788.jpg  1_1173.jpg  1_209.jpg   1_596.jpg  1_982.jpg
+0_1366.jpg  0_401.jpg   0_789.jpg  1_1174.jpg  1_20.jpg    1_597.jpg  1_983.jpg
+0_1367.jpg  0_402.jpg   0_78.jpg   1_1175.jpg  1_210.jpg   1_598.jpg  1_984.jpg
+0_1368.jpg  0_403.jpg   0_790.jpg  1_1176.jpg  1_211.jpg   1_599.jpg  1_985.jpg
+0_1369.jpg  0_404.jpg   0_791.jpg  1_1177.jpg  1_212.jpg   1_59.jpg   1_986.jpg
+0_136.jpg   0_405.jpg   0_792.jpg  1_1178.jpg  1_213.jpg   1_5.jpg    1_987.jpg
+0_1370.jpg  0_406.jpg   0_793.jpg  1_1179.jpg  1_214.jpg   1_600.jpg  1_988.jpg
+0_1371.jpg  0_407.jpg   0_794.jpg  1_117.jpg   1_215.jpg   1_601.jpg  1_989.jpg
+0_1372.jpg  0_408.jpg   0_795.jpg  1_1180.jpg  1_216.jpg   1_602.jpg  1_98.jpg
+0_1373.jpg  0_409.jpg   0_796.jpg  1_1181.jpg  1_217.jpg   1_603.jpg  1_990.jpg
+0_1374.jpg  0_40.jpg    0_797.jpg  1_1182.jpg  1_218.jpg   1_604.jpg  1_991.jpg
+0_1375.jpg  0_410.jpg   0_798.jpg  1_1183.jpg  1_219.jpg   1_605.jpg  1_992.jpg
+0_1376.jpg  0_411.jpg   0_799.jpg  1_1184.jpg  1_21.jpg    1_606.jpg  1_993.jpg
+0_1377.jpg  0_412.jpg   0_79.jpg   1_1185.jpg  1_220.jpg   1_607.jpg  1_994.jpg
+0_1378.jpg  0_413.jpg   0_7.jpg    1_1186.jpg  1_221.jpg   1_608.jpg  1_995.jpg
+0_1379.jpg  0_414.jpg   0_800.jpg  1_1187.jpg  1_222.jpg   1_609.jpg  1_996.jpg
+0_137.jpg   0_415.jpg   0_801.jpg  1_1188.jpg  1_223.jpg   1_60.jpg   1_997.jpg
+0_1380.jpg  0_416.jpg   0_802.jpg  1_1189.jpg  1_224.jpg   1_610.jpg  1_998.jpg
+0_1381.jpg  0_417.jpg   0_803.jpg  1_118.jpg   1_225.jpg   1_611.jpg  1_999.jpg
+0_1382.jpg  0_418.jpg   0_804.jpg  1_1190.jpg  1_226.jpg   1_612.jpg  1_99.jpg
+0_1383.jpg  0_419.jpg   0_805.jpg  1_1191.jpg  1_227.jpg   1_613.jpg  1_9.jpg
+0_1384.jpg  0_41.jpg    0_806.jpg  1_1192.jpg  1_228.jpg   1_614.jpg
+0_1385.jpg  0_420.jpg   0_807.jpg  1_1193.jpg  1_229.jpg   1_615.jpg
+0_1386.jpg  0_421.jpg   0_808.jpg  1_1194.jpg  1_22.jpg    1_616.jpg
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># look at an image for fun</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">load_img</span><span class="p">(</span><span class="s1">&#39;training/0_808.jpg&#39;</span><span class="p">))</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="" src="../TF2_0_Transfer_Learning_files/figure-gfm/cell-9-output-1.png" /></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Food images start with 1, non-food images start with 0</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">load_img</span><span class="p">(</span><span class="s1">&#39;training/1_616.jpg&#39;</span><span class="p">))</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="" src="../TF2_0_Transfer_Learning_files/figure-gfm/cell-10-output-1.png" /></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="err">!</span><span class="n">mkdir</span> <span class="n">data</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Make directories to store the data Keras-style</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="err">!</span><span class="n">mkdir</span> <span class="n">data</span><span class="o">/</span><span class="n">train</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="err">!</span><span class="n">mkdir</span> <span class="n">data</span><span class="o">/</span><span class="n">test</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="err">!</span><span class="n">mkdir</span> <span class="n">data</span><span class="o">/</span><span class="n">train</span><span class="o">/</span><span class="n">nonfood</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="err">!</span><span class="n">mkdir</span> <span class="n">data</span><span class="o">/</span><span class="n">train</span><span class="o">/</span><span class="n">food</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="err">!</span><span class="n">mkdir</span> <span class="n">data</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">nonfood</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="err">!</span><span class="n">mkdir</span> <span class="n">data</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">food</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Move the images</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="c1"># Note: we will consider &#39;training&#39; to be the train set</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="c1">#       &#39;validation&#39; folder will be the test set</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1">#       ignore the &#39;evaluation&#39; set</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="err">!</span><span class="n">mv</span> <span class="n">training</span><span class="o">/</span><span class="mi">0</span><span class="o">*.</span><span class="n">jpg</span> <span class="n">data</span><span class="o">/</span><span class="n">train</span><span class="o">/</span><span class="n">nonfood</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="err">!</span><span class="n">mv</span> <span class="n">training</span><span class="o">/</span><span class="mi">1</span><span class="o">*.</span><span class="n">jpg</span> <span class="n">data</span><span class="o">/</span><span class="n">train</span><span class="o">/</span><span class="n">food</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="err">!</span><span class="n">mv</span> <span class="n">validation</span><span class="o">/</span><span class="mi">0</span><span class="o">*.</span><span class="n">jpg</span> <span class="n">data</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">nonfood</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="err">!</span><span class="n">mv</span> <span class="n">validation</span><span class="o">/</span><span class="mi">1</span><span class="o">*.</span><span class="n">jpg</span> <span class="n">data</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">food</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">train_path</span> <span class="o">=</span> <span class="s1">&#39;data/train&#39;</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">valid_path</span> <span class="o">=</span> <span class="s1">&#39;data/test&#39;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># These images are pretty big and of different sizes</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="c1"># Let&#39;s load them all in as the same (smaller) size</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="n">IMAGE_SIZE</span> <span class="o">=</span> <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># useful for getting number of files</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">image_files</span> <span class="o">=</span> <span class="n">glob</span><span class="p">(</span><span class="n">train_path</span> <span class="o">+</span> <span class="s1">&#39;/*/*.jpg&#39;</span><span class="p">)</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="n">valid_image_files</span> <span class="o">=</span> <span class="n">glob</span><span class="p">(</span><span class="n">valid_path</span> <span class="o">+</span> <span class="s1">&#39;/*/*.jpg&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># useful for getting number of classes</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">folders</span> <span class="o">=</span> <span class="n">glob</span><span class="p">(</span><span class="n">train_path</span> <span class="o">+</span> <span class="s1">&#39;/*&#39;</span><span class="p">)</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="n">folders</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># look at an image for fun</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">load_img</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">image_files</span><span class="p">)))</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="" src="../TF2_0_Transfer_Learning_files/figure-gfm/cell-18-output-1.png" /></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">ptm</span> <span class="o">=</span> <span class="n">PretrainedModel</span><span class="p">(</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    <span class="n">input_shape</span><span class="o">=</span><span class="n">IMAGE_SIZE</span> <span class="o">+</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>    <span class="n">weights</span><span class="o">=</span><span class="s1">&#39;imagenet&#39;</span><span class="p">,</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>    <span class="n">include_top</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># map the data into feature vectors</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="n">x</span> <span class="o">=</span> <span class="n">Flatten</span><span class="p">()(</span><span class="n">ptm</span><span class="o">.</span><span class="n">output</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># create a model object</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">ptm</span><span class="o">.</span><span class="n">input</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># view the structure of the model</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Model: &quot;model_3&quot;
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+input_3 (InputLayer)         [(None, 200, 200, 3)]     0         
+_________________________________________________________________
+block1_conv1 (Conv2D)        (None, 200, 200, 64)      1792      
+_________________________________________________________________
+block1_conv2 (Conv2D)        (None, 200, 200, 64)      36928     
+_________________________________________________________________
+block1_pool (MaxPooling2D)   (None, 100, 100, 64)      0         
+_________________________________________________________________
+block2_conv1 (Conv2D)        (None, 100, 100, 128)     73856     
+_________________________________________________________________
+block2_conv2 (Conv2D)        (None, 100, 100, 128)     147584    
+_________________________________________________________________
+block2_pool (MaxPooling2D)   (None, 50, 50, 128)       0         
+_________________________________________________________________
+block3_conv1 (Conv2D)        (None, 50, 50, 256)       295168    
+_________________________________________________________________
+block3_conv2 (Conv2D)        (None, 50, 50, 256)       590080    
+_________________________________________________________________
+block3_conv3 (Conv2D)        (None, 50, 50, 256)       590080    
+_________________________________________________________________
+block3_pool (MaxPooling2D)   (None, 25, 25, 256)       0         
+_________________________________________________________________
+block4_conv1 (Conv2D)        (None, 25, 25, 512)       1180160   
+_________________________________________________________________
+block4_conv2 (Conv2D)        (None, 25, 25, 512)       2359808   
+_________________________________________________________________
+block4_conv3 (Conv2D)        (None, 25, 25, 512)       2359808   
+_________________________________________________________________
+block4_pool (MaxPooling2D)   (None, 12, 12, 512)       0         
+_________________________________________________________________
+block5_conv1 (Conv2D)        (None, 12, 12, 512)       2359808   
+_________________________________________________________________
+block5_conv2 (Conv2D)        (None, 12, 12, 512)       2359808   
+_________________________________________________________________
+block5_conv3 (Conv2D)        (None, 12, 12, 512)       2359808   
+_________________________________________________________________
+block5_pool (MaxPooling2D)   (None, 6, 6, 512)         0         
+_________________________________________________________________
+flatten_2 (Flatten)          (None, 18432)             0         
+=================================================================
+Total params: 14,714,688
+Trainable params: 14,714,688
+Non-trainable params: 0
+_________________________________________________________________
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># create an instance of ImageDataGenerator</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="n">gen</span> <span class="o">=</span> <span class="n">ImageDataGenerator</span><span class="p">(</span><span class="n">preprocessing_function</span><span class="o">=</span><span class="n">preprocess_input</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">128</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="c1"># create generators</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="n">train_generator</span> <span class="o">=</span> <span class="n">gen</span><span class="o">.</span><span class="n">flow_from_directory</span><span class="p">(</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>  <span class="n">train_path</span><span class="p">,</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>  <span class="n">target_size</span><span class="o">=</span><span class="n">IMAGE_SIZE</span><span class="p">,</span>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>  <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>  <span class="n">class_mode</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span>
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="p">)</span>
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>
+<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a><span class="n">valid_generator</span> <span class="o">=</span> <span class="n">gen</span><span class="o">.</span><span class="n">flow_from_directory</span><span class="p">(</span>
+<a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a>  <span class="n">valid_path</span><span class="p">,</span>
+<a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a>  <span class="n">target_size</span><span class="o">=</span><span class="n">IMAGE_SIZE</span><span class="p">,</span>
+<a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a>  <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+<a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a>  <span class="n">class_mode</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span>
+<a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Found 3000 images belonging to 2 classes.
+Found 1000 images belonging to 2 classes.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="n">Ntrain</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">image_files</span><span class="p">)</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="n">Nvalid</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">valid_image_files</span><span class="p">)</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="c1"># Figure out the output size</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="n">feat</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">([</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">IMAGE_SIZE</span> <span class="o">+</span> <span class="p">[</span><span class="mi">3</span><span class="p">]))</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="n">D</span> <span class="o">=</span> <span class="n">feat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="n">X_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">Ntrain</span><span class="p">,</span> <span class="n">D</span><span class="p">))</span>
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="n">Y_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Ntrain</span><span class="p">)</span>
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="n">X_valid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">Nvalid</span><span class="p">,</span> <span class="n">D</span><span class="p">))</span>
+<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a><span class="n">Y_valid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nvalid</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># populate X_train and Y_train</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">train_generator</span><span class="p">:</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>  <span class="c1"># get features</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>  <span class="n">features</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>  <span class="c1"># size of the batch (may not always be batch_size)</span>
+<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>  <span class="n">sz</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>
+<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a>  <span class="c1"># assign to X_train and Ytrain</span>
+<a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a>  <span class="n">X_train</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">sz</span><span class="p">]</span> <span class="o">=</span> <span class="n">features</span>
+<a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a>  <span class="n">Y_train</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">sz</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span>
+<a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a>
+<a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a>  <span class="c1"># increment i</span>
+<a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a>  <span class="n">i</span> <span class="o">+=</span> <span class="n">sz</span>
+<a id="__codelineno-24-16" name="__codelineno-24-16" href="#__codelineno-24-16"></a>  <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<a id="__codelineno-24-17" name="__codelineno-24-17" href="#__codelineno-24-17"></a>
+<a id="__codelineno-24-18" name="__codelineno-24-18" href="#__codelineno-24-18"></a>  <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">Ntrain</span><span class="p">:</span>
+<a id="__codelineno-24-19" name="__codelineno-24-19" href="#__codelineno-24-19"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;breaking now&#39;</span><span class="p">)</span>
+<a id="__codelineno-24-20" name="__codelineno-24-20" href="#__codelineno-24-20"></a>    <span class="k">break</span>
+<a id="__codelineno-24-21" name="__codelineno-24-21" href="#__codelineno-24-21"></a><span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>128
+256
+384
+512
+640
+768
+896
+1024
+1152
+1280
+1408
+1536
+1664
+1792
+1920
+2048
+2176
+2304
+2432
+2560
+2688
+2816
+2944
+3000
+breaking now
+3000
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1"># populate X_valid and Y_valid</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">valid_generator</span><span class="p">:</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>  <span class="c1"># get features</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>  <span class="n">features</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>  <span class="c1"># size of the batch (may not always be batch_size)</span>
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>  <span class="n">sz</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a>
+<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a>  <span class="c1"># assign to X_train and Ytrain</span>
+<a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a>  <span class="n">X_valid</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">sz</span><span class="p">]</span> <span class="o">=</span> <span class="n">features</span>
+<a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a>  <span class="n">Y_valid</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">sz</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span>
+<a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a>
+<a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a>  <span class="c1"># increment i</span>
+<a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a>  <span class="n">i</span> <span class="o">+=</span> <span class="n">sz</span>
+<a id="__codelineno-25-16" name="__codelineno-25-16" href="#__codelineno-25-16"></a>
+<a id="__codelineno-25-17" name="__codelineno-25-17" href="#__codelineno-25-17"></a>  <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">Nvalid</span><span class="p">:</span>
+<a id="__codelineno-25-18" name="__codelineno-25-18" href="#__codelineno-25-18"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;breaking now&#39;</span><span class="p">)</span>
+<a id="__codelineno-25-19" name="__codelineno-25-19" href="#__codelineno-25-19"></a>    <span class="k">break</span>
+<a id="__codelineno-25-20" name="__codelineno-25-20" href="#__codelineno-25-20"></a><span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>breaking now
+1000
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="n">X_train</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">X_train</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>(749.7380981445312, 0.0)
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="n">X_train2</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="n">X_valid2</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_valid</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="c1"># Try the built-in logistic regression</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="n">logr</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="n">logr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train2</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">)</span>
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">logr</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train2</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">))</span>
+<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">logr</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_valid2</span><span class="p">,</span> <span class="n">Y_valid</span><span class="p">))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>/usr/local/lib/python3.6/dist-packages/sklearn/linear_model/logistic.py:432: FutureWarning: Default solver will be changed to &#39;lbfgs&#39; in 0.22. Specify a solver to silence this warning.
+  FutureWarning)
+
+1.0
+0.977
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="c1"># Do logistic regression in Tensorflow</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="n">i</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">D</span><span class="p">,))</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="n">x</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">)(</span><span class="n">i</span><span class="p">)</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="n">linearmodel</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="n">linearmodel</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>    <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;binary_crossentropy&#39;</span><span class="p">,</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>    <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span>
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>    <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="c1"># Can try both normalized and unnormalized data</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="n">r</span> <span class="o">=</span> <span class="n">linearmodel</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>    <span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>    <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>    <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a>    <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">X_valid</span><span class="p">,</span> <span class="n">Y_valid</span><span class="p">),</span>
+<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Train on 3000 samples, validate on 1000 samples
+Epoch 1/10
+WARNING:tensorflow:Entity &lt;function Function._initialize_uninitialized_variables.&lt;locals&gt;.initialize_variables at 0x7f7c18dd5598&gt; could not be transformed and will be executed as-is. Please report this to the AutoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: module &#39;gast&#39; has no attribute &#39;Num&#39;
+WARNING: Entity &lt;function Function._initialize_uninitialized_variables.&lt;locals&gt;.initialize_variables at 0x7f7c18dd5598&gt; could not be transformed and will be executed as-is. Please report this to the AutoGraph team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output. Cause: module &#39;gast&#39; has no attribute &#39;Num&#39;
+3000/3000 [==============================] - 1s 312us/sample - loss: 0.9217 - accuracy: 0.9293 - val_loss: 0.3271 - val_accuracy: 0.9780
+Epoch 2/10
+3000/3000 [==============================] - 0s 166us/sample - loss: 0.1115 - accuracy: 0.9893 - val_loss: 0.3457 - val_accuracy: 0.9740
+Epoch 3/10
+3000/3000 [==============================] - 0s 157us/sample - loss: 0.0210 - accuracy: 0.9977 - val_loss: 0.3130 - val_accuracy: 0.9810
+Epoch 4/10
+3000/3000 [==============================] - 0s 159us/sample - loss: 8.7803e-04 - accuracy: 0.9993 - val_loss: 0.3244 - val_accuracy: 0.9810
+Epoch 5/10
+3000/3000 [==============================] - 0s 154us/sample - loss: 2.6010e-05 - accuracy: 1.0000 - val_loss: 0.3252 - val_accuracy: 0.9810
+Epoch 6/10
+3000/3000 [==============================] - 0s 159us/sample - loss: 8.5458e-06 - accuracy: 1.0000 - val_loss: 0.3254 - val_accuracy: 0.9800
+Epoch 7/10
+3000/3000 [==============================] - 0s 155us/sample - loss: 6.6527e-06 - accuracy: 1.0000 - val_loss: 0.3254 - val_accuracy: 0.9800
+Epoch 8/10
+3000/3000 [==============================] - 0s 152us/sample - loss: 5.8428e-06 - accuracy: 1.0000 - val_loss: 0.3252 - val_accuracy: 0.9800
+Epoch 9/10
+3000/3000 [==============================] - 0s 151us/sample - loss: 4.0881e-06 - accuracy: 1.0000 - val_loss: 0.3251 - val_accuracy: 0.9800
+Epoch 10/10
+3000/3000 [==============================] - 0s 153us/sample - loss: 3.6229e-06 - accuracy: 1.0000 - val_loss: 0.3251 - val_accuracy: 0.9800
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="c1"># loss</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;train loss&#39;</span><span class="p">)</span>
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;val loss&#39;</span><span class="p">)</span>
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="" src="../TF2_0_Transfer_Learning_files/figure-gfm/cell-34-output-1.png" /></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="c1"># accuracies</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;train acc&#39;</span><span class="p">)</span>
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_accuracy&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;val acc&#39;</span><span class="p">)</span>
+<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="" src="../TF2_0_Transfer_Learning_files/figure-gfm/cell-35-output-1.png" /></p>
+<p><center></p>
+<p><a href=''> <img alt="Logo" src="../../logo1.png" /> </a></p>
+<p></center>
+<center>
+<em>Copyright Qalmaqihir</em>
+</center>
+<center>
+<em>For more information, visit us at
+<a href='http://www.github.com/qalmaqihir/'><a href="http://www.github.com/qalmaqihir/">www.github.com/qalmaqihir/</a></a></em>
+</center></p>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../../RecommenderSystem/TF2_0_Recommender_System/" class="md-footer__link md-footer__link--prev" aria-label="Previous: TF2 0 Recommender System" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              TF2 0 Recommender System
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../TF2_0_Transfer_Learning_with_Data_Augmentation/" class="md-footer__link md-footer__link--next" aria-label="Next: TF2 0 Transfer Learning with Data Augmentation" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              TF2 0 Transfer Learning with Data Augmentation
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2020-2024 – Jawad Haider  <a href="#__consent">Change cookie settings</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/qalmaqihir" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/jawad-haider-uca/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/channel/UCB-D3NBU6UZ5N7IGKOJxtqQ" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://t.me/Qalmaqihir" target="_blank" rel="noopener" title="t.me" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M248 8C111.033 8 0 119.033 0 256s111.033 248 248 248 248-111.033 248-248S384.967 8 248 8Zm114.952 168.66c-3.732 39.215-19.881 134.378-28.1 178.3-3.476 18.584-10.322 24.816-16.948 25.425-14.4 1.326-25.338-9.517-39.287-18.661-21.827-14.308-34.158-23.215-55.346-37.177-24.485-16.135-8.612-25 5.342-39.5 3.652-3.793 67.107-61.51 68.335-66.746.153-.655.3-3.1-1.154-4.384s-3.59-.849-5.135-.5q-3.283.746-104.608 69.142-14.845 10.194-26.894 9.934c-8.855-.191-25.888-5.006-38.551-9.123-15.531-5.048-27.875-7.717-26.8-16.291q.84-6.7 18.45-13.7 108.446-47.248 144.628-62.3c68.872-28.647 83.183-33.623 92.511-33.789 2.052-.034 6.639.474 9.61 2.885a10.452 10.452 0 0 1 3.53 6.716 43.765 43.765 0 0 1 .417 9.769Z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/qalmaqihir" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://instagram.com/qalmaqihir" target="_blank" rel="noopener" title="instagram.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["search.share", "search.highlight", "search.sugguest", "content.code.annotate", "content.tooltips", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.e21f8df8.min.js"></script>
+      
+    
+  </body>
+</html>
