@@ -1,4 +1,3 @@
-Tensorflow BootCamp - Advance Tensorflow Usage
 ================
 by Jawad Haider
 

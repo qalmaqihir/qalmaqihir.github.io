@@ -1,4 +1,3 @@
-Notes [book] Data Science Handbook
 ================
 by Jawad Haider
 # **Chpt 1 - Introduction to Numpy**

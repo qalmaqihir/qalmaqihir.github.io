@@ -1,4 +1,3 @@
-Tensorflow BootCamp - Recurrent Neural Networks
 ================
 by Jawad Haider
 

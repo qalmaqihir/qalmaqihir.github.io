@@ -1,4 +1,3 @@
-PyTorch BootCamp - Using GPU
 ================
 by Jawad Haider
 

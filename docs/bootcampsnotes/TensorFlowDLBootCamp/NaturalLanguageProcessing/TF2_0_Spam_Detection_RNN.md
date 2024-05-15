@@ -1,4 +1,3 @@
-Tensorflow BootCamp - Natural Language Processing
 ================
 by Jawad Haider
 

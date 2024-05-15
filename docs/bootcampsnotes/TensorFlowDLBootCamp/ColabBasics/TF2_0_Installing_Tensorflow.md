@@ -1,4 +1,3 @@
-Tensorflow BootCamp - Colab Basics Installing Tensorflow
 ================
 by Jawad Haider
 

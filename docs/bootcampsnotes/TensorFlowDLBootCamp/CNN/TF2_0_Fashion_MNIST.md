@@ -1,4 +1,3 @@
-Tensorflow BootCamp - CNN Fashion_MNIST
 ================
 by Jawad Haider
 

@@ -1,4 +1,3 @@
-Tensorflow BootCamp - RNN
 ================
 by Jawad Haider
 

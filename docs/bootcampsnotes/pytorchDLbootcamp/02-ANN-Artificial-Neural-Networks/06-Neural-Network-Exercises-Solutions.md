@@ -1,4 +1,3 @@
-Pytorch for Deep Learning BootCamp
 ================
 by Jawad Haider
 # **06 - Neural Network Exercises - SOLUTIONS**

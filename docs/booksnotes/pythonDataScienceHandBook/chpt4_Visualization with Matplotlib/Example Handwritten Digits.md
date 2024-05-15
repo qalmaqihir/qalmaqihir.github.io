@@ -1,4 +1,3 @@
-Notes \[Book\] Data Science Handbook
 ================
 by Jawad Haider
 

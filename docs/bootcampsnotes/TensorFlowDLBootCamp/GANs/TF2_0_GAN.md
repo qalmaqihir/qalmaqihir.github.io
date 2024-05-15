@@ -1,4 +1,3 @@
-Tensorflow BootCamp - GAN
 ================
 by Jawad Haider
 

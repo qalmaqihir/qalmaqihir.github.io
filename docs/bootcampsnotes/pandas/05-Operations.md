@@ -1,4 +1,3 @@
-Crash Course: Pandas
 ================
 by Jawad Haider
 

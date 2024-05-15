@@ -1,4 +1,3 @@
-Crash Course: Numpy 
 ================
 by Jawad Haider
 # **03 - NumPy Exercises**

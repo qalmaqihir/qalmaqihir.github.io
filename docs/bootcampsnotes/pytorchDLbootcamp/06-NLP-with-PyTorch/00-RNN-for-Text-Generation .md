@@ -1,4 +1,3 @@
-PyTorch BootCamp - NLP with PyTorch
 ================
 by Jawad Haider
 

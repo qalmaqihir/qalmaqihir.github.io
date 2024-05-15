@@ -1,4 +1,3 @@
-PyTorch Basics
 ================
 
 by Jawad Haider

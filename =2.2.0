@@ -1,0 +1,6 @@
+Defaulting to user installation because normal site-packages is not writeable
+Collecting markdown-it-py
+  Using cached markdown_it_py-3.0.0-py3-none-any.whl (87 kB)
+Requirement already satisfied: mdurl~=0.1 in /home/qalmaqihir/.local/lib/python3.10/site-packages (from markdown-it-py) (0.1.2)
+Installing collected packages: markdown-it-py
+Successfully installed markdown-it-py-3.0.0

@@ -1,4 +1,3 @@
-Tensorflow BootCamp - Low Level Tensorflow
 ================
 by Jawad Haider
 

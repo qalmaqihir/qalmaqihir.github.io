@@ -1,4 +1,3 @@
-PyTorch BootCamp - Convolutional Neural Networks
 ================
 by Jawad Haider
 

@@ -1,4 +1,3 @@
-PyTorch BootCamp - Recurrent Neural Networks
 ================
 by Jawad Haider
 

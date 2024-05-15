@@ -1,4 +1,3 @@
-Tensorflow BootCamp - Transfer Learning
 ================
 by Jawad Haider
 

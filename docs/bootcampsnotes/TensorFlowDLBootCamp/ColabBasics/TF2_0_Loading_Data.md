@@ -1,4 +1,3 @@
-Tensorflow BootCamp - Colab Basics Loading Data
 ================
 by Jawad Haider
 

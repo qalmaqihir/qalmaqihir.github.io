@@ -1,4 +1,3 @@
-Tensorflow BootCamp - Machine Learning Basics
 ================
 by Jawad Haider
 

@@ -1,4 +1,3 @@
-Tensorflow BootCamp - Colab Basics
 ================
 by Jawad Haider
 

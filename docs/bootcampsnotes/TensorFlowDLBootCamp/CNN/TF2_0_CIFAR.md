@@ -1,4 +1,3 @@
-Tensorflow BootCamp - CNN CIFAR
 ================
 by Jawad Haider
 

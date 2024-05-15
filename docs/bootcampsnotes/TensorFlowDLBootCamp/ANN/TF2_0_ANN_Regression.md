@@ -1,4 +1,3 @@
-Tensorflow BootCamp - ANN MNIST Regression
 ================
 by Jawad Haider
 

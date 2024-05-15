@@ -1,4 +1,3 @@
-Tensorflow BootCamp - Recommendation System
 ================
 by Jawad Haider
 
