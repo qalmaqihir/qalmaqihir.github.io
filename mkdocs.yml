@@ -324,6 +324,10 @@ nav:
     - competitiveprogramming/index.md
   - Core Computer Science:
     - corecs/index.md   
+    - ML_Specialization:
+      - ML Specialization - Course 1.md
+      - ML Specialization - Course 2.md
+      - ML Specialization - Course 3.md
   - My Research:
     - myresearch/index.md
   - About: 
