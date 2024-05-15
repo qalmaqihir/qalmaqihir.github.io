@@ -1,6 +1,6 @@
 # ML Specialization - Course 2
 
-# ML Specialization Course 2 - Advance Algorithms
+# Advance Algorithms
 
 Note 2024-01-15T12.01.27
 

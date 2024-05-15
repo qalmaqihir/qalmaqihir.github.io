@@ -1,4 +1,4 @@
-# ML Specialization Course  3
+# ML Specialization - Course  3
 
 # Unsupervised Learning, Recommenders, Reinforcement Learning
 
