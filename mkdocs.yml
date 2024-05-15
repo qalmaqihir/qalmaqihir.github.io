@@ -1,0 +1,340 @@
+
+# Project information
+site_name: CS Notes
+site_url: https://qalmaqihir.github.io/
+site_author: Jawad Haider
+site_description: >-
+  All of my Computer Science & AI/ML/DL/ Book notes, BootCamp notes & Useful materials for anyone who 
+  wants to learn; Knowledge should be free for those who need it.
+
+#############################################################################
+
+# Repository
+repo_name:  qalmaqihir/qalmaqihir.github.io 
+repo_url: https://github.com/qalmaqihir/qalmaqihir.github.io
+
+# Copyright
+copyright: Created by Jawad Haider
+
+# Configuration
+theme:
+  name: readthedocs
+  logo: assets/logo.png
+  custom_dir: !ENV [THEME_DIR, "material"]
+
+  # Static files
+  static_templates:
+    - 404.html
+
+  # Don't include MkDocs' JavaScript
+  include_search_page: false
+  search_index_only: true
+
+  # Default values, taken from mkdocs_theme.yml
+  language: en
+  features:
+    - search.share
+    - search.highlight
+    - search.sugguest
+    # - announce.dismiss
+    - content.code.annotate
+    # - content.tabs.link
+    - content.tooltips
+    # - header.autohide
+    # - navigation.expand
+    - navigation.indexes
+    # - navigation.instant
+    # - navigation.prune
+    - navigation.sections
+    - navigation.tabs
+   # - navigation.tabs.sticky
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
+   # - toc.integrate
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+  favicon: assets/logo.png
+  icon:
+    logo: logo
+    
+#############################################################################
+
+# Plugins
+plugins:
+  - search:
+      lang:
+        - en
+        - ru
+      separator: '[\s\-\.]' 
+      
+# Install redirect and minify plugins !!
+
+#############################################################################
+
+# Customization
+extra:
+  analytics:
+    provider: google
+    property: !ENV GOOGLE_ANALYTICS_KEY
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/qalmaqihir
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/jawad-haider-uca/
+    - icon: fontawesome/brands/youtube
+      link: https://www.youtube.com/channel/UCB-D3NBU6UZ5N7IGKOJxtqQ
+    - icon: fontawesome/brands/telegram
+      link: https://t.me/Qalmaqihir
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/qalmaqihir
+    - icon: fontawesome/brands/instagram
+      link: https://instagram.com/qalmaqihir
+      
+
+#############################################################################
+
+# Extensions
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:materialx.emoji.twemoji
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+#############################################################################
+
+nav:
+  - Home: 
+    - index.md
+    - Books Notes: booksnotes/index.md
+    - Bootcamps Notes: bootcampsnotes/index.md
+    - Competitive Programming: competitiveprogramming/index.md
+    - Core Computer Science: corecs/index.md
+    - My Research: myresearch/index.md
+    - About: about.md 
+    - Blogs: blogs/index.md
+    - Contact: contact.md
+  - Books Notes: 
+    - booksnotes/index.md
+    - Data Science Handbook:
+      - booksnotes/pythonDataScienceHandBook/index.md
+      - Chapter 1 - Ipython; Beyond Normal Python: booksnotes/pythonDataScienceHandBook/index.md
+      - Chapter 2 - Introduction to Numpy: 
+        - booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/00_Understanding_Data_Types_in_Python.md
+        - booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/01_basics_of_numpy_arrays.md
+        - booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/02_Computation_on_NumPy_Arrays.md
+        - booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/03_Aggregation_Min_Max.md
+        - booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/04_Computation_on_Arrays_Broadcasting.md
+        - booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/05_Comparisons_ Masks_and_Boolean_Logic.md
+        - booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/06_Fany_Indexing.md
+        - booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/07_Sorted_Arrays.md
+        - booksnotes/pythonDataScienceHandBook/chpt2_Introduction_to_NumPy/08_ Structured_Data.md
+      - Chapter 3 - Data Manipulation with Pandas: 
+        - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/01_Introduction to Pandas Objects.md
+        - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/02_Data Indexing and Selection.md
+        - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/03_Operating on Data in Pandas.md
+        - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/04_Handling Missing Data.md
+        - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/05_Hierarchical Indexing.md
+        - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/06_Combine dataset Concat and Append.md
+        - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/07_Combining Dataset Merge and Join.md
+        - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/08_Aggregation and Grouping.md
+        - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/09_Pivot Tables.md
+        - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/10_Vectoried String Operations.md
+        - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/11_Working with Time Series.md
+        - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/12-Frequency Offset.md
+        - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/13_Resampling Shifting and Windowing.md
+        - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/Example Visualizing Seattle Bicycle Counts.md
+        - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/Example_ Birthrate Data.md
+        - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/Example_ US States Data (Merge and Join).md
+        - booksnotes/pythonDataScienceHandBook/chpt3_Data_Manipulation_with_Pandas/Example_Recipe Database.md
+      - Chapter 4 - Visualization with Matplotlib: 
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/01general Matplotlib tips.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/02simple_lineplots.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/03simple scatter plots.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/04visualizing errors.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/05density and contour plots.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/06Histograms Binnings and Density.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/07customized plot legends.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/08customizing colorbar.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/09multiple subplots.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/10text and annotation Example.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/11customizing ticks.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/12customizing matplotlib configuration and stylesheets.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/13threedimensional plotting.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/14_geographic data with basemap.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/15visualiztion with seaborn.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/example California cities.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/Example Exploring Marathon Finishing times.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/Example Handwritten Digits.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/example surface temperature data.md
+        - booksnotes/pythonDataScienceHandBook/chpt4_Visualization with Matplotlib/Example Visualizing a Mobius Strip.md        
+      - Chapter 5 - Machine Learning: booksnotes/pythonDataScienceHandBook/index.md
+    - Machine Learning Handbook:
+      - booksnotes/pythonDataScienceHandBook/index.md
+      - chapt 1: booksnotes/pythonDataScienceHandBook/index.md
+  - Bootcamps Notes:
+    - bootcampsnotes/index.md
+    - Numpy Crash Course:
+       - Numpy Topics:
+         - bootcampsnotes/numpy/00-NumPy-Arrays.md
+         - bootcampsnotes/numpy/01-NumPy-Indexing-and-Selection.md
+         - bootcampsnotes/numpy/02-NumPy-Operations.md
+         - bootcampsnotes/numpy/03-NumPy-Exercises.md
+         - bootcampsnotes/numpy/04-NumPy-Exercises-Solutions.md
+    - Pandas Crash Course:
+       - Pandas Topics:
+          - bootcampsnotes/pandas/00-Intro-to-Pandas.md
+          - bootcampsnotes/pandas/01-Series.md
+          - bootcampsnotes/pandas/02-DataFrames.md
+          - bootcampsnotes/pandas/03-Missing-Data.md
+          - bootcampsnotes/pandas/04-Groupby.md
+          - bootcampsnotes/pandas/05-Operations.md
+          - bootcampsnotes/pandas/06-Data-Input-and-Output.md
+          - bootcampsnotes/pandas/07-Pandas-Exercises.md
+          - bootcampsnotes/pandas/08-Pandas-Exercises-Solutions.md 
+    - PyTorch Baics:
+       - PyTorch Topics:
+         - bootcampsnotes/pytorch/00-Tensor-Basics.md
+         - bootcampsnotes/pytorch/01-Tensor-Operations.md
+         - bootcampsnotes/pytorch/02-PyTorch-Basics-Exercises.md
+         - bootcampsnotes/pytorch/03-PyTorch-Basics-Exercises-Solutions.md
+    - PyTorch for Deeplearning Bootcamp:    
+      - ANN - Artificial Neural Networks:
+        - bootcampsnotes/pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/00-PyTorch-Gradients.md
+        - bootcampsnotes/pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/01-Linear-Regression-with-PyTorch.md
+        - bootcampsnotes/pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/02-DataSets-with-Pytorch.md
+        - bootcampsnotes/pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/03-Basic-PyTorch-NN.md
+        - bootcampsnotes/pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/04a-Full-ANN-Code-Along-Regression.md
+        - bootcampsnotes/pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/04b-Full-ANN-Code-Along-Classification.md
+        - bootcampsnotes/pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/05-Neural-Network-Exercises.md
+        - bootcampsnotes/pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/06-Neural-Network-Exercises-Solutions.md
+        - bootcampsnotes/pytorchDLbootcamp/02-ANN-Artificial-Neural-Networks/07-Recap-Saving-and-Loading-Trained-Models.md
+      - CNN - Convolutional Neural Networks: 
+        - bootcampsnotes/pytorchDLbootcamp/03-CNN-Convolutional-Neural-Networks/00-MNIST-ANN-Code-Along.md
+        - bootcampsnotes/pytorchDLbootcamp/03-CNN-Convolutional-Neural-Networks/01-MNIST-with-CNN.md
+        - bootcampsnotes/pytorchDLbootcamp/03-CNN-Convolutional-Neural-Networks/02-CIFAR-CNN-Code-Along.md
+        - bootcampsnotes/pytorchDLbootcamp/03-CNN-Convolutional-Neural-Networks/03-Loading-Real-Image-Data.md
+        - bootcampsnotes/pytorchDLbootcamp/03-CNN-Convolutional-Neural-Networks/04-CNN-on-Custom-Images.md
+        - bootcampsnotes/pytorchDLbootcamp/03-CNN-Convolutional-Neural-Networks/05-CNN-Exercises.md
+        - bootcampsnotes/pytorchDLbootcamp/03-CNN-Convolutional-Neural-Networks/06-CNN-Exercises-Solutions.md
+      - RNN - Recurrent Neural Networks: 
+        - bootcampsnotes/pytorchDLbootcamp/04-RNN-Recurrent-Neural-Networks/00-Basic-RNN.md
+        - bootcampsnotes/pytorchDLbootcamp/04-RNN-Recurrent-Neural-Networks/01-RNN-on-a-Time-Series.md
+        - bootcampsnotes/pytorchDLbootcamp/04-RNN-Recurrent-Neural-Networks/02-RNN-Exercises.md
+        - bootcampsnotes/pytorchDLbootcamp/04-RNN-Recurrent-Neural-Networks/03-RNN-Exercises-Solutions.md
+      - Using GPU:
+        - bootcampsnotes/pytorchDLbootcamp/05-Using-GPU/00-Using-GPU-and-CUDA.md
+      - NLP with PyTorch:
+        - bootcampsnotes/pytorchDLbootcamp/06-NLP-with-PyTorch/00-RNN-for-Text-Generation .md
+    - Tensorflow for Deeplearning Bootcamp:
+      - Colab Basics:
+        - bootcampsnotes/TensorFlowDLBootCamp/ColabBasics/TF2_0_Demo.md
+        - bootcampsnotes/TensorFlowDLBootCamp/ColabBasics/TF2_0_Installing_Tensorflow.md
+        - bootcampsnotes/TensorFlowDLBootCamp/ColabBasics/TF2_0_Loading_Data.md
+      - Machine Learning Basics:
+        - bootcampsnotes/TensorFlowDLBootCamp/MachineLearningBasics/TF2_0_Linear_Classification.md
+        - bootcampsnotes/TensorFlowDLBootCamp/MachineLearningBasics/TF2_0_Linear_Regression.md
+      - ANN - Artificial Neural Networks:
+        - bootcampsnotes/TensorFlowDLBootCamp/ANN/TF2_0_ANN_MNIST.md
+        - bootcampsnotes/TensorFlowDLBootCamp/ANN/TF2_0_ANN_Regression.md
+      - CNN - Convolutional Neural Networks:
+        - bootcampsnotes/TensorFlowDLBootCamp/CNN/TF2_0_Fashion_MNIST.md
+        - bootcampsnotes/TensorFlowDLBootCamp/CNN/TF2_0_CIFAR.md
+        - bootcampsnotes/TensorFlowDLBootCamp/CNN/TF2_0_CIFAR_Improved.md
+      - RNN - Recurrent Neural Network:
+        - bootcampsnotes/TensorFlowDLBootCamp/RNN/TF2_0_Autoregressive_Model.md
+        - bootcampsnotes/TensorFlowDLBootCamp/RNN/TF2_0_SimpleRNN_Sine.md
+        - bootcampsnotes/TensorFlowDLBootCamp/RNN/TF2_0_RNN_Shapes.md
+        - bootcampsnotes/TensorFlowDLBootCamp/RNN/TF2_0_LSTM_Nonlinear.md
+        - bootcampsnotes/TensorFlowDLBootCamp/RNN/TF2_0_Long_Distance.md         
+        - bootcampsnotes/TensorFlowDLBootCamp/RNN/TF2_0_RNN_MNIST.md                  
+        - bootcampsnotes/TensorFlowDLBootCamp/RNN/TF2_0_Stock_Returns.md
+      - NLP - Natural Language Processing:
+        - bootcampsnotes/TensorFlowDLBootCamp/NaturalLanguageProcessing/TF2_0_Text_Preprocessing.md
+        - bootcampsnotes/TensorFlowDLBootCamp/NaturalLanguageProcessing/TF2_0_Spam_Detection_CNN.md
+        - bootcampsnotes/TensorFlowDLBootCamp/NaturalLanguageProcessing/TF2_0_Spam_Detection_RNN.md
+      - Recommendar Systems:
+        - bootcampsnotes/TensorFlowDLBootCamp/RecommenderSystem/TF2_0_Recommender_System.md
+      - Transfer Learning:
+        - bootcampsnotes/TensorFlowDLBootCamp/TransferLearning/TF2_0_Transfer_Learning.md
+        - bootcampsnotes/TensorFlowDLBootCamp/TransferLearning/TF2_0_Transfer_Learning_with_Data_Augmentation.md
+      - GANs - Generative Adversarial Networks:
+        - bootcampsnotes/TensorFlowDLBootCamp/GANs/TF2_0_GAN.md
+      - Advance Tensorflow:
+        - bootcampsnotes/TensorFlowDLBootCamp/AdvanceTensorflowUage/TF2_0_Serving.md
+        - bootcampsnotes/TensorFlowDLBootCamp/AdvanceTensorflowUage/TF2_0_Mirrored_Strategy.md
+        - bootcampsnotes/TensorFlowDLBootCamp/AdvanceTensorflowUage/TF2_0_TFLite.md
+        - bootcampsnotes/TensorFlowDLBootCamp/AdvanceTensorflowUage/TPU.md
+      - Low-level Transorflow:
+        - bootcampsnotes/TensorFlowDLBootCamp/LowLevelTensorflow/TF2_0_Basic_Computation.md
+        - bootcampsnotes/TensorFlowDLBootCamp/LowLevelTensorflow/TF2_0_Variables_and_Gradient_Tape.md
+        - bootcampsnotes/TensorFlowDLBootCamp/LowLevelTensorflow/TF2_0_Build_Your_Own_Model.md
+      
+  - Competitive Programming:
+    - competitiveprogramming/index.md
+  - Core Computer Science:
+    - corecs/index.md   
+  - My Research:
+    - myresearch/index.md
+  - About: 
+    - about.md 
+  - Blog: 
+    - blogs/index.md
+    - 2022:
+      - blogs/2022/How-to-use-these-resources.md
+      - blogs/2022/How-to-contribute.md
+  - Contact: 
+    - contact.md
+
+    
+
