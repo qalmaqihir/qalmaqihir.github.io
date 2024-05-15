@@ -14,7 +14,7 @@ repo_name:  qalmaqihir/qalmaqihir.github.io
 repo_url: https://github.com/qalmaqihir/qalmaqihir.github.io
 
 # Copyright
-copyright: Created by Jawad Haider
+copyright: Copyright &copy; 2020-2024 – Jawad Haider  <a href="#__consent">Change cookie settings</a>
 
 # Configuration
 theme:
@@ -32,6 +32,34 @@ theme:
 
   # Default values, taken from mkdocs_theme.yml
   language: en
+  extra:
+  alternate:
+    - name: English
+      link: /en/
+      lang: en
+    - name: Russian
+      link: /ru/ 
+      lang: ru
+    - name: Deutsch
+      link: /de/
+      lang: de
+    - name: Arabic
+      link: /ar/
+      lang: ar 
+    - name: Urdu
+      link: /ur/
+      lang: ur
+  consent:
+    title: Cookie consent
+    description: >- 
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
+    actions:
+      - accept
+      - manage
+  
   features:
     - search.share
     - search.highlight
@@ -79,10 +107,14 @@ theme:
 
 # Plugins
 plugins:
+  #- privacy  
   - search:
       lang:
         - en
         - ru
+        - ar
+        - de
+        - ur
       separator: '[\s\-\.]' 
       
 # Install redirect and minify plugins !!
